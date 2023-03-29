@@ -16,6 +16,17 @@ body {
     display: flex;
 }
 
+/* logo-img */
+
+#logo-img>img {
+    width: 7%;
+    height: 10%;
+    position: absolute;
+    top: 5%;
+    left: 77.5%;
+}
+
+/* background images */
 #back-img-right {
     width: 70%;
     height: 100%;
@@ -32,63 +43,111 @@ body {
     height: 100%;
 }
 
+
+/* register form div */
 #register-div {
     border: none;
-    display: none;
-    width: 30%;
-    height: 60%;
-    position: absolute;
-    top: 50%;
-    left: 25%;
-    transform: translate(-50%, -50%);
-    background-color: #F7F7F7;
-    border-radius: 10px;
-    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    color: rgb(105, 4, 182);
+    width: 50%;
+    height: 100%;
+    position: absolute;
+    top: 50%;
+    left: 25%;
+    transform: translate(-50%, -50%);
+    border-radius: 10px 0 0 10px;
+    background-color: #F7F7F7;
+
 }
 
-#register-div>form {
-    width: 80%;
-    display: non;
-    height: 80%;
+#register-div h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#register-div form {
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
     align-items: center;
+    justify-content: center;
 }
 
-#register-div>form>input {
-    border: 1px solid gray;
-    outline: none;
+#register-div form div {
     width: 80%;
-    margin: 1rem 0;
-    border-radius: 5px;
-    padding: 0.5rem;
+    display: flex;
+    justify-content: space-between;
 }
 
-#register-div>form>button {
-    border: none;
+#register-div form div input {
+    width: 48%;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+}
+
+#register-div form input {
+    width: 80%;
+    margin-bottom: 10px;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+}
+
+#register-div form button {
     width: 50%;
-    border-radius: 5px;
-    margin-top: 0.5rem;
+    margin-top: 10px;
     padding: 0.5rem;
+    border: none;
+    border-radius: 5px;
     background-color: #EAD6CD;
-    color: #000;
-    font-size: 1rem;
+    color: rgb(92, 3, 3);
+    cursor: pointer;
     font-weight: bold;
-    cursor: pointer;
-    color: rgb(108, 22, 2);
 }
 
-#register-div>form>button:hover {
-    background-color: #edcbbb;
-    cursor: pointer;
+/* loading logo */
+.loader {
+    display: none;
+    border: 8px solid #e3e1e1;
+    border-radius: 50%;
+    border-top: 8px solid #5107b9;
+    width: 50px;
+    height: 50px;
+    -webkit-animation: spin 0.5s linear infinite; 
+    animation: spin 0.5s linear infinite;
+    position: absolute;
+    top: 10%;
+    left: 45%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
 }
 
+@-webkit-keyframes spin {
+    0% {
+        -webkit-transform: rotate(0deg);
+    }
+
+    100% {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+
+/* login form div */
 main {
     border: none;
     width: 45%;
@@ -106,6 +165,8 @@ main {
 #login-register-div {
     width: 50%;
     height: 100%;
+    border-radius: 10px 0 0 10px;
+    color: rgb(105, 4, 182);
 }
 
 #login-section {
@@ -124,7 +185,7 @@ main {
 }
 
 #login-section>form>input {
-    border: 1px solid gray;
+    border: 1px solid #ccc;
     outline: none;
     width: 90%;
     margin: 1rem 0;
@@ -184,23 +245,30 @@ main {
     cursor: pointer;
 }
 
+
+/* wallet img div that keeps switching on click */
 #picture {
     width: 50%;
     height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     border-radius: 0 10px 10px 0;
     background-color: #EAD6CD;
+
 }
 
 #picture>img {
+    display: block;
     width: 100%;
+    margin: auto;
+    border-radius: 0 10px 10px 0;
+    margin-top: 25%;
 }
 
 
 
-@media screen and (max-width : 668px) {
+
+
+
+@media screen and (max-width : 670px) {
     body {
         height: fit-content;
     }
@@ -238,8 +306,10 @@ main {
 
     #login-register-div {
         width: 100%;
-        height: 70vh;
+        height: 30vh;
     }
+
+
 
     #login-section {
         width: 100%;
@@ -267,14 +337,53 @@ main {
 
     #picture {
         width: 100%;
-        height: 30vh;
+        height: 70vh;
         border-radius: 0;
-        z-index: -5;
+        z-index: 5;
     }
 
     #picture>img {
+        border: 1px solid gray;
         width: 50%;
-        z-index: -2;
+    }
+
+    #register-and-social-media {
+        width: 100%;
+        padding: 0 1rem 1rem 1rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        text-align: center;
+    }
+
+    #social-medial-auth {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #register-div {
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        text-align: center;
+        z-index: 10;
+    }
+
+    #register-div {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        border-radius: 10px 0 0 10px;
+        background-color: #F7F7F7;
+        box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+        color: rgb(105, 4, 182);
     }
 
 }
