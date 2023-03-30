@@ -109,15 +109,13 @@ main {
 .fixed-div {
     width: 100%;
     height: 15%;
-    border-top: 1px solid rgb(168, 168, 250);
-    border-right: 1px solid rgb(168, 168, 250);
     border-top-right-radius: 7px;
     background: rgba(235, 232, 232, 0.5);
     padding: 0.5rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    color: rgb(79, 5, 197);
+    color: rgb(48, 109, 179);
 }
 
 .user-img-and-name {
@@ -137,8 +135,6 @@ main {
 }
 
 .various-display-div {
-    border-bottom: 1px solid rgb(168, 168, 250);
-    border-right: 1px solid rgb(168, 168, 250);
     width: 100%;
     height: 85%;
     padding: 1rem;
@@ -148,3 +144,51 @@ main {
 }
 
 
+
+/* loading logo */
+
+.loading-container {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 100;
+    position: absolute;
+    top: 0;
+    left: 0;
+    /* display: none; */
+}
+
+.loader {
+    border: 6px solid #e3e1e1;
+    border-radius: 50%;
+    border-top: 6px solid #071fb9;
+    width: 50px;
+    height: 50px;
+    -webkit-animation: spin 0.5s linear infinite;
+    animation: spin 0.5s linear infinite;
+    position: absolute;
+    top: 45%;
+    left: 55%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+}
+
+@-webkit-keyframes spin {
+    0% {
+        -webkit-transform: rotate(0deg);
+    }
+
+    100% {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
