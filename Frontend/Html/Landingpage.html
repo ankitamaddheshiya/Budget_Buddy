@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Budget Budget</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="../Styles/Landingpage.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+  
+</head>
+<body style="height:1500px">
+
+<nav class="navbar">
+  <div class="container-fluid">
+    <div class="navbar-logo">
+    <img src="../images/BBlogo1.PNG" alt="">
+   </div>
+    <ul class="nav navbar-nav">
+      <li><a href="#" style="color: white;font-size: 20px;margin: 10px">Home</a></li>
+      <li><a href="#" style="color: white;font-size: 20px;margin: 10px">About</a></li>
+      <li><a href="#" style="color: white;font-size: 20px;margin: 10px">Services</a></li>
+      <li><a href="#" style="color: white;font-size: 20px;margin: 10px">Contact us</a></li>
+      <li><a href="#" style="color: white;font-size: 20px; margin: 10px;">Login</a></li>
+    </ul>
+  </div>
+</nav>
+<section class="sec-1">
+    <div class="top-part">
+     <h1 class="main_heading">Budget it now !</h1>
+     <div class="small_para">
+         Spend, save, and give toward what's important in life
+     </div>
+
+     <!-- button part -->
+     <div class="button_part">
+         <button>Create your Budgey Buddy</button>
+     </div>
+    </div>
+</section>
+<br>
+<br>
+
+
+    <!-- Banner part   -->
+    <div class="swiper mySwiper">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide"><img src="https://www.ontarioconstructionnews.com/wp-content/uploads/2021/02/databid-budget-stock-image.png" alt=""></div>
+          <div class="swiper-slide"><img src="https://cfoshare.org/wp-content/uploads/2021/01/AdobeStock_227546975-scaled.jpeg" alt=""></div>
+          <div class="swiper-slide"><img src="../images/page-back-img-main.jpg" alt=""></div>
+          <div class="swiper-slide"><img src="https://financialtribune.com/sites/default/files/field/image/december/12_budget.jpg" alt=""></div>
+
+          <div class="swiper-slide"><img src="http://www.salisburysd.us/wp-content/uploads/2015/03/Budget-11456087.jpg" alt=""></div>
+          <div class="swiper-slide"><img src="https://picjumbo.com/wp-content/uploads/budget-2210x1473.jpg" alt=""></div>
+          
+        </div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-pagination"></div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+
+    <script>
+        var swiper = new Swiper(".mySwiper", {
+          spaceBetween: 30,
+          centeredSlides: true,
+          autoplay: {
+            delay: 2500,
+            disableOnInteraction: false,
+          },
+          pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+          },
+          navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+          },
+        });
+      </script>
+
+
+</body>
+</html>
