@@ -3,6 +3,8 @@ const mongoose = require("mongoose");
 const {client}= require("./redis/redis")
 require("dotenv").config()
 const {userRouter}= require("./Routes/User.routes")
+const {incomeRouter} = require("./Routes/Income.routes")
+const {expenseRouter} = require("./Routes/Expenses.routes");
 const {connection} = require("./Configs/db")
 const {authenticate}= require("./Middlewares/authenticate")
 
@@ -12,6 +14,9 @@ app.use(express.json());
 
 app.use("/user",userRouter);
 app.use(authenticate);
+app.use("/income",incomeRouter)
+app.use("/expense",expenseRouter)
+
 
 app.get("/",(req,res)=>{
     res.send("data....")

@@ -7,6 +7,8 @@ const userSchema = mongoose.Schema({
     password:{type:String,required:true},
     mobile:{type:Number,required:true},
     createdAt:{type: Date,default: Date.now}
+},{
+    versionKey:false
 })
 
 const usermodel = mongoose.model("user",userSchema);
