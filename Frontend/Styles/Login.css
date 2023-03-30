@@ -110,6 +110,8 @@ body {
 }
 
 /* loading logo */
+
+
 .loader {
     display: none;
     border: 8px solid #e3e1e1;
