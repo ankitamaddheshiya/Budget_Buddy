@@ -71,14 +71,14 @@ const registerlink = () => {
             <div>
                 <input
                 type="text"
-                name="first_name"
+                name="fname"
                 placeholder="First Name"
                 autocomplete="off"
                 required
                 />
                 <input
                 type="text"
-                name="last_name"
+                name="lname"
                 placeholder="Last Name"
                 autocomplete="off"
                 required
@@ -92,7 +92,7 @@ const registerlink = () => {
                 required
             /><input
                 type="number"
-                name="phone"
+                name="mobile"
                 placeholder="Phone Number"
                 autocomplete="off"
                 required
@@ -210,15 +210,20 @@ const loginFormSubmit = async (event) => {
   let form = document.getElementById("loginForm");
   let formData = new FormData(form);
   let data = Object.fromEntries(formData);
-  let response = await fetch("http://localhost:3000/login", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(data),
-  });
+  let response = await fetch(
+    "https://periwinkle-catfish-cuff.cyclic.app/user/login",
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    }
+  );
   let result = await response.json();
   console.log(result);
+
+  localStorage.setItem("token", result.token);
 };
 
 // register form submit
@@ -230,13 +235,16 @@ const registerFormSubmit = async (event) => {
 
   if (data.confirm_password == data.password) {
     delete data.confirm_password;
-    let response = await fetch("http://localhost:3000/register", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    });
+    let response = await fetch(
+      "https://periwinkle-catfish-cuff.cyclic.app/user/signup",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      }
+    );
     let result = await response.json();
     console.log(result);
   } else {
@@ -245,10 +253,15 @@ const registerFormSubmit = async (event) => {
   }
 };
 
-
 // login via google
 const googleLogin = async () => {
-  let response = await fetch("http://localhost:7500/auth/google");
-  let result = await response.json();
-  console.log(result);
+  try {
+    let response = await fetch(
+      "https://periwinkle-catfish-cuff.cyclic.app/auth/google"
+    );
+    let result = await response;
+    console.log(result);
+  } catch (error) {
+    console.log(error);
+  }
 };

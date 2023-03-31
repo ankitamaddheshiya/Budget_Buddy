@@ -140,7 +140,8 @@ main {
     padding: 1rem;
     border-bottom-right-radius: 7px;
     background: #ffffff;
-
+    transition: ease-in-out 0.5s;
+    
 }
 
 
