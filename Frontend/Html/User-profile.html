@@ -7,6 +7,8 @@
     <title>User Profile</title>
     <link rel="stylesheet" href="../Styles/User-profile.css" />
     <link rel="stylesheet" href="../Styles/User-account.css" />
+    <link rel="stylesheet" href="../Styles/incom.css">
+    <link rel="stylesheet" href="../Styles/expense.css">
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -35,23 +37,17 @@
               <li>
                 <img src="../images/user.png" alt="" /><a href="#">Account</a>
               </li>
-              <li>
+              <li id="income_append_btn">
                 <img src="../images/income.png" alt="" /><a href="#">Income</a>
               </li>
-              <li>
-                <img src="../images/expenses.png" alt="" /><a href="#"
-                  >Expenses</a
-                >
+              <li id="exp_append_btn">
+                <img src="../images/expenses.png" alt="" /><a href="#">Expenses</a>
               </li>
               <li>
-                <img src="../images/budgeting.png" alt="" /><a href="#"
-                  >Budget</a
-                >
+                <img src="../images/budgeting.png" alt="" /><a href="#">Budget</a>
               </li>
               <li>
-                <img src="../images/history.png" alt="" /><a href="#"
-                  >History</a
-                >
+                <img src="../images/history.png" alt="" /><a href="#">History</a>
               </li>
               <li>
                 <img src="../images/logout.png" alt="" /><a href="#">Logout</a>
@@ -69,10 +65,157 @@
               <h4>User Name</h4>
             </div>
           </div>
-          <div class="various-display-div"></div>
+          <div class="various-display-div">
+
+
+            <!-- Income div start -->
+            
+            <!-- <div id="income_container">
+              <div class="income_top">
+                <div class="inside_top_1">
+                  <img src="../images/income.png" alt="" />
+                </div>
+                <div class="inside_top_2">
+                  <h1>Total Income</h1>
+                  <h1 id="total_amount">99999</h1>
+                </div>
+              </div>
+              <div class="income_mid">
+                <div>
+                  <button id="add_income_btn">Add Income +</button>
+                </div>
+                <div class="filtering">
+                  <div>
+                    <label>From</label>
+                    <input class="form_date" type="date" value="choose">
+                  </div>
+                  <div>
+                    <label>To</label>
+                    <input class="to_date" type="date">
+                  </div>
+                  <div>
+                    <button class="income_search_btn">Search</button>
+                  </div>
+                </div>
+              </div>
+              <div id="income_bottom"> -->
+                <!-- <div class="every_incomes_main">
+                  <div class="every_incomes_card">
+                    <div class="every_income_card_inner">
+                      <h4>Salary</h4>
+                      <p>Date - 23/4/2023</p>
+                      <h4 class="income_amount">+ 90000<span>/-</span></h4>
+                    </div>
+                    <div class="down_arrow">
+                      <i class="fa-solid fa-arrow-down-short-wide"></i>
+                      <p>more</p>
+                    </div>
+                  </div> -->
+
+                  
+                  <!-- This will append with every card but display will be none untill the down arrow get clicked -->
+                  <!-- <div class="click_show">
+                    <div class="income_card_buttons">
+                      <button class="income_edit">Edit</button>
+                      <button class="income_delete">Delete</button>
+                    </div>
+                  </div>
+                </div> -->
+                
+              <!-- </div>
+            </div> -->
+              
+            <!-- <div class="popup" id="add_income_form">
+              <form id="income_form">
+                <label for="">Title</label>
+                <input id="input_income_name" type="text" required>
+                <label for="">Income Type</label>
+                <input id="input_income_type" type="text" required>
+                <label for="">Amount</label>
+                <input id="input_income_amount" type="number" required>
+                <input id="input_income_btn" type="submit">
+              </form>
+            </div> -->
+            
+            <!-- ------------------- Income div ends --------------------- -->
+
+
+            <!-- Expense Section Start -->
+
+            <div id="expense_container">
+              <div class="expense_top">
+                <div class="inside_top_1">
+                  <img src="../images/income.png" alt="" />
+                </div>
+                <div class="inside_top_2">
+                  <h1>Total Income</h1>
+                  <h1 id="total_amount_exp">99999</h1>
+                </div>
+              </div>
+              <div class="expense_mid">
+                <div>
+                  <button id="add_expense_btn">Add Income +</button>
+                </div>
+                <div class="filtering">
+                  <div>
+                    <label>From</label>
+                    <input class="exp_form_date" type="date" value="choose">
+                  </div>
+                  <div>
+                    <label>To</label>
+                    <input class="exp_to_date" type="date">
+                  </div>
+                  <div>
+                    <button class="expense_search_btn">Search</button>
+                  </div>
+                </div>
+              </div>
+              <div id="expense_bottom">
+                <!-- <div class="every_expense_main">
+                  <div class="every_expense_card">
+                    <div class="every_expense_card_inner">
+                      <h4>Salary</h4>
+                      <p>Date - 23/4/2023</p>
+                      <h4 class="expense_amount">+ 90000<span>/-</span></h4>
+                    </div>
+                    <div class="exp_down_arrow">
+                      <i class="fa-solid fa-arrow-down-short-wide"></i>
+                      <p>more</p>
+                    </div>
+                  </div> -->
+
+                  
+                  <!-- This will append with every card but display will be none untill the down arrow get clicked -->
+                  <!-- <div class="exp_click_show">
+                    <div class="exp_card_buttons">
+                      <button class="exp_edit">Edit</button>
+                      <button class="exp_delete">Delete</button>
+                    </div>
+                  </div>
+                </div> -->
+                
+              </div>
+            </div>
+              
+            <div class="popup" id="add_exp_form">
+              <form id="exp_form">
+                <label for="">Title</label>
+                <input id="input_exp_name" type="text" required>
+                <label for="">Income Type</label>
+                <input id="input_exp_type" type="text" required>
+                <label for="">Amount</label>
+                <input id="input_exp_amount" type="number" required>
+                <input id="input_exp_btn" type="submit">
+              </form>
+            </div>
+
+            <!-- Expense div ends -->
+          </div>
         </section>
       </div>
     </main>
-    <script src="../Scripts/User-profile.js"></script>
+    <script src="../Scripts/income.js"></script>
+    <script src="../Scripts/expense.js"></script>
+    <!-- <script src="../Scripts/User-profile.js"></script> -->
   </body>
 </html>
