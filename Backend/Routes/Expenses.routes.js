@@ -64,7 +64,21 @@ expenseRouter.delete('/delete/:id',async(req,res)=>{
     catch(err){
         res.send({msg:err.message})
     }
-})
+});
+
+expenseRouter.get("/filterdata",async(req,res)=>{
+    const{Sdate,Edate,userid}=req.body;
+    try {
+        let sdate= new Date(Sdate).toISOString();
+    let edate= new Date(Edate).toISOString();
+    
+    let data= await expensemodel.find({userID:userid,createdAt:{$gte:sdate,$lte:edate}});
+    res.send(data);
+    } catch (err) {
+        res.send({msg:err.message})
+    } 
+    
+});
 
 module.exports = {
     expenseRouter

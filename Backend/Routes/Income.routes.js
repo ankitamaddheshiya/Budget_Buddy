@@ -5,7 +5,8 @@ const jwt = require("jsonwebtoken")
 const incomeRouter = express.Router();
 const {incomemodel} = require("../Models/Income.model");
 const fs = require("fs")
-const {client}= require("../redis/redis")
+const {client}= require("../redis/redis");
+const { isModuleNamespaceObject } = require("util/types");
 
 const app = express();
 app.use(express.json());
@@ -60,8 +61,21 @@ incomeRouter.delete('/delete/:id',async(req,res)=>{
     catch(err){
         res.send({msg:err.message})
     }
-})
+});
 
+incomeRouter.get("/filterdata",async(req,res)=>{
+    const{Sdate,Edate,userid}=req.body;
+    try {
+        let sdate= new Date(Sdate).toISOString();
+    let edate= new Date(Edate).toISOString();
+    
+    let data= await incomemodel.find({userID:userid,createdAt:{$gte:sdate,$lte:edate}});
+    res.send(data)
+    } catch (err) {
+        res.send({msg:err.message})
+    } 
+    
+});
 
 
 module.exports = {
