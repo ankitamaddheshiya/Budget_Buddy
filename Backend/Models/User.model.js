@@ -1,11 +1,14 @@
 const mongoose = require("mongoose");
 
 const userSchema = mongoose.Schema({
-    fname:{type:String,required:true},
-    lname:{type:String,required:true},
+    fname:{type:String},
+    lname:{type:String},
     email:{type:String,require:true},
     password:{type:String,required:true},
-    mobile:{type:Number,required:true},
+    mobile:{type:Number},
+    avatar:{type:String},
+    address:{type:String},
+    dob:{type:String},
     createdAt:{type: Date,default: Date.now}
 },{
     versionKey:false

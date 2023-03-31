@@ -12,13 +12,11 @@ const client = redis.createClient({
      });
 
      (
-        async ()=>{
-           await client.connect()
-        }
-    )()
-     
-
-
+     async ()=>{
+        await client.connect()
+     }
+     )()
+    
      module.exports={
          client
      }
