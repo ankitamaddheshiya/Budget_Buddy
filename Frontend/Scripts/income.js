@@ -1,4 +1,4 @@
-const income_to_append_btn = document.getElementById("income_to_append_btn")
+const income_append_btn = document.getElementById("income_to_append_btn")
 income_append_btn.addEventListener("click", ()=>{
     income_main_func();
 })
@@ -16,7 +16,7 @@ async function income_main_func(){
     // })
     // .then((data)=>{
     //     console.log(data)
-    let data = 123;
+    let data = {name:"Hondurus"};
         every_income_display(data)
     // })
 }
@@ -104,12 +104,7 @@ function every_income_display(data){
             click_show.style.height = "60px"
             every_incomes_main.append(click_show)
         }
-
     })
-    // }
-    // every_incomes_main is for every single income added by user
-    
-    // Appending all data from server to frontend
 }
 
 
@@ -130,59 +125,4 @@ income_form.addEventListener("submit", (e)=>{
 
     console.log(input_income_name.value, input_income_type.value, input_income_amount.value)
 })
-
-
-
-
-    // let down_icon = document.createElement("i")
-    // down_icon.setAttribute("class", "fa-solid fa-arrow-down-short-wide")
-    // // down_icon.setAttribute("class", "")
-
-
-
-
-
-// edit_delete(data, every_incomes_main), {once:true}
-
-// function edit_delete(data, every_incomes_main){
-//     let click_show = document.createElement("div")
-//     click_show.setAttribute("class", "click_show")
-//     click_show.style.height = "60px"
-
-//     let income_card_buttons = document.createElement("div")
-//     income_card_buttons.setAttribute("class", "income_card_buttons")
-
-//     let income_edit = document.createElement("button")
-//     income_edit.innerHTML = "Edit";
-//     income_edit.setAttribute("class", "income_edit")
-//     income_edit.addEventListener("click", async()=>{
-//         await fetch(`${data._id}`)
-//         .then((res)=>{
-//             return res.json()
-//         })
-//         .then((data)=>{
-//             console.log(data)
-//         })
-//     }, {once:true})
-
-//     let income_delete = document.createElement("button")
-//     income_delete.innerHTML = "Delete";
-//     income_delete.setAttribute("class", "income_delete")
-//     income_delete.addEventListener("click", async(data)=>{
-//         await fetch(`${data._id}`)
-//         .then((res)=>{
-//             return res.json()
-//         })
-//         .then((data)=>{
-//             console.log(data)
-//         })
-//     }, {once:true})
-
-//     income_card_buttons.append(income_edit, income_delete)
-//     click_show.append(income_card_buttons)
-    
-//     every_incomes_main.append(click_show)
-// }
-
-
 
