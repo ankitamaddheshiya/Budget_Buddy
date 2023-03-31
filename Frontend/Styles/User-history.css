@@ -18,7 +18,7 @@ table {
 
 table thead tr {
     width: 100%;
-    background-color: gold;
+    background: linear-gradient(to right, #2dcd7d, #03964c);
     color: #ffffff;
     text-align: left;
     font-weight: bold;
@@ -43,7 +43,7 @@ table tbody tr:nth-of-type(even) {
 }
 
 table tbody tr:last-of-type {
-    border-bottom: 2px solid gold;
+    border-bottom: 2px solid rgb(3, 232, 121);
     background-color: #ffffff;
 }
 
