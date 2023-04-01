@@ -1,6 +1,11 @@
-.profile-container {
+.profile_full{
   width: 95%;
+  display: none;
+  height: 100%;
   margin: auto;
+}
+.profile-container {
+  width: 100%;
   height: 100%;
   display: flex;
   justify-content: space-between;

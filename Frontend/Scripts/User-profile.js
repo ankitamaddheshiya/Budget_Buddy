@@ -2,102 +2,23 @@
 let Page_name_heading = document.getElementById("Page-name-heading");
 const userOptions = document.querySelectorAll(".user-options ul li");
 
+let profile_full = document.querySelector(".profile_full");
+let income_full = document.querySelector(".income_full");
+let exp_full = document.querySelector(".exp_full");
+
 const userIncomePage = `<h1>Make the layout of user income and append it here</h1>`;
 const userExpensePage = `<h1>Make the layout of user expense and append it here</h1>`;
 
 // -----------------------------------------------------------------------------
 // user option click event
-const userAccountPage = `
-            <div class="profile-container">
-            <div class="left-profile-section">
-            <div class="profile-photo-and-info-div">
-                <div>
-                <img src="../images/user.png" alt="" id="user-profile-photo"/>
-                <h3 id="user-display-name">Name</h3>
-                </div>
-                <div>
-                <div><p id="user-dispaly-dob">Designation</p></div>
-                <div><p id="user-display-address">Address</p></div>
-                <div><button onclick="editbtnFun()">Edit</button></div>
-                </div>
-            </div>
-            <div class="social-media-links-div">
-                <div>
-                <i class="fa-brands fa-facebook"></i>
-                <a href="">angel@123</a>
-                </div>
-                <div>
-                <i class="fa-brands fa-instagram"></i>
-                <a href="">@sweet-angel</a>
-                </div>
-                <div>
-                <i class="fa-solid fa-globe"></i>
-                <a href="">google.com</a>
-                </div>
-                <div>
-                <i class="fa-brands fa-twitter"></i>
-                <a href="">@angeltweet</a>
-                </div>
-            </div>
-            </div>
 
-            <div class="right-profile-section">
-            <div class="user-details-div">
-                <div>
-                <h4>First Name</h4>
-                <h4 id="user-dispaly-firstname">ABC</h4>
-                </div>
-                <div>
-                <h4>Last Name</h4>
-                <h4 id="user-dispaly-lastname">XYZ</h4>
-                </div>
-                <div>
-                <h4>Email</h4>
-                <h4 id="user-dispaly-email">Email</h4>
-                </div>
-                <div>
-                <h4>Mobile Number</h4>
-                <h4 id="user-dispaly-mobile">Save Mobile</h4>
-                </div>
-                <div>
-                <h4>Adresss</h4>
-                <h4 id="user-dispaly-address">Save Address</h4>
-                </div>
-            </div>
-
-            <div class="extra">
-                <div>
-                 <div>
-                    <img src="../images/vip-card.png" alt="VIP-PASS">
-                    <h2>VIP PASS BENEFITS</h2>
-                 </div>
-                <p>
-                  <i class="fa-sharp fa-solid fa-star"></i> <span>10% Off On All Products</span>
-                </p>
-                <p>
-                  <i class="fa-sharp fa-solid fa-star"></i> <span> Avail All Premium Features</span>
-                </p>
-                <p>
-                  <i class="fa-sharp fa-solid fa-star"></i> <span>Get Legal Expert Advice</span>
-                </p>
-                <p>
-                  <i class="fa-sharp fa-solid fa-star"></i> <span>24/7 Support</span>
-                </p>
-                </div>
-                <div>
-                <p>
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nam ipsa
-                    quasi quis facere libero reprehenderit
-                </p>
-                </div>
-            </div>
-            </div>
-            </div>
-            `;
 let various_display_div = document.querySelector(".various-display-div");
 
 const accountOption = async (event) => {
-  various_display_div.innerHTML = null;
+  // various_display_div.innerHTML = null;
+  profile_full.style.display = "block";
+  income_full.style.display = "none";
+  exp_full.style.display = "none";
   Page_name_heading.innerHTML = "Account";
   userOptionsColor();
   if (event.target.children[1] == undefined) {
@@ -109,7 +30,7 @@ const accountOption = async (event) => {
     event.target.children[1].style.color = "#306DB3";
     event.target.children[1].style.fontWeight = "bold";
   }
-  various_display_div.innerHTML = userAccountPage;
+  // various_display_div.innerHTML = userAccountPage;
   let user_profile_photo = document.getElementById("user-profile-photo");
   let user_dispaly_dob = document.getElementById("user-dispaly-dob");
   let user_display_address = document.getElementById("user-display-address");
@@ -126,7 +47,11 @@ const accountOption = async (event) => {
 // ----------------------------------------------------------------
 
 const incomeOption = (event) => {
-  various_display_div.innerHTML = null;
+  // various_display_div.innerHTML = null;
+  income_full.style.display = "block";
+  profile_full.style.display = "none";
+  exp_full.style.display = "none";
+
   Page_name_heading.innerHTML = "Income";
   userOptionsColor();
   if (event.target.children[1] == undefined) {
@@ -138,10 +63,121 @@ const incomeOption = (event) => {
     event.target.children[1].style.color = "#306DB3";
     event.target.children[1].style.fontWeight = "bold";
   }
-  various_display_div.innerHTML = userIncomePage;
+  // various_display_div.innerHTML = userIncomePage;
+
+  // Fetch function to call from here
+  income_main_func()
 };
+
+async function income_main_func() {
+  // await fetch(`http://localhost:3000/income`, {
+  //   headers: {
+  //     "Content-type": "application/json",
+  //     authorization: `Bearer ${token}`,
+  //   },
+  // })
+  //   .then((res) => {
+  //     return res.json();
+  //   })
+  //   .then((data) => {
+  //     console.log(data);
+      let data = { name: "Hondurus" };
+      every_incomes_main_display(data);
+    // });
+}
+
+function every_incomes_main_display(data){
+  let income_container = document.getElementById("income_container")
+  income_container.style.width = "95%";
+  income_container.style.height = "100%";
+  
+  let income_bottom = document.getElementById("income_bottom")
+  income_bottom.innerHTML = null
+
+  let every_incomes_main = document.createElement("div")
+  every_incomes_main.setAttribute("class", "every_incomes_main")
+
+  let every_incomes_card = document.createElement("div")
+  every_incomes_card.setAttribute("class", "every_incomes_card")
+
+  let every_income_card_inner = document.createElement("div")
+  every_income_card_inner.setAttribute("class", "every_income_card_inner")
+
+  let income_type = document.createElement("h4")
+  income_type.innerHTML = `${data.name}`
+
+  let date = document.createElement("p")
+  date.innerHTML = `${data.date}`
+
+  let income_amount = document.createElement("h4")
+  income_amount.setAttribute("class", "income_amount")
+  income_amount.innerHTML = `${data.amount}`
+
+  every_income_card_inner.append(income_type, date, income_amount)
+
+  let down_arrow = document.createElement("div")
+  down_arrow.setAttribute("class", "down_arrow")
+  
+  let more = document.createElement("p")
+  more.innerHTML = "more"
+  down_arrow.append(more)
+  every_incomes_card.append(every_income_card_inner, down_arrow)
+  every_incomes_main.append(every_incomes_card)
+  income_bottom.append(every_incomes_main)
+  
+  down_arrow.addEventListener("click", ()=>{
+          let click_show = document.createElement("div")
+          click_show.setAttribute("class", "click_show")
+          
+      
+      let income_card_buttons = document.createElement("div")
+      income_card_buttons.setAttribute("class", "income_card_buttons")
+      
+      let income_edit = document.createElement("button")
+      income_edit.innerHTML = "Edit";
+      income_edit.setAttribute("class", "income_edit")
+      income_edit.addEventListener("click", async()=>{
+          await fetch(`${data._id}`)
+          .then((res)=>{
+              return res.json()
+          })
+          .then((data)=>{
+              console.log(data)
+          })
+      }, {once:true})
+      
+      let income_delete = document.createElement("button")
+      income_delete.innerHTML = "Delete";
+      income_delete.setAttribute("class", "income_delete")
+      income_delete.addEventListener("click", async(data)=>{
+          await fetch(`${data._id}`)
+          .then((res)=>{
+              return res.json()
+          })
+          .then((data)=>{
+              console.log(data)
+          })
+      }, {once:true})
+      
+      income_card_buttons.append(income_edit, income_delete)
+      click_show.append(income_card_buttons)
+      
+      if (every_incomes_main.childNodes[1]){
+          every_incomes_main.removeChild(every_incomes_main.childNodes[1])
+      }
+      else{
+          click_show.style.height = "60px"
+          every_incomes_main.append(click_show)
+      }
+  })
+}
+
+
 const expenseOption = (event) => {
-  various_display_div.innerHTML = null;
+  // various_display_div.innerHTML = null;
+  income_full.style.display = "none";
+  profile_full.style.display = "none";
+  exp_full.style.display = "block";
   Page_name_heading.innerHTML = "Expenses";
   userOptionsColor();
   if (event.target.children[1] == undefined) {
@@ -153,8 +189,114 @@ const expenseOption = (event) => {
     event.target.children[1].style.color = "#306DB3";
     event.target.children[1].style.fontWeight = "bold";
   }
-  various_display_div.innerHTML = userExpensePage;
+  // various_display_div.innerHTML = userExpensePage;
+
+  // Fetch function to call from here
+  exp_main_func()
 };
+
+async function exp_main_func() {
+  // await fetch(`http://localhost:3000/income`, {
+  //   headers: {
+  //     "Content-type": "application/json",
+  //     authorization: `Bearer ${token}`,
+  //   },
+  // })
+  //   .then((res) => {
+  //     return res.json();
+  //   })
+  //   .then((data) => {
+  //     console.log(data);
+      let data = { name: "Hondurus" };
+      every_exp_main_display(data);
+    // });
+}
+
+function every_exp_main_display(data){
+  let exp_container = document.getElementById("exp_container")
+  exp_container.style.width = "95%";
+  exp_container.style.height = "100%";
+  
+  let exp_bottom = document.getElementById("exp_bottom")
+  exp_bottom.innerHTML = null
+
+  let every_exps_main = document.createElement("div")
+  every_exps_main.setAttribute("class", "every_exps_main")
+
+  let every_exps_card = document.createElement("div")
+  every_exps_card.setAttribute("class", "every_exps_card")
+
+  let every_exp_card_inner = document.createElement("div")
+  every_exp_card_inner.setAttribute("class", "every_exp_card_inner")
+
+  let exp_type = document.createElement("h4")
+  exp_type.innerHTML = `${data.name}`
+
+  let date = document.createElement("p")
+  date.innerHTML = `${data.date}`
+
+  let exp_amount = document.createElement("h4")
+  exp_amount.setAttribute("class", "exp_amount")
+  exp_amount.innerHTML = `${data.amount}`
+
+  every_exp_card_inner.append(exp_type, date, exp_amount)
+
+  let down_arrow = document.createElement("div")
+  down_arrow.setAttribute("class", "down_arrow")
+  
+  let more = document.createElement("p")
+  more.innerHTML = "more"
+  down_arrow.append(more)
+  every_exps_card.append(every_exp_card_inner, down_arrow)
+  every_exps_main.append(every_exps_card)
+  exp_bottom.append(every_exps_main)
+  
+  down_arrow.addEventListener("click", ()=>{
+          let click_show = document.createElement("div")
+          click_show.setAttribute("class", "click_show")
+          
+      
+      let exp_card_buttons = document.createElement("div")
+      exp_card_buttons.setAttribute("class", "exp_card_buttons")
+      
+      let exp_edit = document.createElement("button")
+      exp_edit.innerHTML = "Edit";
+      exp_edit.setAttribute("class", "exp_edit")
+      exp_edit.addEventListener("click", async()=>{
+          await fetch(`${data._id}`)
+          .then((res)=>{
+              return res.json()
+          })
+          .then((data)=>{
+              console.log(data)
+          })
+      }, {once:true})
+      
+      let exp_delete = document.createElement("button")
+      exp_delete.innerHTML = "Delete";
+      exp_delete.setAttribute("class", "exp_delete")
+      exp_delete.addEventListener("click", async(data)=>{
+          await fetch(`${data._id}`)
+          .then((res)=>{
+              return res.json()
+          })
+          .then((data)=>{
+              console.log(data)
+          })
+      }, {once:true})
+      
+      exp_card_buttons.append(exp_edit, exp_delete)
+      click_show.append(exp_card_buttons)
+      
+      if (every_exps_main.childNodes[1]){
+          every_exps_main.removeChild(every_exps_main.childNodes[1])
+      }
+      else{
+          click_show.style.height = "60px"
+          every_exps_main.append(click_show)
+      }
+  })
+}
 
 // ----------------------------------------------------------------
 const userBudgetPage = `  <div class="dashboard">
@@ -469,34 +611,6 @@ const userOptionsColor = () => {
 // ------------------------------------------------------------------
 
 // ------------------------------------------------------------------
-// user edit profile page display the form
-const editbtnFun = (event) => {
-  various_display_div.innerHTML = null;
-  various_display_div.innerHTML = `
-        <div class="edit-form-container">
-        <i class="fa-sharp fa-solid fa-arrow-left" onclick="dontedit()"></i>
-        <form action="" onsubmit="editProfilefun(event)" id="edit-form">
-          <div>
-            <input type="text" name="fname" id="fname" placeholder="First name" />
-            <input type="text" name="lname" id="lname" placeholder="Last name" />
-          </div>
-          <div>
-            <input type="text" name="mobile" id="mobile" placeholder="Mobile" />
-            <input type="date" name="dob" placeholder="Date Of Birth" />
-          </div>
-          <input
-            type="text"
-            name="address"
-            id="address"
-            placeholder="Address"
-          />
-          <label for="profile">Profile</label>
-          <input type="file" name="profile" onchange="fileConvertor(event)"/>
-          <button type="submit">Save</button>
-        </form>
-      </div>
-  `;
-};
 
 //convert the file into the link and then edit profile by fetch request
 let avatar = "";
@@ -512,6 +626,8 @@ const editProfilefun = async (event) => {
   event.preventDefault();
   let loader = `<div class="loading-container"><div class="loader"></div></div>`;
   various_display_div.innerHTML = loader;
+
+  // Collecting Form Data
   let formData = new FormData(event.target);
   let data = Object.fromEntries(formData);
   data.avatar = avatar;
@@ -542,8 +658,4 @@ const editProfilefun = async (event) => {
   }
 };
 
-// dont edit profile
-const dontedit = () => {
-  various_display_div.innerHTML = userAccountPage;
-};
 // ---------------------------------------------------------------------------
