@@ -1,5 +1,4 @@
-// Login page JS
-
+// ---------------------------------------------------------------------------
 // login switch
 const loginlink = () => {
   const loginLayout = ` 
@@ -61,6 +60,10 @@ const loginlink = () => {
   left.append(img);
   right.innerHTML = loginLayout;
 };
+
+
+
+// ---------------------------------------------------------------------------
 
 // register switch
 const registerlink = () => {
@@ -137,6 +140,11 @@ const registerlink = () => {
   right.append(img);
 };
 
+
+// ---------------------------------------------------------------------------
+
+
+
 // display login page on load
 const onload = () => {
   const loginLayout = ` 
@@ -204,6 +212,10 @@ const onload = () => {
 };
 onload();
 
+// ---------------------------------------------------------------------------
+
+
+
 // login form submit
 const loginFormSubmit = async (event) => {
   event.preventDefault();
@@ -225,6 +237,9 @@ const loginFormSubmit = async (event) => {
 
   localStorage.setItem("token", result.token);
 };
+
+// ---------------------------------------------------------------------------
+
 
 // register form submit
 const registerFormSubmit = async (event) => {
@@ -253,11 +268,14 @@ const registerFormSubmit = async (event) => {
   }
 };
 
+
+// ---------------------------------------------------------------------------
+
 // login via google
 const googleLogin = async () => {
   try {
     let response = await fetch(
-      "https://periwinkle-catfish-cuff.cyclic.app/auth/google"
+      "https://periwinkle-catfish-cuff.cyclic.app/user/auth/google"
     );
     let result = await response;
     console.log(result);
@@ -265,3 +283,4 @@ const googleLogin = async () => {
     console.log(error);
   }
 };
+// ---------------------------------------------------------------------------

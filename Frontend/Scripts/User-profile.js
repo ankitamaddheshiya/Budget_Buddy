@@ -2,6 +2,11 @@
 let Page_name_heading = document.getElementById("Page-name-heading");
 const userOptions = document.querySelectorAll(".user-options ul li");
 
+const userIncomePage = `<h1>Make the layout of user income and append it here</h1>`;
+const userExpensePage = `<h1>Make the layout of user expense and append it here</h1>`;
+
+// -----------------------------------------------------------------------------
+// user option click event
 const userAccountPage = `
             <div class="profile-container">
             <div class="left-profile-section">
@@ -19,19 +24,19 @@ const userAccountPage = `
             <div class="social-media-links-div">
                 <div>
                 <i class="fa-brands fa-facebook"></i>
-                <a href="">http://hello</a>
+                <a href="">angel@123</a>
                 </div>
                 <div>
                 <i class="fa-brands fa-instagram"></i>
-                <a href="">http://hello</a>
+                <a href="">@sweet-angel</a>
                 </div>
                 <div>
                 <i class="fa-solid fa-globe"></i>
-                <a href="">http://hello</a>
+                <a href="">google.com</a>
                 </div>
                 <div>
                 <i class="fa-brands fa-twitter"></i>
-                <a href="">http://hello</a>
+                <a href="">@angeltweet</a>
                 </div>
             </div>
             </div>
@@ -89,12 +94,6 @@ const userAccountPage = `
             </div>
             </div>
             `;
-
-const userIncomePage = `<h1>Make the layout of user income and append it here</h1>`;
-const userExpensePage = `<h1>Make the layout of user expense and append it here</h1>`;
-const userBudgetPage = `<h1>Make the layout of user budget and append it here</h1>`;
-
-// user option click event
 let various_display_div = document.querySelector(".various-display-div");
 
 const accountOption = async (event) => {
@@ -124,6 +123,8 @@ const accountOption = async (event) => {
 
   user_dispaly_firstname.innerText = "Aman";
 };
+// ----------------------------------------------------------------
+
 const incomeOption = (event) => {
   various_display_div.innerHTML = null;
   Page_name_heading.innerHTML = "Income";
@@ -154,6 +155,27 @@ const expenseOption = (event) => {
   }
   various_display_div.innerHTML = userExpensePage;
 };
+
+// ----------------------------------------------------------------
+const userBudgetPage = `  <div class="dashboard">
+        <div class="dashboard-uper-div">
+          <div class="line-graph">
+            <div id="line-chart" style="width: 95%; height: 95%; margin: auto;"></div>
+          </div>
+          <div class="doughnut-graph">
+            <canvas id="doughnut-chart" style="width: 95%; height: 95%; margin: auto;"></canvas>
+          </div>
+        </div>
+        <div class="dashboard-lower-div">
+          <div class="pie-graph">
+            <div id="pie-chart" style="width: 95%; height: 95%; margin: auto;"></div>
+          </div>
+          <div class="bar-graph">
+            <canvas id="bar-chart" style="width: 100%; height: 100%; margin: auto;"></canvas>
+          </div>
+        </div>
+        </div>
+`;
 const budgetOption = (event) => {
   various_display_div.innerHTML = null;
   Page_name_heading.innerHTML = "Budget";
@@ -168,87 +190,139 @@ const budgetOption = (event) => {
     event.target.children[1].style.fontWeight = "bold";
   }
   various_display_div.innerHTML = userBudgetPage;
+
+  // code to show the page charts-------
+
+  // doughnut chart
+  var xValues = ["Italy", "France", "Spain", "USA", "Argentina"];
+  var yValues = [55, 49, 44, 24, 15];
+  var barColors = ["#b91d47", "#00aba9", "#2b5797", "#e8c3b9", "#1e7145"];
+
+  new Chart("doughnut-chart", {
+    type: "doughnut",
+    data: {
+      labels: xValues,
+      datasets: [
+        {
+          backgroundColor: barColors,
+          data: yValues,
+        },
+      ],
+    },
+    options: {
+      title: {
+        display: true,
+        text: "World Wide Wine Production 2018",
+      },
+    },
+  });
+  // ---------------------------------------------------------
+
+  // pie chart
+  google.charts.load("current", { packages: ["corechart"] });
+  google.charts.setOnLoadCallback(drawChart);
+
+  function drawChart() {
+    const data = google.visualization.arrayToDataTable([
+      ["Contry", "Mhl"],
+      ["Italy", 54.8],
+      ["France", 48.6],
+      ["Spain", 44.4],
+      ["USA", 23.9],
+      ["Argentina", 14.5],
+    ]);
+
+    const options = {
+      title: "World Wide Wine Production",
+      is3D: true,
+    };
+
+    const chart = new google.visualization.PieChart(
+      document.getElementById("pie-chart")
+    );
+    chart.draw(data, options);
+  }
+  // ---------------------------------------------------------
+
+  // line chart
+  let exp1 = "x";
+  let exp2 = "1.5*x";
+  let exp3 = "1.5*x + 7";
+  // Generate values
+
+  const x1Values = [];
+  const x2Values = [];
+  const x3Values = [];
+  const y1Values = [];
+  const y2Values = [];
+  const y3Values = [];
+
+  for (let x = 0; x <= 10; x += 1) {
+    x1Values.push(x);
+    x2Values.push(x);
+    x3Values.push(x);
+    y1Values.push(eval(exp1));
+    y2Values.push(eval(exp2));
+    y3Values.push(eval(exp3));
+  }
+
+  // Define Data
+  const data = [
+    { x: x1Values, y: y1Values, mode: "lines" },
+    { x: x2Values, y: y2Values, mode: "lines" },
+    { x: x3Values, y: y3Values, mode: "lines" },
+  ];
+
+  //Define Layout
+  const layout = {
+    title: "[y=" + exp1 + "]  [y=" + exp2 + "]  [y=" + exp3 + "]",
+  };
+
+  // Display using Plotly
+  Plotly.newPlot("line-chart", data, layout);
+
+  // ---------------------------------------------------------
+  // bar chart
+  var xValues = ["Italy", "France", "Spain", "USA", "Argentina"];
+  var yValues = [55, 49, 44, 24, 15];
+  var barColors = ["red", "green", "blue", "orange", "brown"];
+
+  new Chart("bar-chart", {
+    type: "bar",
+    data: {
+      labels: xValues,
+      datasets: [
+        {
+          backgroundColor: barColors,
+          data: yValues,
+        },
+      ],
+    },
+    options: {
+      legend: { display: false },
+      title: {
+        display: true,
+        text: "World Wine Production 2018",
+      },
+    },
+  });
 };
 
+// ------------------------------------------------------------------
 // user history page
 const userHistoryPage = `  
       <div class="history-container">
       <table>
         <thead>
           <tr>
-            <th>Transaction</th>
+            <th>Title</th>
             <th>Type</th>
             <th>Date</th>
+            <th>Transaction Id</th>
             <th>Amount</th>
           </tr>
         </thead>
         <tbody id="tbody-append-history">
-            <tr>
-                <td>1</td>
-                <td>Deposit</td>
-                <td>2021-01-01</td>
-                <td>1000</td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>Withdraw</td>
-                <td>2021-01-02</td>
-                <td>500</td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>Deposit</td>
-                <td>2021-01-03</td>
-                <td>1000</td>
-            </tr>
-            <tr>
-                <td>4</td>
-                <td>Withdraw</td>
-                <td>2021-01-04</td>
-                <td>500</td>
-            </tr>
-            <tr>
-                <td>5</td>
-                <td>Deposit</td>
-                <td>2021-01-05</td>
-                <td>1000</td>
-            </tr>
-            <tr>
-                <td>6</td>
-                <td>Withdraw</td>
-                <td>2021-01-06</td>
-                <td>500</td>
-            </tr>
-            <tr>
-                <td>7</td>
-                <td>Deposit</td>
-                <td>2021-01-07</td>
-                <td>1000</td>
-            </tr>
-            <tr>
-                <td>8</td>
-                <td>Withdraw</td>
-                <td>2021-01-08</td>
-                <td>500</td>
-            </tr>
-            <tr>
-                <td>9</td>
-                <td>Deposit</td>
-                <td>2021-01-09</td>
-                <td>1000</td>
-            </tr>
-            <tr>
-                <td>10</td>
-                <td>Withdraw</td>
-                <td>2021-01-10</td>
-                <td>500</td>
-            </tr>
-            <tr>
-                <td>11</td>
-                <td>Deposit</td>
-                <td>2021-01-11</td>
-                <td>1000</td>
-            </tr>
         </tbody>
       </table>
       </div>
@@ -273,39 +347,68 @@ const historyOption = (event) => {
     let loader = `<div class="loading-container"><div class="loader"></div></div>`;
     various_display_div.innerHTML = loader;
     try {
-      let history = await fetch(
-        "https://periwinkle-catfish-cuff.cyclic.app/history",
+      let Incomehistory = await fetch(
+        "https://periwinkle-catfish-cuff.cyclic.app/income/",
         {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
-            authorization: `Bearer ${localStorage.getItem("token")}`,
+            authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFrc2hheWNoYXZhbjAxMDEwMUBnbWFpbC5jb20iLCJ1c2VySUQiOiI2NDI2ZWQ5YjljMjc3OTA0NjAzMDBlOWYiLCJpYXQiOjE2ODAyNzI4MDYsImV4cCI6MTY4MDM1OTIwNn0.97RvvvbTKiEjm5PjufDGkeAeMu40CLlDAjagFJRrjGA`,
           },
         }
       );
-      let historyData = await history.json();
-      console.log(historyData);
-      if (historyData.status == 200) {
+      let IncomeHData = await Incomehistory.json();
+
+      let Expensehistory = await fetch(
+        "https://periwinkle-catfish-cuff.cyclic.app/expense/",
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFrc2hheWNoYXZhbjAxMDEwMUBnbWFpbC5jb20iLCJ1c2VySUQiOiI2NDI2ZWQ5YjljMjc3OTA0NjAzMDBlOWYiLCJpYXQiOjE2ODAyNzI4MDYsImV4cCI6MTY4MDM1OTIwNn0.97RvvvbTKiEjm5PjufDGkeAeMu40CLlDAjagFJRrjGA`,
+          },
+        }
+      );
+      let ExpenseHData = await Expensehistory.json();
+      let HistoryOfUser = IncomeHData.concat(ExpenseHData);
+
+      const appendHisfun = async () => {
+        various_display_div.innerHTML = userHistoryPage;
         let tbody = document.getElementById("tbody-append-history");
-        tbody.innerHTML = null;
-        historyData.data.forEach((element) => {
+        HistoryOfUser.forEach((element) => {
+          let date = element.createdAt.split("T");
+          date = date[0];
           let tr = document.createElement("tr");
-          tr.innerHTML = `<td>${element.transaction}</td>
-          <td>${element.type}</td>
-          <td>${element.date}</td>
-          <td>${element.amount}</td>`;
+          if (element.type == "Cash") {
+            tr.style.color = "rgb(2, 82, 2)";
+            element.amount = "+ " + element.amount;
+          } else {
+            tr.style.color = "red";
+            element.amount = "- " + element.amount;
+          }
+          tr.style.fontWeight = "bold";
+          tr.innerHTML = `
+            <td>${element.title}</td>
+            <td>${element.type}</td>
+            <td>${date}</td>
+            <td>${element._id}</td>
+            <td>${element.amount}</td>
+            `;
+
           tbody.appendChild(tr);
         });
-      } else {
-        alert("Something went wrong, please try again");
-      }
+      };
+      appendHisfun();
+      alert("History Fetch Successfully");
     } catch (error) {
       various_display_div.innerHTML = userHistoryPage;
     }
   };
   historyfun();
 };
+// ------------------------------------------------------------------
 
+// ------------------------------------------------------------------
 // logout option fetch request;
 const logoutfun = async () => {
   let loader = `<div class="loading-container"><div class="loader"></div></div>`;
@@ -318,6 +421,7 @@ const logoutfun = async () => {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          authorization: `Bearer ${localStorage.getItem("token")}`,
         },
       }
     );
@@ -350,7 +454,9 @@ const logoutOption = (event) => {
   }
   various_display_div.innerHTML = userLogoutPage;
 };
+// ------------------------------------------------------------------
 
+// ------------------------------------------------------------------
 // to retrive the user options background colors
 const userOptionsColor = () => {
   let userOptions = document.querySelectorAll(".user-options ul li");
@@ -360,9 +466,10 @@ const userOptionsColor = () => {
     option.children[1].style.fontWeight = "normal";
   });
 };
+// ------------------------------------------------------------------
 
-// user edit profile page
-
+// ------------------------------------------------------------------
+// user edit profile page display the form
 const editbtnFun = (event) => {
   various_display_div.innerHTML = null;
   various_display_div.innerHTML = `
@@ -391,8 +498,7 @@ const editbtnFun = (event) => {
   `;
 };
 
-// edit profile fetch request
-
+//convert the file into the link and then edit profile by fetch request
 let avatar = "";
 const fileConvertor = (event) => {
   let file = event.target.files[0];
@@ -423,9 +529,11 @@ const editProfilefun = async (event) => {
       }
     );
     let editProfileData = await editProfile.json();
-    console.log(editProfileData);
     if (editProfileData) {
       alert(editProfileData.msg);
+      various_display_div.innerHTML = userAccountPage;
+    } else {
+      alert("error");
       various_display_div.innerHTML = userAccountPage;
     }
   } catch (error) {
@@ -438,3 +546,4 @@ const editProfilefun = async (event) => {
 const dontedit = () => {
   various_display_div.innerHTML = userAccountPage;
 };
+// ---------------------------------------------------------------------------
