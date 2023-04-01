@@ -7,6 +7,8 @@
     <title>User Profile</title>
     <link rel="stylesheet" href="../Styles/User-profile.css" />
     <link rel="stylesheet" href="../Styles/User-account.css" />
+    <link rel="stylesheet" href="../Styles/income.css" />
+    <link rel="stylesheet" href="../Styles/expense.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -15,7 +17,7 @@
     />
     <link rel="stylesheet" href="../Styles/User-history.css" />
     <link rel="stylesheet" href="../Styles/User-edit-modal.css" />
-    <link rel="stylesheet" href="../Styles/User-dashboard.css">
+    <link rel="stylesheet" href="../Styles/User-dashboard.css" />
     <script
       src="https://kit.fontawesome.com/5cb8a0be4f.js"
       crossorigin="anonymous"
@@ -81,10 +83,281 @@
               <h4>User Name</h4>
             </div>
           </div>
-          <div class="various-display-div"></div>
+
+          <div class="various-display-div">
+            <!-- User Account Section Start -->
+
+            <div class="profile_full">
+              <div class="profile-container">
+                <div class="left-profile-section">
+                  <div class="profile-photo-and-info-div">
+                    <div>
+                      <img
+                        src="../images/user.png"
+                        alt=""
+                        id="user-profile-photo"
+                      />
+                      <h3 id="user-display-name">Name</h3>
+                    </div>
+                    <div>
+                      <div><p id="user-dispaly-dob">Designation</p></div>
+                      <div><p id="user-display-address">Address</p></div>
+                      <div><button id="user_edit_btn" onclick="editbtnFun()">Edit</button></div>
+                    </div>
+                  </div>
+                  <div class="social-media-links-div">
+                    <div>
+                      <i class="fa-brands fa-facebook"></i>
+                      <a href="">angel@123</a>
+                    </div>
+                    <div>
+                      <i class="fa-brands fa-instagram"></i>
+                      <a href="">@sweet-angel</a>
+                    </div>
+                    <div>
+                      <i class="fa-solid fa-globe"></i>
+                      <a href="">google.com</a>
+                    </div>
+                    <div>
+                      <i class="fa-brands fa-twitter"></i>
+                      <a href="">@angeltweet</a>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="right-profile-section">
+                  <div class="user-details-div">
+                    <div>
+                      <h4>First Name</h4>
+                      <h4 id="user-dispaly-firstname">ABC</h4>
+                    </div>
+                    <div>
+                      <h4>Last Name</h4>
+                      <h4 id="user-dispaly-lastname">XYZ</h4>
+                    </div>
+                    <div>
+                      <h4>Email</h4>
+                      <h4 id="user-dispaly-email">Email</h4>
+                    </div>
+                    <div>
+                      <h4>Mobile Number</h4>
+                      <h4 id="user-dispaly-mobile">Save Mobile</h4>
+                    </div>
+                    <div>
+                      <h4>Adresss</h4>
+                      <h4 id="user-dispaly-address">Save Address</h4>
+                    </div>
+                  </div>
+
+                  <div class="extra">
+                    <div>
+                      <div>
+                        <img src="../images/vip-card.png" alt="VIP-PASS" />
+                        <h2>VIP PASS BENEFITS</h2>
+                      </div>
+                      <p>
+                        <i class="fa-sharp fa-solid fa-star"></i>
+                        <span>10% Off On All Products</span>
+                      </p>
+                      <p>
+                        <i class="fa-sharp fa-solid fa-star"></i>
+                        <span> Avail All Premium Features</span>
+                      </p>
+                      <p>
+                        <i class="fa-sharp fa-solid fa-star"></i>
+                        <span>Get Legal Expert Advice</span>
+                      </p>
+                      <p>
+                        <i class="fa-sharp fa-solid fa-star"></i>
+                        <span>24/7 Support</span>
+                      </p>
+                    </div>
+                    <div>
+                      <p>
+                        Lorem ipsum dolor sit amet consectetur, adipisicing
+                        elit. Nam ipsa quasi quis facere libero reprehenderit
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="popup" id="edit_form_popup_div">
+                <i class="fa-sharp fa-solid fa-arrow-left" onclick="dontedit()"></i>
+                <form action="" onsubmit="editProfilefun(event)" id="edit-form">
+                  <!-- <div> -->
+                    <input type="text" name="fname" id="fname" placeholder="First name" />
+                    <input type="text" name="lname" id="lname" placeholder="Last name" />
+                  <!-- </div> -->
+                  <!-- <div> -->
+                    <input type="text" name="mobile" id="mobile" placeholder="Mobile" />
+                    <input type="date" name="dob" placeholder="Date Of Birth" />
+                  <!-- </div> -->
+                  <input
+                    type="text"
+                    name="address"
+                    id="address"
+                    placeholder="Address"
+                  />
+                  <label for="profile">Profile</label>
+                  <input type="file" name="profile" onchange="fileConvertor(event)"/>
+                  <button type="submit">Save</button>
+                </form>
+              </div>
+            </div>
+
+            <!-- ----------------- User Acount Section Ends ------------------  -->
+
+            <!-- ----------------- Income Section Start ---------------- -->
+
+            <div class="income_full">
+              <div id="income_container">
+                <div class="income_top">
+                  <div class="inside_top_1">
+                    <img src="../images/income.png" alt="" />
+                  </div>
+                  <div class="inside_top_2">
+                    <h1>Total Income</h1>
+                    <h1 id="total_amount">99999</h1>
+                  </div>
+                </div>
+                <div class="income_mid">
+                  <div>
+                    <button id="add_income_btn">Add Income +</button>
+                  </div>
+                  <div class="filtering">
+                    <div>
+                      <label>From</label>
+                      <input id="form_date" type="date" />
+                    </div>
+                    <div>
+                      <label>To</label>
+                      <input id="to_date" type="date" />
+                    </div>
+                    <div>
+                      <button id="income_search_btn">Search</button>
+                    </div>
+                  </div>
+                </div>
+
+                <div id="income_bottom">
+                  <!-- Fetching Data will be append here -->
+
+                  <!-- <div class="every_incomes_main">
+                    <div class="every_incomes_card">
+                      <div class="every_income_card_inner">
+                        <h4>Salary</h4>
+                        <p>Date - 23/4/2023</p>
+                        <h4 class="income_amount">+ 90000<span>/-</span></h4>
+                      </div>
+                      <div class="down_arrow" onclick="extra_show(event)">
+                        <i class="fa-solid fa-arrow-down-short-wide"></i>
+                        <p>more</p>
+                      </div>
+                    </div>
+
+                    <div class="click_show">
+                      <div class="income_card_buttons">
+                        <button class="income_edit">Edit</button>
+                        <button class="income_delete">Delete</button>
+                      </div>
+                    </div>
+                  </div> -->
+                </div>
+              </div>
+
+              <div class="popup" id="add_income_form">
+                <form id="income_form">
+                  <label for="">Title</label>
+                  <input id="input_income_name" name="key" type="text" required />
+                  <label for="">Income Type</label>
+                  <input id="input_income_type" type="text" required />
+                  <label for="">Amount</label>
+                  <input id="input_income_amount" type="number" required />
+                  <input id="input_income_btn" type="submit" />
+                </form>
+              </div>
+            </div>
+
+            <!-- -------------- Income Section End --------------- -->
+
+            <!-- -------------- Expense Section Start --------------- -->
+
+            <div class="exp_full">
+              <div id="exp_container">
+                <div class="exp_top">
+                  <div class="inside_top_1">
+                    <img src="../images/income.png" alt="" />
+                  </div>
+                  <div class="inside_top_2">
+                    <h1>Total Income</h1>
+                    <h1 id="total_amount">99999</h1>
+                  </div>
+                </div>
+                <div class="exp_mid">
+                  <div>
+                    <button id="add_exp_btn">Add Expense</button>
+                  </div>
+                  <div class="filtering">
+                    <div>
+                      <label>From</label>
+                      <input id="form_date" type="date" />
+                    </div>
+                    <div>
+                      <label>To</label>
+                      <input id="to_date" type="date" />
+                    </div>
+                    <div>
+                      <button id="exp_search_btn">Search</button>
+                    </div>
+                  </div>
+                </div>
+
+                <div id="exp_bottom">
+                  <!-- Fetching Data will be append here -->
+
+                  <!-- <div class="every_exps_main">
+                    <div class="every_exps_card">
+                      <div class="every_exp_card_inner">
+                        <h4>Salary</h4>
+                        <p>Date - 23/4/2023</p>
+                        <h4 class="exp_amount">+ 90000<span>/-</span></h4>
+                      </div>
+                      <div class="down_arrow" onclick="extra_show(event)">
+                        <i class="fa-solid fa-arrow-down-short-wide"></i>
+                        <p>more</p>
+                      </div>
+                    </div>
+
+                    <div class="click_show">
+                      <div class="exp_card_buttons">
+                        <button class="exp_edit">Edit</button>
+                        <button class="exp_delete">Delete</button>
+                      </div>
+                    </div>
+                  </div> -->
+                </div>
+              </div>
+
+              <div class="popup" id="add_exp_form">
+                <form id="exp_form">
+                  <label for="">Title</label>
+                  <input id="input_exp_name" name="key" type="text" required />
+                  <label for="">exp Type</label>
+                  <input id="input_exp_type" type="text" required />
+                  <label for="">Amount</label>
+                  <input id="input_exp_amount" type="number" required />
+                  <input id="input_exp_btn" type="submit" />
+                </form>
+              </div>
+            </div>
+
+            <!-- ------------- Expense Section Ends -->
+          </div>
         </section>
       </div>
     </main>
     <script src="../Scripts/User-profile.js"></script>
+    <script src="../Scripts/income.js"></script>
+    <script src="../Scripts/expense.js"></script>
   </body>
 </html>
