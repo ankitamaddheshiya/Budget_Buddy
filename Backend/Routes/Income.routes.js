@@ -7,13 +7,14 @@ const {incomemodel} = require("../Models/Income.model");
 const fs = require("fs")
 const {client}= require("../redis/redis");
 const { isModuleNamespaceObject } = require("util/types");
-
+const cookieparser = require("cookie-parser") 
 const app = express();
 app.use(express.json());
 
 
-incomeRouter.get("/",async(req,res)=>{
-     const {userid}= req.body;
+
+incomeRouter.get("/:id",async(req,res)=>{
+     const userid = req.params.id;
      try {
         const userdata= await incomemodel.find({userID:userid});
         res.send(userdata)
@@ -23,16 +24,17 @@ incomeRouter.get("/",async(req,res)=>{
 });
 
 incomeRouter.post("/addincome",async (req,res)=>{
-    let {title,type,amount,userid}=req.body;
+    let {title,type,amount}=req.body;
+    const userid=req.cookies.userID
     try{
-         const income=  new incomemodel({
+         const income = new incomemodel({
             title,
             type,
             amount,
             userID:userid
          });
          await income.save();
-         res.send({msg:"income has added"});
+         res.send({msg:"Income has been added"});
     }
     catch(err){
          res.send({msg:err.message})
@@ -44,7 +46,7 @@ incomeRouter.patch("/editincome/:id",async (req,res)=>{
         const id=req.params.id;
         const payload=req.body;
         await incomemodel.findByIdAndUpdate(id,payload)
-        res.send({"msg":`income with id:${id} has been updated`})
+        res.send({"msg":`Income with id:${id} has been updated`})
     } catch (error) {
         res.send({msg:"something went wrong",error:error.message})
     
@@ -64,7 +66,8 @@ incomeRouter.delete('/delete/:id',async(req,res)=>{
 });
 
 incomeRouter.get("/filterdata",async(req,res)=>{
-    const{Sdate,Edate,userid}=req.body;
+    const{Sdate,Edate}=req.body;
+    const userid=req.cookies.userID
     try {
         let sdate= new Date(Sdate).toISOString();
     let edate= new Date(Edate).toISOString();
@@ -79,5 +82,5 @@ incomeRouter.get("/filterdata",async(req,res)=>{
 
 
 module.exports = {
-    incomeRouter
+    incomeRouter,cookieparser
 }

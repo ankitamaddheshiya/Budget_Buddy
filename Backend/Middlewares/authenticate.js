@@ -1,9 +1,14 @@
 var jwt = require('jsonwebtoken');
 const fs = require("fs");
-const {client}= require("../redis/redis")
+const {client}= require("../redis/redis");
+
 
 
 const authenticate =  async (req, res, next) => {
+    if(!req.header.authorization){
+        return res.send({msg:"Please Login Again"})
+    }
+    
     const token = req.headers.authorization.split(" ")[1];
     const tokenredis = await client.GET(`${token}`);
     
