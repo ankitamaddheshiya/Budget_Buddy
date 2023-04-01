@@ -1,6 +1,11 @@
+.history_full {
+    width: 100%;
+    height: 100%;
+    display: none;
+}
 .history-container {
-    width: 95%;
-    height: 95%;
+    width: 100%;
+    height: 100%;
     margin: auto;
     overflow: scroll;
     overflow-x: hidden;

@@ -102,7 +102,11 @@
                     <div>
                       <div><p id="user-dispaly-dob">Designation</p></div>
                       <div><p id="user-display-address">Address</p></div>
-                      <div><button id="user_edit_btn" onclick="editbtnFun()">Edit</button></div>
+                      <div>
+                        <button id="user_edit_btn" onclick="editbtnFun()">
+                          Edit
+                        </button>
+                      </div>
                     </div>
                   </div>
                   <div class="social-media-links-div">
@@ -182,15 +186,33 @@
                 </div>
               </div>
               <div class="popup" id="edit_form_popup_div">
-                <i class="fa-sharp fa-solid fa-arrow-left" onclick="dontedit()"></i>
+                <i
+                  class="fa-sharp fa-solid fa-arrow-left"
+                  onclick="dontedit()"
+                ></i>
                 <form action="" onsubmit="editProfilefun(event)" id="edit-form">
                   <!-- <div> -->
-                    <input type="text" name="fname" id="fname" placeholder="First name" />
-                    <input type="text" name="lname" id="lname" placeholder="Last name" />
+                  <input
+                    type="text"
+                    name="fname"
+                    id="fname"
+                    placeholder="First name"
+                  />
+                  <input
+                    type="text"
+                    name="lname"
+                    id="lname"
+                    placeholder="Last name"
+                  />
                   <!-- </div> -->
                   <!-- <div> -->
-                    <input type="text" name="mobile" id="mobile" placeholder="Mobile" />
-                    <input type="date" name="dob" placeholder="Date Of Birth" />
+                  <input
+                    type="text"
+                    name="mobile"
+                    id="mobile"
+                    placeholder="Mobile"
+                  />
+                  <input type="date" name="dob" placeholder="Date Of Birth" />
                   <!-- </div> -->
                   <input
                     type="text"
@@ -199,7 +221,11 @@
                     placeholder="Address"
                   />
                   <label for="profile">Profile</label>
-                  <input type="file" name="profile" onchange="fileConvertor(event)"/>
+                  <input
+                    type="file"
+                    name="profile"
+                    onchange="fileConvertor(event)"
+                  />
                   <button type="submit">Save</button>
                 </form>
               </div>
@@ -268,7 +294,12 @@
               <div class="popup" id="add_income_form">
                 <form id="income_form">
                   <label for="">Title</label>
-                  <input id="input_income_name" name="key" type="text" required />
+                  <input
+                    id="input_income_name"
+                    name="key"
+                    type="text"
+                    required
+                  />
                   <label for="">Income Type</label>
                   <input id="input_income_type" type="text" required />
                   <label for="">Amount</label>
@@ -352,6 +383,74 @@
             </div>
 
             <!-- ------------- Expense Section Ends -->
+
+            <!-- ----------------- User Dashboard Section Start ------------------  -->
+            <div class="dashboard_full">
+              <div class="dashboard">
+                <div class="dashboard-uper-div">
+                  <div class="line-graph">
+                    <div
+                      id="line-chart"
+                      style="width: 95%; height: 95%; margin: auto"
+                    ></div>
+                  </div>
+                  <div class="doughnut-graph">
+                    <canvas
+                      id="doughnut-chart"
+                      style="width: 95%; height: 95%; margin: auto"
+                    ></canvas>
+                  </div>
+                </div>
+                <div class="dashboard-lower-div">
+                  <div class="pie-graph">
+                    <div
+                      id="pie-chart"
+                      style="width: 95%; height: 95%; margin: auto"
+                    ></div>
+                  </div>
+                  <div class="bar-graph">
+                    <canvas
+                      id="bar-chart"
+                      style="width: 100%; height: 100%; margin: auto"
+                    ></canvas>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- ----------------- User Dashboard Section Ends Here ------------------  -->
+
+            <!-- ----------------- User History Section Start ------------------  -->
+
+            <div class="history_full">
+              <div class="history-container">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Title</th>
+                      <th>Type</th>
+                      <th>Date</th>
+                      <th>Transaction Id</th>
+                      <th>Amount</th>
+                    </tr>
+                  </thead>
+                  <tbody id="tbody-append-history"></tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- ----------------- User History Section Ends ------------------  -->
+
+            <!-- ----------------- User Logout Section Start ------------------  -->
+            <div class="logout_full">
+              <div class="logout-layout">
+                <i class="fa-sharp fa-regular fa-circle-xmark"></i
+                ><button onclick="logoutfun()">Logout</button>
+              </div>
+            </div>
+            <!-- ----------------- User Logout Section Ends ------------------  -->
+
+            <!-- end -->
           </div>
         </section>
       </div>

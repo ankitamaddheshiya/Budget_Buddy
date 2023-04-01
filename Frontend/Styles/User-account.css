@@ -1,9 +1,10 @@
-.profile_full{
+.profile_full {
   width: 95%;
   display: none;
   height: 100%;
   margin: auto;
 }
+
 .profile-container {
   width: 100%;
   height: 100%;
@@ -233,6 +234,13 @@
 
 
 /* logout css */
+
+.logout_full {
+  width: 100%;
+  height: 100%;
+  display: none;
+}
+
 .logout-layout {
   width: 100%;
   height: 100%;

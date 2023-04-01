@@ -1,36 +1,51 @@
-// user options click event
 let Page_name_heading = document.getElementById("Page-name-heading");
 const userOptions = document.querySelectorAll(".user-options ul li");
-
+let various_display_div = document.querySelector(".various-display-div");
 let profile_full = document.querySelector(".profile_full");
 let income_full = document.querySelector(".income_full");
 let exp_full = document.querySelector(".exp_full");
+let dashboard_full = document.querySelector(".dashboard_full");
+let history_full = document.querySelector(".history_full");
+let logout_full = document.querySelector(".logout_full");
 
-const userIncomePage = `<h1>Make the layout of user income and append it here</h1>`;
-const userExpensePage = `<h1>Make the layout of user expense and append it here</h1>`;
+// ------------------------------------------------------------------
+// to retrive the user options background colors
+const userOptionsColor = () => {
+  let userOptions = document.querySelectorAll(".user-options ul li");
+  userOptions.forEach((option) => {
+    option.style.backgroundColor = "#306DB3";
+    option.children[1].style.color = "#ffffff";
+    option.children[1].style.fontWeight = "normal";
+  });
+};
+// ------------------------------------------------------------------
 
-// -----------------------------------------------------------------------------
-// user option click event
+// <<<<<<<<<<<<<<<<<<<<<<<<<<<< DASHBOARD OPTIONS TO USER >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
-let various_display_div = document.querySelector(".various-display-div");
+// ------------------------------------------------------------------
 
+// user account option
 const accountOption = async (event) => {
-  // various_display_div.innerHTML = null;
   profile_full.style.display = "block";
   income_full.style.display = "none";
   exp_full.style.display = "none";
+  dashboard_full.style.display = "none";
+  history_full.style.display = "none";
+  logout_full.style.display = "none";
   Page_name_heading.innerHTML = "Account";
   userOptionsColor();
   if (event.target.children[1] == undefined) {
     event.target.parentElement.style.backgroundColor = "#ffffff";
     event.target.parentElement.children[1].style.color = "#306DB3";
     event.target.parentElement.children[1].style.fontWeight = "bold";
+    event.target.parentElement.style.transition = "all 0.5s ease";
   } else {
     event.target.style.backgroundColor = "#ffffff";
+    event.target.style.transition = "all 0.5s ease";
     event.target.children[1].style.color = "#306DB3";
     event.target.children[1].style.fontWeight = "bold";
+    event.target.children[1].style.transition = "all 0.5s ease";
   }
-  // various_display_div.innerHTML = userAccountPage;
   let user_profile_photo = document.getElementById("user-profile-photo");
   let user_dispaly_dob = document.getElementById("user-dispaly-dob");
   let user_display_address = document.getElementById("user-display-address");
@@ -44,13 +59,65 @@ const accountOption = async (event) => {
 
   user_dispaly_firstname.innerText = "Aman";
 };
+
+// edit profile button
+//convert the file into the link and then edit profile by fetch request
+let avatar = "";
+const fileConvertor = (event) => {
+  let file = event.target.files[0];
+  let reader = new FileReader();
+  reader.readAsDataURL(file);
+  reader.onload = () => {
+    avatar = reader.result;
+  };
+};
+const editProfilefun = async (event) => {
+  event.preventDefault();
+  let loader = `<div class="loading-container"><div class="loader"></div></div>`;
+  various_display_div.innerHTML = loader;
+
+  // Collecting Form Data
+  let formData = new FormData(event.target);
+  let data = Object.fromEntries(formData);
+  data.avatar = avatar;
+
+  
+  try {
+    let editProfile = await fetch(
+      // id se fetch karna hai to id ko session storage se le lena hai
+      "https://periwinkle-catfish-cuff.cyclic.app/user/editprofile",
+      {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+          authorization: `Bearer ${sessionStorage.getItem("token")}`,
+        },
+        body: JSON.stringify(data),
+      }
+    );
+    let editProfileData = await editProfile.json();
+    if (editProfileData) {
+      alert(editProfileData.msg);
+      various_display_div.innerHTML = userAccountPage;
+    } else {
+      alert("error");
+      various_display_div.innerHTML = userAccountPage;
+    }
+  } catch (error) {
+    various_display_div.innerHTML = userAccountPage;
+    console.log(error);
+  }
+};
 // ----------------------------------------------------------------
+// user income option
 
 const incomeOption = (event) => {
-  // various_display_div.innerHTML = null;
   income_full.style.display = "block";
   profile_full.style.display = "none";
   exp_full.style.display = "none";
+  dashboard_full.style.display = "none";
+  history_full.style.display = "none";
+  logout_full.style.display = "none";
 
   Page_name_heading.innerHTML = "Income";
   userOptionsColor();
@@ -58,15 +125,17 @@ const incomeOption = (event) => {
     event.target.parentElement.style.backgroundColor = "#ffffff";
     event.target.parentElement.children[1].style.color = "#306DB3";
     event.target.parentElement.children[1].style.fontWeight = "bold";
+    event.target.parentElement.style.transition = "all 0.5s ease";
   } else {
     event.target.style.backgroundColor = "#ffffff";
+    event.target.style.transition = "all 0.5s ease";
     event.target.children[1].style.color = "#306DB3";
     event.target.children[1].style.fontWeight = "bold";
+    event.target.children[1].style.transition = "all 0.5s ease";
   }
-  // various_display_div.innerHTML = userIncomePage;
 
   // Fetch function to call from here
-  income_main_func()
+  income_main_func();
 };
 
 async function income_main_func() {
@@ -81,118 +150,130 @@ async function income_main_func() {
   //   })
   //   .then((data) => {
   //     console.log(data);
-      let data = { name: "Hondurus" };
-      every_incomes_main_display(data);
-    // });
+  let data = { name: "Hondurus" };
+  every_incomes_main_display(data);
+  // });
 }
 
-function every_incomes_main_display(data){
-  let income_container = document.getElementById("income_container")
+function every_incomes_main_display(data) {
+  let income_container = document.getElementById("income_container");
   income_container.style.width = "95%";
   income_container.style.height = "100%";
-  
-  let income_bottom = document.getElementById("income_bottom")
-  income_bottom.innerHTML = null
 
-  let every_incomes_main = document.createElement("div")
-  every_incomes_main.setAttribute("class", "every_incomes_main")
+  let income_bottom = document.getElementById("income_bottom");
+  income_bottom.innerHTML = null;
 
-  let every_incomes_card = document.createElement("div")
-  every_incomes_card.setAttribute("class", "every_incomes_card")
+  let every_incomes_main = document.createElement("div");
+  every_incomes_main.setAttribute("class", "every_incomes_main");
 
-  let every_income_card_inner = document.createElement("div")
-  every_income_card_inner.setAttribute("class", "every_income_card_inner")
+  let every_incomes_card = document.createElement("div");
+  every_incomes_card.setAttribute("class", "every_incomes_card");
 
-  let income_type = document.createElement("h4")
-  income_type.innerHTML = `${data.name}`
+  let every_income_card_inner = document.createElement("div");
+  every_income_card_inner.setAttribute("class", "every_income_card_inner");
 
-  let date = document.createElement("p")
-  date.innerHTML = `${data.date}`
+  let income_type = document.createElement("h4");
+  income_type.innerHTML = `${data.name}`;
 
-  let income_amount = document.createElement("h4")
-  income_amount.setAttribute("class", "income_amount")
-  income_amount.innerHTML = `${data.amount}`
+  let date = document.createElement("p");
+  date.innerHTML = `${data.date}`;
 
-  every_income_card_inner.append(income_type, date, income_amount)
+  let income_amount = document.createElement("h4");
+  income_amount.setAttribute("class", "income_amount");
+  income_amount.innerHTML = `${data.amount}`;
 
-  let down_arrow = document.createElement("div")
-  down_arrow.setAttribute("class", "down_arrow")
-  
-  let more = document.createElement("p")
-  more.innerHTML = "more"
-  down_arrow.append(more)
-  every_incomes_card.append(every_income_card_inner, down_arrow)
-  every_incomes_main.append(every_incomes_card)
-  income_bottom.append(every_incomes_main)
-  
-  down_arrow.addEventListener("click", ()=>{
-          let click_show = document.createElement("div")
-          click_show.setAttribute("class", "click_show")
-          
-      
-      let income_card_buttons = document.createElement("div")
-      income_card_buttons.setAttribute("class", "income_card_buttons")
-      
-      let income_edit = document.createElement("button")
-      income_edit.innerHTML = "Edit";
-      income_edit.setAttribute("class", "income_edit")
-      income_edit.addEventListener("click", async()=>{
-          await fetch(`${data._id}`)
-          .then((res)=>{
-              return res.json()
+  every_income_card_inner.append(income_type, date, income_amount);
+
+  let down_arrow = document.createElement("div");
+  down_arrow.setAttribute("class", "down_arrow");
+
+  let more = document.createElement("p");
+  more.innerHTML = "more";
+  down_arrow.append(more);
+  every_incomes_card.append(every_income_card_inner, down_arrow);
+  every_incomes_main.append(every_incomes_card);
+  income_bottom.append(every_incomes_main);
+
+  down_arrow.addEventListener("click", () => {
+    let click_show = document.createElement("div");
+    click_show.setAttribute("class", "click_show");
+
+    let income_card_buttons = document.createElement("div");
+    income_card_buttons.setAttribute("class", "income_card_buttons");
+
+    let income_edit = document.createElement("button");
+    income_edit.innerHTML = "Edit";
+    income_edit.setAttribute("class", "income_edit");
+    income_edit.addEventListener(
+      "click",
+      async () => {
+        await fetch(`${data._id}`)
+          .then((res) => {
+            return res.json();
           })
-          .then((data)=>{
-              console.log(data)
+          .then((data) => {
+            console.log(data);
+          });
+      },
+      { once: true }
+    );
+
+    let income_delete = document.createElement("button");
+    income_delete.innerHTML = "Delete";
+    income_delete.setAttribute("class", "income_delete");
+    income_delete.addEventListener(
+      "click",
+      async (data) => {
+        await fetch(`${data._id}`)
+          .then((res) => {
+            return res.json();
           })
-      }, {once:true})
-      
-      let income_delete = document.createElement("button")
-      income_delete.innerHTML = "Delete";
-      income_delete.setAttribute("class", "income_delete")
-      income_delete.addEventListener("click", async(data)=>{
-          await fetch(`${data._id}`)
-          .then((res)=>{
-              return res.json()
-          })
-          .then((data)=>{
-              console.log(data)
-          })
-      }, {once:true})
-      
-      income_card_buttons.append(income_edit, income_delete)
-      click_show.append(income_card_buttons)
-      
-      if (every_incomes_main.childNodes[1]){
-          every_incomes_main.removeChild(every_incomes_main.childNodes[1])
-      }
-      else{
-          click_show.style.height = "60px"
-          every_incomes_main.append(click_show)
-      }
-  })
+          .then((data) => {
+            console.log(data);
+          });
+      },
+      { once: true }
+    );
+
+    income_card_buttons.append(income_edit, income_delete);
+    click_show.append(income_card_buttons);
+
+    if (every_incomes_main.childNodes[1]) {
+      every_incomes_main.removeChild(every_incomes_main.childNodes[1]);
+    } else {
+      click_show.style.height = "60px";
+      every_incomes_main.append(click_show);
+    }
+  });
 }
 
-
+// ----------------------------------------------------------------
+// user expense page
 const expenseOption = (event) => {
-  // various_display_div.innerHTML = null;
+  exp_full.style.display = "block";
   income_full.style.display = "none";
   profile_full.style.display = "none";
-  exp_full.style.display = "block";
+  dashboard_full.style.display = "none";
+  history_full.style.display = "none";
+  logout_full.style.display = "none";
+
   Page_name_heading.innerHTML = "Expenses";
   userOptionsColor();
   if (event.target.children[1] == undefined) {
     event.target.parentElement.style.backgroundColor = "#ffffff";
     event.target.parentElement.children[1].style.color = "#306DB3";
     event.target.parentElement.children[1].style.fontWeight = "bold";
+    event.target.parentElement.style.transition = "all 0.5s ease";
   } else {
     event.target.style.backgroundColor = "#ffffff";
+    event.target.style.transition = "all 0.5s ease";
     event.target.children[1].style.color = "#306DB3";
     event.target.children[1].style.fontWeight = "bold";
+    event.target.children[1].style.transition = "all 0.5s ease";
   }
-  // various_display_div.innerHTML = userExpensePage;
 
   // Fetch function to call from here
-  exp_main_func()
+  exp_main_func();
 };
 
 async function exp_main_func() {
@@ -207,131 +288,127 @@ async function exp_main_func() {
   //   })
   //   .then((data) => {
   //     console.log(data);
-      let data = { name: "Hondurus" };
-      every_exp_main_display(data);
-    // });
+  let data = { name: "Hondurus" };
+  every_exp_main_display(data);
+  // });
 }
 
-function every_exp_main_display(data){
-  let exp_container = document.getElementById("exp_container")
+function every_exp_main_display(data) {
+  let exp_container = document.getElementById("exp_container");
   exp_container.style.width = "95%";
   exp_container.style.height = "100%";
-  
-  let exp_bottom = document.getElementById("exp_bottom")
-  exp_bottom.innerHTML = null
 
-  let every_exps_main = document.createElement("div")
-  every_exps_main.setAttribute("class", "every_exps_main")
+  let exp_bottom = document.getElementById("exp_bottom");
+  exp_bottom.innerHTML = null;
 
-  let every_exps_card = document.createElement("div")
-  every_exps_card.setAttribute("class", "every_exps_card")
+  let every_exps_main = document.createElement("div");
+  every_exps_main.setAttribute("class", "every_exps_main");
 
-  let every_exp_card_inner = document.createElement("div")
-  every_exp_card_inner.setAttribute("class", "every_exp_card_inner")
+  let every_exps_card = document.createElement("div");
+  every_exps_card.setAttribute("class", "every_exps_card");
 
-  let exp_type = document.createElement("h4")
-  exp_type.innerHTML = `${data.name}`
+  let every_exp_card_inner = document.createElement("div");
+  every_exp_card_inner.setAttribute("class", "every_exp_card_inner");
 
-  let date = document.createElement("p")
-  date.innerHTML = `${data.date}`
+  let exp_type = document.createElement("h4");
+  exp_type.innerHTML = `${data.name}`;
 
-  let exp_amount = document.createElement("h4")
-  exp_amount.setAttribute("class", "exp_amount")
-  exp_amount.innerHTML = `${data.amount}`
+  let date = document.createElement("p");
+  date.innerHTML = `${data.date}`;
 
-  every_exp_card_inner.append(exp_type, date, exp_amount)
+  let exp_amount = document.createElement("h4");
+  exp_amount.setAttribute("class", "exp_amount");
+  exp_amount.innerHTML = `${data.amount}`;
 
-  let down_arrow = document.createElement("div")
-  down_arrow.setAttribute("class", "down_arrow")
-  
-  let more = document.createElement("p")
-  more.innerHTML = "more"
-  down_arrow.append(more)
-  every_exps_card.append(every_exp_card_inner, down_arrow)
-  every_exps_main.append(every_exps_card)
-  exp_bottom.append(every_exps_main)
-  
-  down_arrow.addEventListener("click", ()=>{
-          let click_show = document.createElement("div")
-          click_show.setAttribute("class", "click_show")
-          
-      
-      let exp_card_buttons = document.createElement("div")
-      exp_card_buttons.setAttribute("class", "exp_card_buttons")
-      
-      let exp_edit = document.createElement("button")
-      exp_edit.innerHTML = "Edit";
-      exp_edit.setAttribute("class", "exp_edit")
-      exp_edit.addEventListener("click", async()=>{
-          await fetch(`${data._id}`)
-          .then((res)=>{
-              return res.json()
+  every_exp_card_inner.append(exp_type, date, exp_amount);
+
+  let down_arrow = document.createElement("div");
+  down_arrow.setAttribute("class", "down_arrow");
+
+  let more = document.createElement("p");
+  more.innerHTML = "more";
+  down_arrow.append(more);
+  every_exps_card.append(every_exp_card_inner, down_arrow);
+  every_exps_main.append(every_exps_card);
+  exp_bottom.append(every_exps_main);
+
+  down_arrow.addEventListener("click", () => {
+    let click_show = document.createElement("div");
+    click_show.setAttribute("class", "click_show");
+
+    let exp_card_buttons = document.createElement("div");
+    exp_card_buttons.setAttribute("class", "exp_card_buttons");
+
+    let exp_edit = document.createElement("button");
+    exp_edit.innerHTML = "Edit";
+    exp_edit.setAttribute("class", "exp_edit");
+    exp_edit.addEventListener(
+      "click",
+      async () => {
+        await fetch(`${data._id}`)
+          .then((res) => {
+            return res.json();
           })
-          .then((data)=>{
-              console.log(data)
+          .then((data) => {
+            console.log(data);
+          });
+      },
+      { once: true }
+    );
+
+    let exp_delete = document.createElement("button");
+    exp_delete.innerHTML = "Delete";
+    exp_delete.setAttribute("class", "exp_delete");
+    exp_delete.addEventListener(
+      "click",
+      async (data) => {
+        await fetch(`${data._id}`)
+          .then((res) => {
+            return res.json();
           })
-      }, {once:true})
-      
-      let exp_delete = document.createElement("button")
-      exp_delete.innerHTML = "Delete";
-      exp_delete.setAttribute("class", "exp_delete")
-      exp_delete.addEventListener("click", async(data)=>{
-          await fetch(`${data._id}`)
-          .then((res)=>{
-              return res.json()
-          })
-          .then((data)=>{
-              console.log(data)
-          })
-      }, {once:true})
-      
-      exp_card_buttons.append(exp_edit, exp_delete)
-      click_show.append(exp_card_buttons)
-      
-      if (every_exps_main.childNodes[1]){
-          every_exps_main.removeChild(every_exps_main.childNodes[1])
-      }
-      else{
-          click_show.style.height = "60px"
-          every_exps_main.append(click_show)
-      }
-  })
+          .then((data) => {
+            console.log(data);
+          });
+      },
+      { once: true }
+    );
+
+    exp_card_buttons.append(exp_edit, exp_delete);
+    click_show.append(exp_card_buttons);
+
+    if (every_exps_main.childNodes[1]) {
+      every_exps_main.removeChild(every_exps_main.childNodes[1]);
+    } else {
+      click_show.style.height = "60px";
+      every_exps_main.append(click_show);
+    }
+  });
 }
 
 // ----------------------------------------------------------------
-const userBudgetPage = `  <div class="dashboard">
-        <div class="dashboard-uper-div">
-          <div class="line-graph">
-            <div id="line-chart" style="width: 95%; height: 95%; margin: auto;"></div>
-          </div>
-          <div class="doughnut-graph">
-            <canvas id="doughnut-chart" style="width: 95%; height: 95%; margin: auto;"></canvas>
-          </div>
-        </div>
-        <div class="dashboard-lower-div">
-          <div class="pie-graph">
-            <div id="pie-chart" style="width: 95%; height: 95%; margin: auto;"></div>
-          </div>
-          <div class="bar-graph">
-            <canvas id="bar-chart" style="width: 100%; height: 100%; margin: auto;"></canvas>
-          </div>
-        </div>
-        </div>
-`;
+// user budget overview page
 const budgetOption = (event) => {
-  various_display_div.innerHTML = null;
+  dashboard_full.style.display = "block";
+  income_full.style.display = "none";
+  profile_full.style.display = "none";
+  exp_full.style.display = "none";
+  history_full.style.display = "none";
+  logout_full.style.display = "none";
+
   Page_name_heading.innerHTML = "Budget";
   userOptionsColor();
   if (event.target.children[1] == undefined) {
     event.target.parentElement.style.backgroundColor = "#ffffff";
     event.target.parentElement.children[1].style.color = "#306DB3";
     event.target.parentElement.children[1].style.fontWeight = "bold";
+    event.target.parentElement.style.transition = "all 0.5s ease";
   } else {
     event.target.style.backgroundColor = "#ffffff";
+    event.target.style.transition = "all 0.5s ease";
     event.target.children[1].style.color = "#306DB3";
     event.target.children[1].style.fontWeight = "bold";
+    event.target.children[1].style.transition = "all 0.5s ease";
   }
-  various_display_div.innerHTML = userBudgetPage;
 
   // code to show the page charts-------
 
@@ -452,42 +529,34 @@ const budgetOption = (event) => {
 
 // ------------------------------------------------------------------
 // user history page
-const userHistoryPage = `  
-      <div class="history-container">
-      <table>
-        <thead>
-          <tr>
-            <th>Title</th>
-            <th>Type</th>
-            <th>Date</th>
-            <th>Transaction Id</th>
-            <th>Amount</th>
-          </tr>
-        </thead>
-        <tbody id="tbody-append-history">
-        </tbody>
-      </table>
-      </div>
-`;
+
 const historyOption = (event) => {
-  various_display_div.innerHTML = null;
+  history_full.style.display = "block";
+  income_full.style.display = "none";
+  profile_full.style.display = "none";
+  exp_full.style.display = "none";
+  dashboard_full.style.display = "none";
+  logout_full.style.display = "none";
+
   Page_name_heading.innerHTML = "History";
   userOptionsColor();
   if (event.target.children[1] == undefined) {
     event.target.parentElement.style.backgroundColor = "#ffffff";
     event.target.parentElement.children[1].style.color = "#306DB3";
     event.target.parentElement.children[1].style.fontWeight = "bold";
+    event.target.parentElement.style.transition = "all 0.5s ease";
   } else {
     event.target.style.backgroundColor = "#ffffff";
+    event.target.style.transition = "all 0.5s ease";
     event.target.children[1].style.color = "#306DB3";
     event.target.children[1].style.fontWeight = "bold";
+    event.target.children[1].style.transition = "all 0.5s ease";
   }
-  various_display_div.innerHTML = userHistoryPage;
 
   // history fetch request
   const historyfun = async () => {
-    let loader = `<div class="loading-container"><div class="loader"></div></div>`;
-    various_display_div.innerHTML = loader;
+    // let loader = `<div class="loading-container"><div class="loader"></div></div>`;
+    // various_display_div.innerHTML = loader;
     try {
       let Incomehistory = await fetch(
         "https://periwinkle-catfish-cuff.cyclic.app/income/",
@@ -512,38 +581,50 @@ const historyOption = (event) => {
         }
       );
       let ExpenseHData = await Expensehistory.json();
-      let HistoryOfUser = IncomeHData.concat(ExpenseHData);
+      let HistoryOfUser = [];
+      if (Array.isArray(ExpenseHData) && Array.isArray(IncomeHData)) {
+        HistoryOfUser = IncomeHData.concat(ExpenseHData);
+      } else if (Array.isArray(ExpenseHData)) {
+        HistoryOfUser = ExpenseHData;
+      } else if (Array.isArray(IncomeHData)) {
+        HistoryOfUser = ExpenseHData;
+      } else {
+        alert("Token Dynamic Nahi hai. Code me change karna hai");
+        // alert(ExpenseHData.msg);
+        return;
+      }
 
-      const appendHisfun = async () => {
-        various_display_div.innerHTML = userHistoryPage;
-        let tbody = document.getElementById("tbody-append-history");
-        HistoryOfUser.forEach((element) => {
-          let date = element.createdAt.split("T");
-          date = date[0];
-          let tr = document.createElement("tr");
-          if (element.type == "Cash") {
-            tr.style.color = "rgb(2, 82, 2)";
-            element.amount = "+ " + element.amount;
-          } else {
-            tr.style.color = "red";
-            element.amount = "- " + element.amount;
-          }
-          tr.style.fontWeight = "bold";
-          tr.innerHTML = `
-            <td>${element.title}</td>
-            <td>${element.type}</td>
-            <td>${date}</td>
-            <td>${element._id}</td>
-            <td>${element.amount}</td>
-            `;
+      // const appendHisfun = async () => {
+      //   let tbody = document.getElementById("tbody-append-history");
+      //   HistoryOfUser.forEach((element) => {
+      //     let date = element.createdAt.split("T");
+      //     date = date[0];
+      //     let tr = document.createElement("tr");
+      //     if (element.type == "Cash") {
+      //       tr.style.color = "rgb(2, 82, 2)";
+      //       element.amount = "+ " + element.amount;
+      //     } else {
+      //       tr.style.color = "red";
+      //       element.amount = "- " + element.amount;
+      //     }
+      //     tr.style.fontWeight = "bold";
+      //     tr.innerHTML = `
+      //       <td>${element.title}</td>
+      //       <td>${element.type}</td>
+      //       <td>${date}</td>
+      //       <td>${element._id}</td>
+      //       <td>${element.amount}</td>
+      //       `;
 
-          tbody.appendChild(tr);
-        });
-      };
-      appendHisfun();
+      //     tbody.appendChild(tr);
+      //   });
+      // };
+      // appendHisfun();
+
       alert("History Fetch Successfully");
     } catch (error) {
-      various_display_div.innerHTML = userHistoryPage;
+      console.log(error);
+      alert(error.message);
     }
   };
   historyfun();
@@ -552,6 +633,7 @@ const historyOption = (event) => {
 
 // ------------------------------------------------------------------
 // logout option fetch request;
+
 const logoutfun = async () => {
   let loader = `<div class="loading-container"><div class="loader"></div></div>`;
   various_display_div.innerHTML = loader;
@@ -577,85 +659,29 @@ const logoutfun = async () => {
   }
 };
 
-const userLogoutPage = `
-        <div class=logout-layout>
-           <i class="fa-sharp fa-regular fa-circle-xmark"></i><button onclick="logoutfun()">Logout</button> 
-        </div>
-`;
 const logoutOption = (event) => {
+  logout_full.style.display = "block";
+  history_full.style.display = "none";
+  income_full.style.display = "none";
+  profile_full.style.display = "none";
+  exp_full.style.display = "none";
+  dashboard_full.style.display = "none";
+
   Page_name_heading.innerHTML = "Logout";
   userOptionsColor();
   if (event.target.children[1] == undefined) {
     event.target.parentElement.style.backgroundColor = "#ffffff";
     event.target.parentElement.children[1].style.color = "#306DB3";
     event.target.parentElement.children[1].style.fontWeight = "bold";
+    event.target.parentElement.style.transition = "all 0.5s ease";
   } else {
     event.target.style.backgroundColor = "#ffffff";
+    event.target.style.transition = "all 0.5s ease";
     event.target.children[1].style.color = "#306DB3";
     event.target.children[1].style.fontWeight = "bold";
-  }
-  various_display_div.innerHTML = userLogoutPage;
-};
-// ------------------------------------------------------------------
-
-// ------------------------------------------------------------------
-// to retrive the user options background colors
-const userOptionsColor = () => {
-  let userOptions = document.querySelectorAll(".user-options ul li");
-  userOptions.forEach((option) => {
-    option.style.backgroundColor = "#306DB3";
-    option.children[1].style.color = "#ffffff";
-    option.children[1].style.fontWeight = "normal";
-  });
-};
-// ------------------------------------------------------------------
-
-// ------------------------------------------------------------------
-
-//convert the file into the link and then edit profile by fetch request
-let avatar = "";
-const fileConvertor = (event) => {
-  let file = event.target.files[0];
-  let reader = new FileReader();
-  reader.readAsDataURL(file);
-  reader.onload = () => {
-    avatar = reader.result;
-  };
-};
-const editProfilefun = async (event) => {
-  event.preventDefault();
-  let loader = `<div class="loading-container"><div class="loader"></div></div>`;
-  various_display_div.innerHTML = loader;
-
-  // Collecting Form Data
-  let formData = new FormData(event.target);
-  let data = Object.fromEntries(formData);
-  data.avatar = avatar;
-
-  try {
-    let editProfile = await fetch(
-      "https://periwinkle-catfish-cuff.cyclic.app/user/editprofile",
-      {
-        method: "PATCH",
-        headers: {
-          "Content-Type": "application/json",
-          authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFrc2hheWNoYXZhbjAxMDEwMUBnbWFpbC5jb20iLCJ1c2VySUQiOiI2NDI2ZWQ5YjljMjc3OTA0NjAzMDBlOWYiLCJpYXQiOjE2ODAyNzI4MDYsImV4cCI6MTY4MDM1OTIwNn0.97RvvvbTKiEjm5PjufDGkeAeMu40CLlDAjagFJRrjGA`,
-        },
-        body: JSON.stringify(data),
-      }
-    );
-    let editProfileData = await editProfile.json();
-    if (editProfileData) {
-      alert(editProfileData.msg);
-      various_display_div.innerHTML = userAccountPage;
-    } else {
-      alert("error");
-      various_display_div.innerHTML = userAccountPage;
-    }
-  } catch (error) {
-    various_display_div.innerHTML = userAccountPage;
-    console.log(error);
+    event.target.children[1].style.transition = "all 0.5s ease";
   }
 };
+// ------------------------------------------------------------------
 
-// ---------------------------------------------------------------------------
+// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<< END >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
