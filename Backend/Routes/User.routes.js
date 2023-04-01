@@ -61,14 +61,17 @@ userRouter.post("/login",async (req,res)=>{
 
              client.SET(`${token}`,token);
              client.EXPIRE(`${token}`, 86400);
-
-        res.status(200).send({msg:"Login Successfull",token,ref_token})
+        
+        const {fname,lname} = isUser
+        const user = {fname,lname,email}
+        res.status(200).send({msg:"Login Successfull",token,ref_token,user})
     }
     catch(err){
         res.status(500).send(err.message)
     }
 }
 );
+
 
 
 userRouter.get(
@@ -86,10 +89,13 @@ userRouter.get(
     function (req, res) {
       console.log(req.user);
       // token bhejna hai and then redirect karn hai
-      res.redirect("/");
+      res.redirect("/loginwelcome");
     }
   );
 
+//   userRouter.get("/loginwelcome",(req,res)=>{
+//         res.sendFile(path.join(__dirname,"../Frontend/Html/Landingpage.html"));
+//   })
 
   //Logout
 userRouter.post("/logout",authenticate,async (req, res) => {
