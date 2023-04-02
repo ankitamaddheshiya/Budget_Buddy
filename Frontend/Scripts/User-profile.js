@@ -9,6 +9,7 @@ let history_full = document.querySelector(".history_full");
 let logout_full = document.querySelector(".logout_full");
 let loading_container = document.getElementById("loading-container");
 let token = sessionStorage.getItem("token");
+let tbody = document.getElementById("tbody-append-history");
 
 // ------------------------------------------------------------------
 // to retrive the user options background colors
@@ -79,9 +80,9 @@ const accountOption = async (event) => {
 
   user_dispaly_email.innerHTML = email;
 
-  // avatar
-  //   ? (user_profile_photo.src = avatar)
-  //   : (user_profile_photo.src = "../images/user.png");
+  avatar
+    ? (user_profile_photo.src = avatar)
+    : (user_profile_photo.src = "../images/user.png");
   fname
     ? (user_dispaly_firstname.innerHTML = fname)
     : (user_dispaly_firstname.innerHTML = "First Name");
@@ -95,7 +96,6 @@ const accountOption = async (event) => {
   // dob
   //   ? (user_dispaly_dob.innerHTML = dob)
   //   : (user_dispaly_dob.innerHTML = "Date Of Birth");
-  console.log(dob);
   address
     ? (user_display_address2.innerText = address)
     : (user_display_address2.innerText = "Address");
@@ -185,9 +185,9 @@ async function income_main_func() {
     })
     .then((data) => {
       console.log(data);
-  let data1 = { name: "Hondurus" };
-  every_incomes_main_display(data);
-  });
+      let data1 = { name: "Hondurus" };
+      every_incomes_main_display(data);
+    });
 }
 
 function every_incomes_main_display(data) {
@@ -447,6 +447,7 @@ const budgetOption = (event) => {
 
   // code to show the page charts-------
 
+  loading_container.style.display = "block";
   // doughnut chart
   var xValues = ["Italy", "France", "Spain", "USA", "Argentina"];
   var yValues = [55, 49, 44, 24, 15];
@@ -560,6 +561,8 @@ const budgetOption = (event) => {
       },
     },
   });
+
+  loading_container.style.display = "none";
 };
 
 // ------------------------------------------------------------------
@@ -590,8 +593,8 @@ const historyOption = (event) => {
 
   // history fetch request
   const historyfun = async () => {
-    // let loader = `<div class="loading-container"><div class="loader"></div></div>`;
-    // various_display_div.innerHTML = loader;
+    loading_container.style.display = "block";
+
     try {
       let Incomehistory = await fetch(
         "https://periwinkle-catfish-cuff.cyclic.app/income/",
@@ -599,7 +602,7 @@ const historyOption = (event) => {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
-            authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFrc2hheWNoYXZhbjAxMDEwMUBnbWFpbC5jb20iLCJ1c2VySUQiOiI2NDI2ZWQ5YjljMjc3OTA0NjAzMDBlOWYiLCJpYXQiOjE2ODAyNzI4MDYsImV4cCI6MTY4MDM1OTIwNn0.97RvvvbTKiEjm5PjufDGkeAeMu40CLlDAjagFJRrjGA`,
+            authorization: `Bearer ${sessionStorage.getItem("token")}`,
           },
         }
       );
@@ -611,55 +614,69 @@ const historyOption = (event) => {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
-            authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFrc2hheWNoYXZhbjAxMDEwMUBnbWFpbC5jb20iLCJ1c2VySUQiOiI2NDI2ZWQ5YjljMjc3OTA0NjAzMDBlOWYiLCJpYXQiOjE2ODAyNzI4MDYsImV4cCI6MTY4MDM1OTIwNn0.97RvvvbTKiEjm5PjufDGkeAeMu40CLlDAjagFJRrjGA`,
+            authorization: `Bearer ${sessionStorage.getItem("token")}`,
           },
         }
       );
       let ExpenseHData = await Expensehistory.json();
       let HistoryOfUser = [];
       if (Array.isArray(ExpenseHData) && Array.isArray(IncomeHData)) {
-        HistoryOfUser = IncomeHData.concat(ExpenseHData);
+        HistoryOfUser = [...IncomeHData, ...ExpenseHData];
       } else if (Array.isArray(ExpenseHData)) {
         HistoryOfUser = ExpenseHData;
       } else if (Array.isArray(IncomeHData)) {
         HistoryOfUser = ExpenseHData;
       } else {
-        alert("Token Dynamic Nahi hai. Code me change karna hai");
+        alert("");
         // alert(ExpenseHData.msg);
         return;
       }
+      loading_container.style.display = "none";
+      HistoryOfUser = HistoryOfUser.reverse();
 
-      // const appendHisfun = async () => {
-      //   let tbody = document.getElementById("tbody-append-history");
-      //   HistoryOfUser.forEach((element) => {
-      //     let date = element.createdAt.split("T");
-      //     date = date[0];
-      //     let tr = document.createElement("tr");
-      //     if (element.type == "Cash") {
-      //       tr.style.color = "rgb(2, 82, 2)";
-      //       element.amount = "+ " + element.amount;
-      //     } else {
-      //       tr.style.color = "red";
-      //       element.amount = "- " + element.amount;
-      //     }
-      //     tr.style.fontWeight = "bold";
-      //     tr.innerHTML = `
-      //       <td>${element.title}</td>
-      //       <td>${element.type}</td>
-      //       <td>${date}</td>
-      //       <td>${element._id}</td>
-      //       <td>${element.amount}</td>
-      //       `;
+      const appendHisfun = async () => {
+        tbody.innerHTML = null;
+        HistoryOfUser.forEach((element) => {
+          let date = element.createdAt.split("T");
+          date = date[0];
+          let tr = document.createElement("tr");
+          if (element.type == "Cash") {
+            tr.style.color = "rgb(2, 82, 2)";
+            element.amount = "+ " + element.amount;
+          } else {
+            tr.style.color = "red";
+            element.amount = "- " + element.amount;
+          }
+          tr.style.fontWeight = "bold";
+          tr.innerHTML = `
+            <td>${element.title}</td>
+            <td>${element.type}</td>
+            <td>${date}</td>
+            <td>${element._id}</td>
+            <td>${element.amount}</td>
+            `;
 
-      //     tbody.appendChild(tr);
-      //   });
-      // };
-      // appendHisfun();
+          tbody.appendChild(tr);
+        });
+      };
 
-      alert("History Fetch Successfully");
+      Swal.fire({
+        title: "History Fetch Successfully!",
+        text: "Your Income and Expenses.",
+        icon: "success",
+      }).then((res) => {
+        if (res.value) {
+          appendHisfun();
+        } else {
+          alert("Error");
+        }
+      });
     } catch (error) {
-      console.log(error);
-      alert(error.message);
+      Swal.fire({
+        title: "Something went wrong!",
+        text: "Operation Failed, Please Try Again.",
+        icon: "error",
+      });
     }
   };
   historyfun();
@@ -670,8 +687,7 @@ const historyOption = (event) => {
 // logout option fetch request;
 
 const logoutfun = async () => {
-  let loader = `<div class="loading-container"><div class="loader"></div></div>`;
-  various_display_div.innerHTML = loader;
+  loading_container.style.display = "block";
 
   try {
     let logout = await fetch(
@@ -685,12 +701,25 @@ const logoutfun = async () => {
       }
     );
     let logoutData = await logout.json();
-    alert(logoutData.msg);
-    // windows.location.assign("index.html")
+    loading_container.style.display = "none";
+    Swal.fire({
+      title: "Logout Successfull!",
+      text: "You need to Login again.",
+      icon: "success",
+    }).then((res) => {
+      if (res.value) {
+        sessionStorage.clear();
+        window.location.assign("/Frontend/Html/Login.html");
+      } else {
+        alert("Error");
+      }
+    });
   } catch (error) {
-    various_display_div.innerHTML = userLogoutPage;
-    console.log(error);
-    alert("error");
+    Swal.fire({
+      title: "Something Went Wrong!",
+      text: "Operation Failed.",
+      icon: "error",
+    });
   }
 };
 
@@ -717,6 +746,14 @@ const logoutOption = (event) => {
     event.target.children[1].style.transition = "all 0.5s ease";
   }
 };
+
+
+//to avoid hitting without loggin in
+window.onload = function(){
+ if(!token){
+  window.location.assign("/Frontend/Html/Login.html");
+ }
+}
 // ------------------------------------------------------------------
 
 // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<< END >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
