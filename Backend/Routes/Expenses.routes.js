@@ -66,9 +66,9 @@ expenseRouter.delete('/delete/:id',async(req,res)=>{
     }
 });
 
-// Method must be post like we discussed for the income filter route, because you are catching data from request body
-expenseRouter.get("/filterdata",async(req,res)=>{
-    const{Sdate,Edate,userid}=req.body;
+
+expenseRouter.post("/filterdata",async(req,res)=>{
+   const{Sdate,Edate,userid}=req.body;
     try {
         let sdate= new Date(Sdate).toISOString();
     let edate= new Date(Edate).toISOString();
