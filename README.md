@@ -11,17 +11,7 @@
 
 <p>→ Node Modules: mongoose.js | bcrypt | cors | dotenv | jsonwebtoken | nodemon | express | uuid | passport </p>
 
-<h1>API end points</h1>
-<p>
-POST /users/login - to login<br>
-POST /users/register - to register</br>
-GET /account  - to account<br>
-GET /income  - to income<br>
-GET /expenses - to expenses<br>
-GET /budget - to budget <br>
-GET /history - to history<br>
 
-</p>
 
 <h1>Home Page </h1>
 <img src="https://user-images.githubusercontent.com/112817197/229363692-70efa206-019e-4d17-91f0-372fe1a2fbcd.png">
