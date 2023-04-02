@@ -13,8 +13,8 @@ app.use(express.json());
 
 
 
-incomeRouter.get("/:id",async(req,res)=>{
-     const userid = req.params.id;
+incomeRouter.get("/",async(req,res)=>{
+     const {userid} = req.body;
      try {
         const userdata= await incomemodel.find({userID:userid});
         res.send(userdata)
