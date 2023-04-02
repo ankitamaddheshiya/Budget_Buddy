@@ -34,7 +34,7 @@ GET /history - to history<br>
 <h1>Income-Page</h1>
 <img src="https://user-images.githubusercontent.com/112817197/229364080-e4f8f2d5-a67c-45f4-99fd-c63c169accee.png">
 <h1>Expenses_Page</h1>
-<img src="https://user-images.githubusercontent.com/112817197/229364783-48a3bbbd-590a-4315-821e-106eb35558fe.png">
+<img src="https://user-images.githubusercontent.com/112817197/229366183-29dd2338-ef6d-4da3-9246-c820a790623d.png">
 <h1>Budget-Page</h1>
 <img src="https://user-images.githubusercontent.com/112817197/229364616-6b80a814-0d2f-4332-94ca-f49dfdacdf6d.png">
 <h1>History-Page</h1>
