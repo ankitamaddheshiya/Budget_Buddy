@@ -17,5 +17,15 @@
 <img src="https://user-images.githubusercontent.com/112817197/229363889-d5b816b9-6dbf-4cf0-839d-fd4e233fc1c4.png">
 <h1>Login-Page</h1>
 <img src="https://user-images.githubusercontent.com/112817197/229363794-409253a7-ccf7-4ffa-b6b3-1b7c2d874ed4.png">
+<h1>Account-Page</h1>
+<img src="https://user-images.githubusercontent.com/112817197/229364421-6c4bc408-1a08-4f42-8050-0189becd89c2.png">
 <h1>Income-Page</h1>
 <img src="https://user-images.githubusercontent.com/112817197/229364080-e4f8f2d5-a67c-45f4-99fd-c63c169accee.png">
+<h1>Expenses_Page</h1>
+<img src="https://user-images.githubusercontent.com/112817197/229364783-48a3bbbd-590a-4315-821e-106eb35558fe.png">
+<h1>Budget-Page</h1>
+<img src="https://user-images.githubusercontent.com/112817197/229364616-6b80a814-0d2f-4332-94ca-f49dfdacdf6d.png">
+<h1>History-Page</h1>
+<img src="https://user-images.githubusercontent.com/112817197/229365054-ae41d2c0-eb87-47b3-bc0d-49af3eef2bb3.png">
+<h1>Feedback</h1>
+<p>If You want to give any feedback connect with me on- </p>
