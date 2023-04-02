@@ -9,6 +9,8 @@ let history_full = document.querySelector(".history_full");
 let logout_full = document.querySelector(".logout_full");
 let loading_container = document.getElementById("loading-container");
 let token = sessionStorage.getItem("token");
+// let add_income_form = document.getElementById("add_income_form");
+// let add_income_btn = document.getElementById("add_income_btn");
 
 // ------------------------------------------------------------------
 // to retrive the user options background colors
@@ -116,6 +118,7 @@ const fileConvertor = (event) => {
     avatar = reader.result;
   };
 };
+
 const editProfilefun = async (event) => {
   event.preventDefault();
 
@@ -143,282 +146,20 @@ const editProfilefun = async (event) => {
     console.log(error);
   }
 };
+
+let edit_form_popup_div = document.getElementById("edit_form_popup_div");
+const editbtnFun = () => {
+  edit_form_popup_div.classList.add("open-popup");
+};
+const dontedit = (event) => {
+  event.target.parentElement.classList.remove("open-popup");
+};
+
 // ----------------------------------------------------------------
 // user income option
 
-const incomeOption = (event) => {
-  income_full.style.display = "block";
-  profile_full.style.display = "none";
-  exp_full.style.display = "none";
-  dashboard_full.style.display = "none";
-  history_full.style.display = "none";
-  logout_full.style.display = "none";
-
-  Page_name_heading.innerHTML = "Income";
-  userOptionsColor();
-  if (event.target.children[1] == undefined) {
-    event.target.parentElement.style.backgroundColor = "#ffffff";
-    event.target.parentElement.children[1].style.color = "#306DB3";
-    event.target.parentElement.children[1].style.fontWeight = "bold";
-    event.target.parentElement.style.transition = "all 0.5s ease";
-  } else {
-    event.target.style.backgroundColor = "#ffffff";
-    event.target.style.transition = "all 0.5s ease";
-    event.target.children[1].style.color = "#306DB3";
-    event.target.children[1].style.fontWeight = "bold";
-    event.target.children[1].style.transition = "all 0.5s ease";
-  }
-
-  // Fetch function to call from here
-  income_main_func();
-};
-
-async function income_main_func() {
-  await fetch("https://periwinkle-catfish-cuff.cyclic.app/income", {
-    headers: {
-      "Content-type": "application/json",
-      authorization: `Bearer ${token}`,
-    },
-  })
-    .then((res) => {
-      return res.json();
-    })
-    .then((data) => {
-      console.log(data);
-  let data1 = { name: "Hondurus" };
-  every_incomes_main_display(data);
-  });
-}
-
-function every_incomes_main_display(data) {
-  let income_container = document.getElementById("income_container");
-  income_container.style.width = "95%";
-  income_container.style.height = "100%";
-
-  let income_bottom = document.getElementById("income_bottom");
-  income_bottom.innerHTML = null;
-
-  let every_incomes_main = document.createElement("div");
-  every_incomes_main.setAttribute("class", "every_incomes_main");
-
-  let every_incomes_card = document.createElement("div");
-  every_incomes_card.setAttribute("class", "every_incomes_card");
-
-  let every_income_card_inner = document.createElement("div");
-  every_income_card_inner.setAttribute("class", "every_income_card_inner");
-
-  let income_type = document.createElement("h4");
-  income_type.innerHTML = `${data.name}`;
-
-  let date = document.createElement("p");
-  date.innerHTML = `${data.date}`;
-
-  let income_amount = document.createElement("h4");
-  income_amount.setAttribute("class", "income_amount");
-  income_amount.innerHTML = `${data.amount}`;
-
-  every_income_card_inner.append(income_type, date, income_amount);
-
-  let down_arrow = document.createElement("div");
-  down_arrow.setAttribute("class", "down_arrow");
-
-  let more = document.createElement("p");
-  more.innerHTML = "more";
-  down_arrow.append(more);
-  every_incomes_card.append(every_income_card_inner, down_arrow);
-  every_incomes_main.append(every_incomes_card);
-  income_bottom.append(every_incomes_main);
-
-  down_arrow.addEventListener("click", () => {
-    let click_show = document.createElement("div");
-    click_show.setAttribute("class", "click_show");
-
-    let income_card_buttons = document.createElement("div");
-    income_card_buttons.setAttribute("class", "income_card_buttons");
-
-    let income_edit = document.createElement("button");
-    income_edit.innerHTML = "Edit";
-    income_edit.setAttribute("class", "income_edit");
-    income_edit.addEventListener(
-      "click",
-      async () => {
-        await fetch(`${data._id}`)
-          .then((res) => {
-            return res.json();
-          })
-          .then((data) => {
-            console.log(data);
-          });
-      },
-      { once: true }
-    );
-
-    let income_delete = document.createElement("button");
-    income_delete.innerHTML = "Delete";
-    income_delete.setAttribute("class", "income_delete");
-    income_delete.addEventListener(
-      "click",
-      async (data) => {
-        await fetch(`${data._id}`)
-          .then((res) => {
-            return res.json();
-          })
-          .then((data) => {
-            console.log(data);
-          });
-      },
-      { once: true }
-    );
-
-    income_card_buttons.append(income_edit, income_delete);
-    click_show.append(income_card_buttons);
-
-    if (every_incomes_main.childNodes[1]) {
-      every_incomes_main.removeChild(every_incomes_main.childNodes[1]);
-    } else {
-      click_show.style.height = "60px";
-      every_incomes_main.append(click_show);
-    }
-  });
-}
-
 // ----------------------------------------------------------------
 // user expense page
-const expenseOption = (event) => {
-  exp_full.style.display = "block";
-  income_full.style.display = "none";
-  profile_full.style.display = "none";
-  dashboard_full.style.display = "none";
-  history_full.style.display = "none";
-  logout_full.style.display = "none";
-
-  Page_name_heading.innerHTML = "Expenses";
-  userOptionsColor();
-  if (event.target.children[1] == undefined) {
-    event.target.parentElement.style.backgroundColor = "#ffffff";
-    event.target.parentElement.children[1].style.color = "#306DB3";
-    event.target.parentElement.children[1].style.fontWeight = "bold";
-    event.target.parentElement.style.transition = "all 0.5s ease";
-  } else {
-    event.target.style.backgroundColor = "#ffffff";
-    event.target.style.transition = "all 0.5s ease";
-    event.target.children[1].style.color = "#306DB3";
-    event.target.children[1].style.fontWeight = "bold";
-    event.target.children[1].style.transition = "all 0.5s ease";
-  }
-
-  // Fetch function to call from here
-  exp_main_func();
-};
-
-async function exp_main_func() {
-  // await fetch(`http://localhost:3000/income`, {
-  //   headers: {
-  //     "Content-type": "application/json",
-  //     authorization: `Bearer ${token}`,
-  //   },
-  // })
-  //   .then((res) => {
-  //     return res.json();
-  //   })
-  //   .then((data) => {
-  //     console.log(data);
-  let data = { name: "Hondurus" };
-  every_exp_main_display(data);
-  // });
-}
-
-function every_exp_main_display(data) {
-  let exp_container = document.getElementById("exp_container");
-  exp_container.style.width = "95%";
-  exp_container.style.height = "100%";
-
-  let exp_bottom = document.getElementById("exp_bottom");
-  exp_bottom.innerHTML = null;
-
-  let every_exps_main = document.createElement("div");
-  every_exps_main.setAttribute("class", "every_exps_main");
-
-  let every_exps_card = document.createElement("div");
-  every_exps_card.setAttribute("class", "every_exps_card");
-
-  let every_exp_card_inner = document.createElement("div");
-  every_exp_card_inner.setAttribute("class", "every_exp_card_inner");
-
-  let exp_type = document.createElement("h4");
-  exp_type.innerHTML = `${data.name}`;
-
-  let date = document.createElement("p");
-  date.innerHTML = `${data.date}`;
-
-  let exp_amount = document.createElement("h4");
-  exp_amount.setAttribute("class", "exp_amount");
-  exp_amount.innerHTML = `${data.amount}`;
-
-  every_exp_card_inner.append(exp_type, date, exp_amount);
-
-  let down_arrow = document.createElement("div");
-  down_arrow.setAttribute("class", "down_arrow");
-
-  let more = document.createElement("p");
-  more.innerHTML = "more";
-  down_arrow.append(more);
-  every_exps_card.append(every_exp_card_inner, down_arrow);
-  every_exps_main.append(every_exps_card);
-  exp_bottom.append(every_exps_main);
-
-  down_arrow.addEventListener("click", () => {
-    let click_show = document.createElement("div");
-    click_show.setAttribute("class", "click_show");
-
-    let exp_card_buttons = document.createElement("div");
-    exp_card_buttons.setAttribute("class", "exp_card_buttons");
-
-    let exp_edit = document.createElement("button");
-    exp_edit.innerHTML = "Edit";
-    exp_edit.setAttribute("class", "exp_edit");
-    exp_edit.addEventListener(
-      "click",
-      async () => {
-        await fetch(`${data._id}`)
-          .then((res) => {
-            return res.json();
-          })
-          .then((data) => {
-            console.log(data);
-          });
-      },
-      { once: true }
-    );
-
-    let exp_delete = document.createElement("button");
-    exp_delete.innerHTML = "Delete";
-    exp_delete.setAttribute("class", "exp_delete");
-    exp_delete.addEventListener(
-      "click",
-      async (data) => {
-        await fetch(`${data._id}`)
-          .then((res) => {
-            return res.json();
-          })
-          .then((data) => {
-            console.log(data);
-          });
-      },
-      { once: true }
-    );
-
-    exp_card_buttons.append(exp_edit, exp_delete);
-    click_show.append(exp_card_buttons);
-
-    if (every_exps_main.childNodes[1]) {
-      every_exps_main.removeChild(every_exps_main.childNodes[1]);
-    } else {
-      click_show.style.height = "60px";
-      every_exps_main.append(click_show);
-    }
-  });
-}
 
 // ----------------------------------------------------------------
 // user budget overview page
@@ -599,7 +340,7 @@ const historyOption = (event) => {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
-            authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFrc2hheWNoYXZhbjAxMDEwMUBnbWFpbC5jb20iLCJ1c2VySUQiOiI2NDI2ZWQ5YjljMjc3OTA0NjAzMDBlOWYiLCJpYXQiOjE2ODAyNzI4MDYsImV4cCI6MTY4MDM1OTIwNn0.97RvvvbTKiEjm5PjufDGkeAeMu40CLlDAjagFJRrjGA`,
+            authorization: `Bearer ${token}`,
           },
         }
       );
@@ -611,7 +352,7 @@ const historyOption = (event) => {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
-            authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFrc2hheWNoYXZhbjAxMDEwMUBnbWFpbC5jb20iLCJ1c2VySUQiOiI2NDI2ZWQ5YjljMjc3OTA0NjAzMDBlOWYiLCJpYXQiOjE2ODAyNzI4MDYsImV4cCI6MTY4MDM1OTIwNn0.97RvvvbTKiEjm5PjufDGkeAeMu40CLlDAjagFJRrjGA`,
+            authorization: `Bearer ${token}`,
           },
         }
       );

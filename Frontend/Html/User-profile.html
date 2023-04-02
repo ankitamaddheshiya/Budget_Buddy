@@ -28,6 +28,13 @@
       type="text/javascript"
       src="https://www.gstatic.com/charts/loader.js"
     ></script>
+    <link
+    href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.min.css"
+    rel="stylesheet"
+  />
+  <script src="
+  https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.all.min.js
+  "></script>
   </head>
   <body>
     <main>
@@ -41,6 +48,7 @@
               <h3>Budget Buddy</h3>
             </div>
           </div>
+          
           <div class="user-options">
             <ul>
               <li onclick="accountOption(event)">
@@ -70,6 +78,7 @@
             </ul>
           </div>
         </section>
+
         <section class="right-section-display">
           <div class="fixed-div">
             <div>
@@ -241,7 +250,7 @@
                   </div>
                   <div class="inside_top_2">
                     <h1>Total Income</h1>
-                    <h1 id="total_amount">99999</h1>
+                    <h1 id="total_amount"></h1>
                   </div>
                 </div>
                 <div class="income_mid">
@@ -323,7 +332,7 @@
                   </div>
                   <div class="inside_top_2">
                     <h1>Total Income</h1>
-                    <h1 id="total_amount">99999</h1>
+                    <h1 id="exp_total_amount"></h1>
                   </div>
                 </div>
                 <div class="exp_mid">
@@ -333,11 +342,11 @@
                   <div class="filtering">
                     <div>
                       <label>From</label>
-                      <input id="form_date" type="date" />
+                      <input id="exp_form_date" type="date" />
                     </div>
                     <div>
                       <label>To</label>
-                      <input id="to_date" type="date" />
+                      <input id="exp_to_date" type="date" />
                     </div>
                     <div>
                       <button id="exp_search_btn">Search</button>
