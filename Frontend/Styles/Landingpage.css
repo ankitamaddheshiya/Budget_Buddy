@@ -4,9 +4,11 @@
   box-sizing: border-box;
   font-family: "Poppins";
 }
-html{
+
+html {
   scroll-behavior: smooth;
 }
+
 /* html::-webkit-scrollbar{
   width:1px;
   height: 1px;
@@ -23,8 +25,8 @@ html{
     background-color: yellow;
   } */
 .fa-brands {
-width: 6%;
-height: 20px;
+  width: 6%;
+  height: 20px;
 }
 
 .container-fluid {
@@ -349,10 +351,11 @@ body {
   }
 } */
 
-.marquee{
+.marquee {
   width: 100%;
   overflow: hidden;
 }
+
 .marquee-content {
   display: flex;
   animation: scrolling 10s linear infinite;
@@ -362,7 +365,7 @@ body {
 
 .marquee-item {
   flex: 0 0 16vw;
- 
+
   /* margin: 0 1vw; */
 
   /*   flex: 0 0 20vw; */
@@ -498,11 +501,18 @@ footer {
 
 .footer-div>.flexlist {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   margin-top: 2%;
+  margin: 52px;
+  
 
 }
-
+.flexlist>.list{
+  width: 22%;
+}
+.flexlist img{
+  width: 60%;
+}
 
 
 
@@ -546,8 +556,20 @@ footer>p {
   width: 6%;
   margin-left: 90%;
 }
-.img{
+
+.img {
+  width: 25%;
+  display: flex;
+  justify-content: space-evenly;
   position: relative;
-  top: 350px;
-  left: 500px;
+  
+  left: 1000px
+}
+/* li>a:hover{
+  background-color: rgb(42, 223, 223);
+} */
+
+#hover a:hover{
+  background-color:rgb(218, 160, 160);
+  color: black;
 }
