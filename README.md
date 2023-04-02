@@ -12,5 +12,6 @@
 <p>→ Node Modules: mongoose.js | bcrypt | cors | dotenv | jsonwebtoken | nodemon | express | uuid </p>
 
 <h1>Home Page </h1>
-<img src="C:\Users\DELL\OneDrive\Pictures\Screenshots\b1.png">
+<img src="![b1](https://user-images.githubusercontent.com/112817197/229363491-ebb0fac6-5224-4170-8014-23641ca787df.png)
+>
 
