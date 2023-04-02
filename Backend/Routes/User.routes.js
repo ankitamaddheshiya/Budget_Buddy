@@ -47,13 +47,14 @@ userRouter.post("/login",async (req,res)=>{
 
         const isUser = await usermodel.findOne({email});
 
-        res.cookie(`userID`,`${isUser._id}`)
-
+        
         if(!isUser){
-           return res.status(400).send({msg:"SignUp Please then login"})
+            return res.status(400).send({msg:"SignUp Please then login"})
         }
-
+        res.cookie(`userID`,`${isUser._id}`)
+        
         const isPassword = await bcrypt.compareSync(password,isUser.password)
+
         if(!isPassword){
             return res.status(400).send({msg:"Worng Password"})
         }
@@ -108,7 +109,17 @@ userRouter.post("/logout",authenticate,async (req, res) => {
     res.send("Logged out successfully");
 })
 
-
+userRouter.get("/profile",authenticate,async (req,res)=>{
+    try{
+        const {userid} = req.body;
+    const userdata = await usermodel.findById({_id:userid});
+    const {fname,lname,email,mobile,avatar,dob,address}  = userdata
+        res.send({fname,lname,email,mobile,avatar,dob,address})
+    }
+    catch(err) {
+        res.send({msg:"Something went wrong to fetch user's data"})
+    }
+})
 
 // Profile edit 
 userRouter.patch("/editprofile",authenticate,async(req,res)=>{
@@ -116,7 +127,7 @@ userRouter.patch("/editprofile",authenticate,async(req,res)=>{
     const _id=userid
     try{
         const userdata = await usermodel.findByIdAndUpdate(_id,{fname,lname,mobile,avatar,dob,address},{returnOriginal:false});
-        res.send({msg:`Update Successfully`,userdata})
+        res.send({msg:`Update Successfully`,fname,lname,mobile,avatar,dob,address})
     }
     catch(e){
         res.send({msg:e.message})

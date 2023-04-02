@@ -13,8 +13,8 @@ app.use(express.json());
 
 
 
-incomeRouter.get("/:id",async(req,res)=>{
-     const userid = req.params.id;
+incomeRouter.get("/",async(req,res)=>{
+     const {userid} = req.body;
      try {
         const userdata= await incomemodel.find({userID:userid});
         res.send(userdata)
@@ -24,8 +24,8 @@ incomeRouter.get("/:id",async(req,res)=>{
 });
 
 incomeRouter.post("/addincome",async (req,res)=>{
-    let {title,type,amount}=req.body;
-    const userid=req.cookies.userID
+    let {title,type,amount,userid}=req.body;
+    // const userid=req.cookies.userID
     try{
          const income = new incomemodel({
             title,
@@ -66,8 +66,8 @@ incomeRouter.delete('/delete/:id',async(req,res)=>{
 });
 
 incomeRouter.get("/filterdata",async(req,res)=>{
-    const{Sdate,Edate}=req.body;
-    const userid=req.cookies.userID
+    const{Sdate,Edate,userid}=req.body;
+    
     try {
         let sdate= new Date(Sdate).toISOString();
     let edate= new Date(Edate).toISOString();
