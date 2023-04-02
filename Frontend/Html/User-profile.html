@@ -85,7 +85,7 @@
           </div>
 
           <div class="various-display-div">
-            <!-- User Account Section Start -->
+            <!----------------- User Account Section Start-------------- -->
 
             <div class="profile_full">
               <div class="profile-container">
@@ -101,7 +101,7 @@
                     </div>
                     <div>
                       <div><p id="user-dispaly-dob">Designation</p></div>
-                      <div><p id="user-display-address">Address</p></div>
+                      <div><p id="user-display-address1">Address</p></div>
                       <div>
                         <button id="user_edit_btn" onclick="editbtnFun()">
                           Edit
@@ -149,7 +149,7 @@
                     </div>
                     <div>
                       <h4>Adresss</h4>
-                      <h4 id="user-dispaly-address">Save Address</h4>
+                      <h4 id="user-display-address2">Save Address</h4>
                     </div>
                   </div>
 
@@ -187,11 +187,10 @@
               </div>
               <div class="popup" id="edit_form_popup_div">
                 <i
-                  class="fa-sharp fa-solid fa-arrow-left"
-                  onclick="dontedit()"
+                  class="fa-sharp fa-solid fa-arrow-left close_popup_arrow"
+                  onclick="dontedit(event)"
                 ></i>
                 <form action="" onsubmit="editProfilefun(event)" id="edit-form">
-                  <!-- <div> -->
                   <input
                     type="text"
                     name="fname"
@@ -204,8 +203,6 @@
                     id="lname"
                     placeholder="Last name"
                   />
-                  <!-- </div> -->
-                  <!-- <div> -->
                   <input
                     type="text"
                     name="mobile"
@@ -213,14 +210,13 @@
                     placeholder="Mobile"
                   />
                   <input type="date" name="dob" placeholder="Date Of Birth" />
-                  <!-- </div> -->
                   <input
                     type="text"
                     name="address"
                     id="address"
                     placeholder="Address"
                   />
-                  <label for="profile">Profile</label>
+                  <label for="profile">Choose Profile Photo</label>
                   <input
                     type="file"
                     name="profile"
@@ -292,6 +288,10 @@
               </div>
 
               <div class="popup" id="add_income_form">
+                <i
+                  class="fa-sharp fa-solid fa-arrow-left close_popup_arrow"
+                  onclick="dontedit(event)"
+                ></i>
                 <form id="income_form">
                   <label for="">Title</label>
                   <input
@@ -370,6 +370,10 @@
               </div>
 
               <div class="popup" id="add_exp_form">
+                <i
+                  class="fa-sharp fa-solid fa-arrow-left close_popup_arrow"
+                  onclick="dontedit(event)"
+                ></i>
                 <form id="exp_form">
                   <label for="">Title</label>
                   <input id="input_exp_name" name="key" type="text" required />
