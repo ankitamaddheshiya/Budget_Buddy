@@ -454,6 +454,11 @@ body {
 
 }
 
+.sec10>.second>button:hover {
+  background-color: rgb(98, 7, 183);
+  color: white;
+}
+
 footer {
   background-color: rgb(22, 153, 214);
   padding-top: 40px;
@@ -571,5 +576,4 @@ footer>p {
 
 #hover a:hover{
   background-color:rgb(218, 160, 160);
-  color: black;
 }

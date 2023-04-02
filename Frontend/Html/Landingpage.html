@@ -1,274 +1,331 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <title>Budget Budget</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="../Styles/Landingpage.css" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@700&family=Poppins:ital,wght@0,300;0,400;0,500;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <!-- awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
 
-<head>
-  <title>Budget Budget</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="../Styles/Landingpage.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link
-    href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@700&family=Poppins:ital,wght@0,300;0,400;0,500;1,400&display=swap"
-    rel="stylesheet">
-  <!-- awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-</head>
-<!-- <style>
-  .topnav {
-  overflow: hidden;
-  background-color: #333;
-}
-
-.topnav a {
-  float: left;
-  display: block;
-  color: #f2f2f2;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  font-size: 17px;
-}
-
-.topnav a:hover {
-  background-color: #ddd;
-  color: black;
-}
-
-.topnav a.active {
-  background-color: #04AA6D;
-  color: white;
-}
-
-.topnav .icon {
-  display: none;
-}
-
-@media screen and (max-width: 600px) {
-  .topnav a:not(:first-child) {display: none;}
-  .topnav a.icon {
-    float: right;
-    display: block;
-  }
-}
-
-@media screen and (max-width: 600px) {
-  .topnav.responsive {position: relative;}
-  .topnav.responsive .icon {
-    position: absolute;
-    right: 0;
-    top: 0;
-  }
-  .topnav.responsive a {
-    float: none;
-    display: block;
-    text-align: left;
-  }
-}
-</style> -->
-
-<body>
-
-  <nav class="navbar" id="nav">
-    <div class="container-fluid">
-      <div class="navbar-logo">
-        <img src="../images/bblogo2-removebg-preview.png" alt="">
-      </div>
-      <ul class="nav navbar-nav topnav" id="hover">
-        <li class="active"><a href="#" style="color: white;font-size: 20px;margin: 10px">Home</a></li>
-        <li class="hover"><a href="#" style="color: white;font-size: 20px;margin: 10px">How it Works</a></li>
-        <li class="hover"><a href="#" style="color: white;font-size: 20px;margin: 10px">Services</a></li>
-        <li class="hover"><a href="#" style="color: white;font-size: 20px;margin: 10px">Contact us</a></li>
-        <li class="hover"><a href="#" style="color: white;font-size: 20px; margin: 10px;">Login/SignUp</a></li>
-        <!-- <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+  <body>
+    <nav class="navbar" id="nav">
+      <div class="container-fluid">
+        <div class="navbar-logo">
+          <img
+            src="../images/bblogo2-removebg-preview.png"
+            alt=""
+            onclick="returnTohome()"
+          />
+        </div>
+        <ul class="nav navbar-nav topnav" id="hover">
+          <li class="active">
+            <a
+              href="#"
+              style="color: white; font-size: 20px; margin: 10px"
+              onclick="returnTohome()"
+              >Home</a
+            >
+          </li>
+          <li class="hover">
+            <a href="#" style="color: white; font-size: 20px; margin: 10px"
+              >How it Works</a
+            >
+          </li>
+          <li class="hover">
+            <a
+              href="#"
+              style="color: white; font-size: 20px; margin: 10px"
+              onclick="goTosevices()"
+              >Services</a
+            >
+          </li>
+          <li class="hover">
+            <a href="#" style="color: white; font-size: 20px; margin: 10px"
+              >Contact us</a
+            >
+          </li>
+          <li class="hover">
+            <a
+              href="#"
+              style="color: white; font-size: 20px; margin: 10px"
+              onclick="goToLoginPage()"
+              >Login/SignUp</a
+            >
+          </li>
+          <!-- <a href="javascript:void(0);" class="icon" onclick="myFunction()">
           <i class="fa fa-bars"></i>
         </a> -->
-      </ul>
-
-
-      
-
-
-    </div>
-  </nav>
-  <marquee behavior="scroll" scrollamount="20px" direction="right">
-    <p style="margin-bottom: 30px; text-align: center; font-size: 15px; font-weight:bold;">Get 20% discount on Budget
-      Buddy || Get App || Store Or Event || Gift Card || Help </p>
-  </marquee>
-  <!-- Banner part   -->
-  <div class="swiper mySwiper">
-    <div class="swiper-wrapper">
-      <div class="swiper-slide"><img
-          src="https://www.ontarioconstructionnews.com/wp-content/uploads/2021/02/databid-budget-stock-image.png"
-          alt=""></div>
-      <div class="swiper-slide"><img
-          src="https://cfoshare.org/wp-content/uploads/2021/01/AdobeStock_227546975-scaled.jpeg" alt=""></div>
-      <div class="swiper-slide"><img src="../images/page-back-img-main.jpg" alt=""></div>
-      <div class="swiper-slide"><img
-          src="https://financialtribune.com/sites/default/files/field/image/december/12_budget.jpg" alt=""></div>
-
-      <div class="swiper-slide"><img src="http://www.salisburysd.us/wp-content/uploads/2015/03/Budget-11456087.jpg"
-          alt=""></div>
-      <div class="swiper-slide"><img src="https://picjumbo.com/wp-content/uploads/budget-2210x1473.jpg" alt=""></div>
-
-    </div>
-    <div class="swiper-button-next"></div>
-    <div class="swiper-button-prev"></div>
-    <div class="swiper-pagination"></div>
-  </div>
-  <section class="sec-1">
-    <div class="top-part">
-      <h1 class="main_heading">Budget it now !</h1>
-      <div class="small_para">
-        Spend, save, and give toward what's important in life
+        </ul>
       </div>
+    </nav>
+    <marquee behavior="scroll" scrollamount="20px" direction="right">
+      <p
+        style="
+          margin-bottom: 30px;
+          text-align: center;
+          font-size: 15px;
+          font-weight: bold;
+        "
+      >
+        Get 20% discount on Budget Buddy || Get App || Store Or Event || Gift
+        Card || Help
+      </p>
+    </marquee>
+    <!-- Banner part   -->
+    <div class="swiper mySwiper">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <img
+            src="https://www.ontarioconstructionnews.com/wp-content/uploads/2021/02/databid-budget-stock-image.png"
+            alt=""
+          />
+        </div>
+        <div class="swiper-slide">
+          <img
+            src="https://cfoshare.org/wp-content/uploads/2021/01/AdobeStock_227546975-scaled.jpeg"
+            alt=""
+          />
+        </div>
+        <div class="swiper-slide">
+          <img src="../images/page-back-img-main.jpg" alt="" />
+        </div>
+        <div class="swiper-slide">
+          <img
+            src="https://financialtribune.com/sites/default/files/field/image/december/12_budget.jpg"
+            alt=""
+          />
+        </div>
 
-      <!-- button part -->
-      <div class="button_part">
-        <button>Create your Budgey Buddy</button>
+        <div class="swiper-slide">
+          <img
+            src="http://www.salisburysd.us/wp-content/uploads/2015/03/Budget-11456087.jpg"
+            alt=""
+          />
+        </div>
+        <div class="swiper-slide">
+          <img
+            src="https://picjumbo.com/wp-content/uploads/budget-2210x1473.jpg"
+            alt=""
+          />
+        </div>
       </div>
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-pagination"></div>
     </div>
-  </section>
-  <br>
-  <br>
+    <section class="sec-1">
+      <div class="top-part">
+        <h1 class="main_heading">Budget it now !</h1>
+        <div class="small_para">
+          Spend, save, and give toward what's important in life
+        </div>
 
-
-
-
-  <!-- How its work sections -->
-
-  <div class="about">
-    <h1>How its Works</h1>
-    <br>
-
-    <p>Budget Buddy is a budget tracker for the modern age.Say no more to<br>carrying paper
-      envelopes. This virtual budget program keeps you on<br>
-      track with family and friends with the time-tested envelope budgeting<br>method.</p>
-    <br>
-    <button>learn more</button>
-  </div>
-
-  <!-- Our Services -->
-  <h1 style="text-align: center; font-size: 40px; font-weight: bold; margin-top: 40px;">Great Budget Software</h1>
-  <div class="services">
-
-    <div>
-      <img src="https://cdn-icons-png.flaticon.com/128/5097/5097062.png" alt="">
-      <p>Budgeting that works</p>
-    </div>
-    <div>
-      <img src="https://cdn-icons-png.flaticon.com/128/9310/9310767.png" alt="">
-      <p>Budget amount</p>
-    </div>
-    <div>
-      <img src="https://cdn-icons-png.flaticon.com/128/1420/1420341.png" alt="">
-      <p>Budget Income</p>
-    </div>
-    <div>
-      <img src="https://cdn-icons-png.flaticon.com/128/1383/1383612.png" alt="">
-      <p>Pay off
-        debt</p>
-    </div>
-    <div>
-      <img src="https://cdn-icons-png.flaticon.com/128/2967/2967275.png" alt="">
-      <p>Budget Saving</p>
-    </div>
-    <div>
-      <img src="https://cdn-icons-png.flaticon.com/128/4525/4525058.png" alt="">
-      <p>Save for
-        big expenses</p>
-    </div>
-    <div>
-      <img src="https://cdn-icons-png.flaticon.com/128/9205/9205843.png" alt="">
-      <p>Budgeting Income</p>
-    </div>
-    <div>
-      <img src="https://cdn-icons-png.flaticon.com/128/10060/10060033.png" alt="">
-      <p>Budgeting Expenses</p>
-    </div>
-  </div>
-
-
-
-  <!-- ================================sections=========================================================-->
-
-
-  <div class="colorfull">
-    <section class="sec7">
-      <div class="sec-left">
-        <h2>Budget software<br>
-          built for daily<br> life</h2>
-        <p>Get Budget Buddy iPhone and Android Apps</p>
-      </div>
-
-
-      <div class="sec-right">
-        <img style="width: 40%; height: 200px;margin-top: 150px;"
-          src="https://sp-ao.shortpixel.ai/client/to_webp,q_glossy,ret_img,w_365/https://goodbudget.com/wp-content/uploads/2019/05/14224232/laptop3.png"
-          alt="">
-        <!-- <img src="https://sp-ao.shortpixel.ai/client/to_webp,q_glossy,ret_img,w_159,h_277/https://goodbudget.com/wp-content/uploads/2019/04/01223539/iphone.png"
-                alt=""> -->
-        <img style="width: 35%; height: 430px;margin-top: 10px;"
-          src="https://sp-ao.shortpixel.ai/client/to_webp,q_glossy,ret_img,w_132,h_254/https://goodbudget.com/wp-content/uploads/2019/06/10155220/android-v2.png"
-          alt="">
+        <!-- button part -->
+        <div class="button_part">
+          <button onclick="loginFirstfunction()">
+            Create your Budgey Buddy
+          </button>
+        </div>
       </div>
     </section>
-    <!-- ================================Blog Section============================= -->
+    <br />
+    <br />
 
-    <section class="sec8">
+    <!-- How its work sections -->
+
+    <div class="about">
+      <h1>How its Works</h1>
+      <br />
+
+      <p>
+        Budget Buddy is a budget tracker for the modern age.Say no more to<br />carrying
+        paper envelopes. This virtual budget program keeps you on<br />
+        track with family and friends with the time-tested envelope budgeting<br />method.
+      </p>
+      <br />
+      <button>learn more</button>
+    </div>
+
+    <!-- Our Services -->
+    <h1
+      style="
+        text-align: center;
+        font-size: 40px;
+        font-weight: bold;
+        margin-top: 40px;
+      "
+    >
+      Great Budget Software
+    </h1>
+    <div class="services">
       <div>
-        <h2>Latest news</h2>
-        <p>Read the latest blog posts</p>
+        <img
+          src="https://cdn-icons-png.flaticon.com/128/5097/5097062.png"
+          alt=""
+        />
+        <p>Budgeting that works</p>
       </div>
-
-      <div class="grid">
-        <div>
-
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtG4aoH6WQcf7X5KsUPi6f-E8fJbaosQl-Hw&usqp=CAU"
-            alt="">
-          <p>Dear Moneyupers, As we reflect<br> back on this year,..</p>
-
-          <a style="font-size: 15px;color: brown;" href="">Read More</a>
-        </div>
-        <div>
-          <img
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTXf7yGivgW6MuNJI0l-erU4xH2qomkRN0rtWMjTcebWm1pIfV68vR5naDWcqoVfwtOwqg&usqp=CAU"
-            alt="">
-          <p>Budget Buddy got some updates <br>this year,most of which</p>
-
-          <a style="font-size: 15px;color: brown;" href="">Read More</a>
-        </div>
-        <div>
-          <img
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUeQS1fuUHvqfGwE95oih1Qp3oMGh9PIQ9nSzk7W0GBfnba1O_5RvyzoMFEDGej2YbPZo&usqp=CAU"
-            alt="">
-          <p>Budgeting is essential these days, <br>and many folks turn</p>
-          <a style="font-size: 15px;color: brown; margin: top 15px;" href="">Read More</a>
-        </div>
-        <div>
-          <img
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRSD0XLEaT5CtjF-wjpktGBOGZ3zcNZuyVVj5osLcVXyra9HytvgxyiLclfJpQDDcZQbaQ&usqp=CAU"
-            alt="">
-          <p>Finding a budget app that <br>meets all of your</p>
-          <a style="font-size: 15px; color: brown;" href="">Read More</a>
-        </div>
+      <div>
+        <img
+          src="https://cdn-icons-png.flaticon.com/128/9310/9310767.png"
+          alt=""
+        />
+        <p>Budget amount</p>
       </div>
-    </section>
-  </div>
+      <div>
+        <img
+          src="https://cdn-icons-png.flaticon.com/128/1420/1420341.png"
+          alt=""
+        />
+        <p>Budget Income</p>
+      </div>
+      <div>
+        <img
+          src="https://cdn-icons-png.flaticon.com/128/1383/1383612.png"
+          alt=""
+        />
+        <p>Pay off debt</p>
+      </div>
+      <div>
+        <img
+          src="https://cdn-icons-png.flaticon.com/128/2967/2967275.png"
+          alt=""
+        />
+        <p>Budget Saving</p>
+      </div>
+      <div>
+        <img
+          src="https://cdn-icons-png.flaticon.com/128/4525/4525058.png"
+          alt=""
+        />
+        <p>Save for big expenses</p>
+      </div>
+      <div>
+        <img
+          src="https://cdn-icons-png.flaticon.com/128/9205/9205843.png"
+          alt=""
+        />
+        <p>Budgeting Income</p>
+      </div>
+      <div>
+        <img
+          src="https://cdn-icons-png.flaticon.com/128/10060/10060033.png"
+          alt=""
+        />
+        <p>Budgeting Expenses</p>
+      </div>
+    </div>
 
+    <!-- ================================sections=========================================================-->
 
-  <!-- =====================Footer Part====================================== -->
+    <div class="colorfull">
+      <section class="sec7">
+        <div class="sec-left">
+          <h2>
+            Budget software<br />
+            built for daily<br />
+            life
+          </h2>
+          <p>Get Budget Buddy iPhone and Android Apps</p>
+        </div>
 
-  <section class="sec9">
+        <div class="sec-right">
+          <img
+            style="width: 40%; height: 200px; margin-top: 150px"
+            src="https://sp-ao.shortpixel.ai/client/to_webp,q_glossy,ret_img,w_365/https://goodbudget.com/wp-content/uploads/2019/05/14224232/laptop3.png"
+            alt=""
+          />
+          <!-- <img src="https://sp-ao.shortpixel.ai/client/to_webp,q_glossy,ret_img,w_159,h_277/https://goodbudget.com/wp-content/uploads/2019/04/01223539/iphone.png"
+                alt=""> -->
+          <img
+            style="width: 35%; height: 430px; margin-top: 10px"
+            src="https://sp-ao.shortpixel.ai/client/to_webp,q_glossy,ret_img,w_132,h_254/https://goodbudget.com/wp-content/uploads/2019/06/10155220/android-v2.png"
+            alt=""
+          />
+        </div>
+      </section>
+      <!-- ================================Blog Section============================= -->
 
-    <!-- <div class="sec9-img"> -->
-    <!-- <marquee class="marquee" direction="right" behaviour="scroll" scrollamount="15">
+      <section class="sec8">
+        <div>
+          <h2>Latest news</h2>
+          <p>Read the latest blog posts</p>
+        </div>
+
+        <div class="grid">
+          <div>
+            <img
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtG4aoH6WQcf7X5KsUPi6f-E8fJbaosQl-Hw&usqp=CAU"
+              alt=""
+            />
+            <p>
+              Dear Moneyupers, As we reflect<br />
+              back on this year,..
+            </p>
+
+            <a style="font-size: 15px; color: brown" href="">Read More</a>
+          </div>
+          <div>
+            <img
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTXf7yGivgW6MuNJI0l-erU4xH2qomkRN0rtWMjTcebWm1pIfV68vR5naDWcqoVfwtOwqg&usqp=CAU"
+              alt=""
+            />
+            <p>Budget Buddy got some updates <br />this year,most of which</p>
+
+            <a style="font-size: 15px; color: brown" href="">Read More</a>
+          </div>
+          <div>
+            <img
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUeQS1fuUHvqfGwE95oih1Qp3oMGh9PIQ9nSzk7W0GBfnba1O_5RvyzoMFEDGej2YbPZo&usqp=CAU"
+              alt=""
+            />
+            <p>Budgeting is essential these days, <br />and many folks turn</p>
+            <a style="font-size: 15px; color: brown; margin: top 15px" href=""
+              >Read More</a
+            >
+          </div>
+          <div>
+            <img
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRSD0XLEaT5CtjF-wjpktGBOGZ3zcNZuyVVj5osLcVXyra9HytvgxyiLclfJpQDDcZQbaQ&usqp=CAU"
+              alt=""
+            />
+            <p>Finding a budget app that <br />meets all of your</p>
+            <a style="font-size: 15px; color: brown" href="">Read More</a>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- =====================Footer Part====================================== -->
+
+    <section class="sec9">
+      <!-- <div class="sec9-img"> -->
+      <!-- <marquee class="marquee" direction="right" behaviour="scroll" scrollamount="15">
         <img
           src="https://sp-ao.shortpixel.ai/client/to_webp,q_glossy,ret_img,w_800/https://goodbudget.com/wp-content/uploads/2019/05/06221325/logo-guardian.png"
           alt="">
@@ -312,252 +369,263 @@
           src="https://sp-ao.shortpixel.ai/client/to_webp,q_glossy,ret_img,w_800/https://goodbudget.com/wp-content/uploads/2019/05/06221717/logo-cnet.png"
           alt="">
       </marquee> -->
-    <!-- </div> -->
-    <div class="marquee">
-      <div class="marquee-content">
-        <div class="marquee-item">
-          <img
-            src="https://sp-ao.shortpixel.ai/client/to_webp,q_glossy,ret_img,w_800/https://goodbudget.com/wp-content/uploads/2019/05/06221835/logo-bostonglobe.png"
-            alt="">
-        </div>
+      <!-- </div> -->
+      <div class="marquee">
+        <div class="marquee-content">
+          <div class="marquee-item">
+            <img
+              src="https://sp-ao.shortpixel.ai/client/to_webp,q_glossy,ret_img,w_800/https://goodbudget.com/wp-content/uploads/2019/05/06221835/logo-bostonglobe.png"
+              alt=""
+            />
+          </div>
 
-        <div class="marquee-item">
-          <img
-            src="https://sp-ao.shortpixel.ai/client/to_webp,q_glossy,ret_img,w_800/https://goodbudget.com/wp-content/uploads/2019/05/06221623/logo-usatoday.png"
-            alt="">
-        </div>
+          <div class="marquee-item">
+            <img
+              src="https://sp-ao.shortpixel.ai/client/to_webp,q_glossy,ret_img,w_800/https://goodbudget.com/wp-content/uploads/2019/05/06221623/logo-usatoday.png"
+              alt=""
+            />
+          </div>
 
-        <div class="marquee-item">
-          <img
-            src="https://sp-ao.shortpixel.ai/client/to_webp,q_glossy,ret_img,w_800/https://goodbudget.com/wp-content/uploads/2019/05/06221117/logo-abcnews.png"
-            alt="">
-        </div>
+          <div class="marquee-item">
+            <img
+              src="https://sp-ao.shortpixel.ai/client/to_webp,q_glossy,ret_img,w_800/https://goodbudget.com/wp-content/uploads/2019/05/06221117/logo-abcnews.png"
+              alt=""
+            />
+          </div>
 
-        <div class="marquee-item">
-          <img
-            src="https://sp-ao.shortpixel.ai/client/to_webp,q_glossy,ret_img,w_800/https://goodbudget.com/wp-content/uploads/2019/05/06221325/logo-guardian.png"
-            alt="">
-        </div>
+          <div class="marquee-item">
+            <img
+              src="https://sp-ao.shortpixel.ai/client/to_webp,q_glossy,ret_img,w_800/https://goodbudget.com/wp-content/uploads/2019/05/06221325/logo-guardian.png"
+              alt=""
+            />
+          </div>
 
-        <div class="marquee-item">
-          <img
-            src="https://sp-ao.shortpixel.ai/client/to_webp,q_glossy,ret_img,w_800/https://goodbudget.com/wp-content/uploads/2019/05/06221623/logo-usatoday.png"
-            alt="">
-        </div>
+          <div class="marquee-item">
+            <img
+              src="https://sp-ao.shortpixel.ai/client/to_webp,q_glossy,ret_img,w_800/https://goodbudget.com/wp-content/uploads/2019/05/06221623/logo-usatoday.png"
+              alt=""
+            />
+          </div>
 
-        <div class="marquee-item">
-          <img
-            src="https://sp-ao.shortpixel.ai/client/to_webp,q_glossy,ret_img,w_800/https://goodbudget.com/wp-content/uploads/2019/05/06221623/logo-usatoday.png"
-            alt="">
-        </div>
+          <div class="marquee-item">
+            <img
+              src="https://sp-ao.shortpixel.ai/client/to_webp,q_glossy,ret_img,w_800/https://goodbudget.com/wp-content/uploads/2019/05/06221623/logo-usatoday.png"
+              alt=""
+            />
+          </div>
 
-        <div class="marquee-item">
-          <img
-            src="https://sp-ao.shortpixel.ai/client/to_webp,q_glossy,ret_img,w_800/https://goodbudget.com/wp-content/uploads/2019/05/06221835/logo-bostonglobe.png"
-            alt="">
-        </div>
+          <div class="marquee-item">
+            <img
+              src="https://sp-ao.shortpixel.ai/client/to_webp,q_glossy,ret_img,w_800/https://goodbudget.com/wp-content/uploads/2019/05/06221835/logo-bostonglobe.png"
+              alt=""
+            />
+          </div>
 
-        <div class="marquee-item">
-          <!-- <img
+          <div class="marquee-item">
+            <!-- <img
             src="https://sp-ao.shortpixel.ai/client/to_webp,q_glossy,ret_img,w_512/https://goodbudget.com/wp-content/uploads/2019/05/29193834/huffpost-logo-ConvertImage.png"
             alt=""> -->
-          <img
-            src="https://sp-ao.shortpixel.ai/client/to_webp,q_glossy,ret_img,w_800/https://goodbudget.com/wp-content/uploads/2019/05/06221623/logo-usatoday.png"
-            alt="">
-        </div>
-        <div class="marquee-item">
-          <img
-            src="https://sp-ao.shortpixel.ai/client/to_webp,q_glossy,ret_img,w_800/https://goodbudget.com/wp-content/uploads/2019/05/06221835/logo-bostonglobe.png"
-            alt="">
-        </div>
+            <img
+              src="https://sp-ao.shortpixel.ai/client/to_webp,q_glossy,ret_img,w_800/https://goodbudget.com/wp-content/uploads/2019/05/06221623/logo-usatoday.png"
+              alt=""
+            />
+          </div>
+          <div class="marquee-item">
+            <img
+              src="https://sp-ao.shortpixel.ai/client/to_webp,q_glossy,ret_img,w_800/https://goodbudget.com/wp-content/uploads/2019/05/06221835/logo-bostonglobe.png"
+              alt=""
+            />
+          </div>
 
-        <div class="marquee-item">
-          <img
-            src="https://sp-ao.shortpixel.ai/client/to_webp,q_glossy,ret_img,w_800/https://goodbudget.com/wp-content/uploads/2019/05/06221623/logo-usatoday.png"
-            alt="">
-        </div>
+          <div class="marquee-item">
+            <img
+              src="https://sp-ao.shortpixel.ai/client/to_webp,q_glossy,ret_img,w_800/https://goodbudget.com/wp-content/uploads/2019/05/06221623/logo-usatoday.png"
+              alt=""
+            />
+          </div>
 
-        <div class="marquee-item">
-          <img
-            src="https://sp-ao.shortpixel.ai/client/to_webp,q_glossy,ret_img,w_800/https://goodbudget.com/wp-content/uploads/2019/05/06221117/logo-abcnews.png"
-            alt="">
-        </div>
+          <div class="marquee-item">
+            <img
+              src="https://sp-ao.shortpixel.ai/client/to_webp,q_glossy,ret_img,w_800/https://goodbudget.com/wp-content/uploads/2019/05/06221117/logo-abcnews.png"
+              alt=""
+            />
+          </div>
 
-        <div class="marquee-item">
-          <img
-            src="https://sp-ao.shortpixel.ai/client/to_webp,q_glossy,ret_img,w_800/https://goodbudget.com/wp-content/uploads/2019/05/06221325/logo-guardian.png"
-            alt="">
-        </div>
+          <div class="marquee-item">
+            <img
+              src="https://sp-ao.shortpixel.ai/client/to_webp,q_glossy,ret_img,w_800/https://goodbudget.com/wp-content/uploads/2019/05/06221325/logo-guardian.png"
+              alt=""
+            />
+          </div>
 
-        <div class="marquee-item">
-          <img
-            src="https://sp-ao.shortpixel.ai/client/to_webp,q_glossy,ret_img,w_800/https://goodbudget.com/wp-content/uploads/2019/05/06221623/logo-usatoday.png"
-            alt="">
-        </div>
+          <div class="marquee-item">
+            <img
+              src="https://sp-ao.shortpixel.ai/client/to_webp,q_glossy,ret_img,w_800/https://goodbudget.com/wp-content/uploads/2019/05/06221623/logo-usatoday.png"
+              alt=""
+            />
+          </div>
 
-        <div class="marquee-item">
-          <img
-            src="https://sp-ao.shortpixel.ai/client/to_webp,q_glossy,ret_img,w_800/https://goodbudget.com/wp-content/uploads/2019/05/06221623/logo-usatoday.png"
-            alt="">
-        </div>
+          <div class="marquee-item">
+            <img
+              src="https://sp-ao.shortpixel.ai/client/to_webp,q_glossy,ret_img,w_800/https://goodbudget.com/wp-content/uploads/2019/05/06221623/logo-usatoday.png"
+              alt=""
+            />
+          </div>
 
-        <div class="marquee-item">
-          <img
-            src="https://sp-ao.shortpixel.ai/client/to_webp,q_glossy,ret_img,w_800/https://goodbudget.com/wp-content/uploads/2019/05/06221835/logo-bostonglobe.png"
-            alt="">
-        </div>
+          <div class="marquee-item">
+            <img
+              src="https://sp-ao.shortpixel.ai/client/to_webp,q_glossy,ret_img,w_800/https://goodbudget.com/wp-content/uploads/2019/05/06221835/logo-bostonglobe.png"
+              alt=""
+            />
+          </div>
 
-        <div class="marquee-item">
-          <!-- <img
-            src="https://sp-ao.shortpixel.ai/client/to_webp,q_glossy,ret_img,w_512/https://goodbudget.com/wp-content/uploads/2019/05/29193834/huffpost-logo-ConvertImage.png"
-            alt=""> -->
-          <img
-            src="https://sp-ao.shortpixel.ai/client/to_webp,q_glossy,ret_img,w_800/https://goodbudget.com/wp-content/uploads/2019/05/06221623/logo-usatoday.png"
-            alt="">
-        </div>
-
-      </div>
-    </div>
-
-
-    <p>Love this. Perfect tool. So excited to have everything in one place and in the palm of my hand.</p>
-    <h5>PATRICK FROM GOOGLE PLAY</h5>
-
-  </section>
-  <section class="sec10">
-    <div>
-      <img
-        src="https://sp-ao.shortpixel.ai/client/to_webp,q_glossy,ret_img,w_191,h_191/https://goodbudget.com/wp-content/uploads/2019/03/12114655/budget-that-syncs-couple-e1560365252699.png"
-        alt="">
-    </div>
-
-    <div class="second">
-      <h2>Get Started Now</h2>
-      <button><a href="#" onclick="window.location.href='./html/login.html'">Sign Up</a></button>
-    </div>
-  </section>
-
-  <!--============================ Footer Part======================= -->
-
-  <footer>
-    <div class="footer-div">
-
-
-      <div class="txt-div">
-         <p class="footer-para">A home budget app based on the envelope budget system. Available on the Web,
-          Android and
-          iPhone. <br> Replace your family budget planner,worksheet or spreadsheet with software that syncs.
-        </p>
-     </div>
-     <div class="flexlist">
-        <div class="list">
-          <img src="../images/bblogo2-removebg-preview.png"
-            alt="">
-        </div>
-        <div class="list">
-          <h6>EXPLORE</h6>
-          <ul>
-            <li>Home</li>
-            <li>How it works</li>
-            <li>What you get</li>
-            <li>The Budget Buddy way</li>
-            <li>Reviews</li>
-
-          </ul>
-        </div>
-        <div class="list">
-          <h6>GET STARTED</h6>
-          <ul>
-            <li>Sign Up</li>
-            <li>Log In</li>
-            <li>Pricing</li>
-            <li>Envelope Budgeting</li>
-            <li>How To Make a Budget</li>
-
-          </ul>
-        </div>
-        <div class="list">
-
-          <h6>GET HELP</h6>
-          <ul>
-            <li>User Guide</li>
-            <li>Forums</li>
-            <li>Refunds</li>
-            <li>How To Videos</li>
-            <li>Contact Us</li>
-          </ul>
+          <div class="marquee-item">
+            <img
+              src="https://sp-ao.shortpixel.ai/client/to_webp,q_glossy,ret_img,w_800/https://goodbudget.com/wp-content/uploads/2019/05/06221623/logo-usatoday.png"
+              alt=""
+            />
+          </div>
         </div>
       </div>
-    </div>
 
-    <div>
+      <p>
+        Love this. Perfect tool. So excited to have everything in one place and
+        in the palm of my hand.
+      </p>
+      <h5>PATRICK FROM GOOGLE PLAY</h5>
+    </section>
+    <section class="sec10">
+      <div>
+        <img
+          src="https://sp-ao.shortpixel.ai/client/to_webp,q_glossy,ret_img,w_191,h_191/https://goodbudget.com/wp-content/uploads/2019/03/12114655/budget-that-syncs-couple-e1560365252699.png"
+          alt=""
+        />
+      </div>
 
-    </div>
-    </div>
-    <div class="img" >
-      <i class="fa-brands fa-facebook fa-2x"></i>
-      <i class="fa-brands fa-instagram fa-2x"></i>
-      <i class="fa-brands fa-twitter fa-2x"></i>
-      <i class="fa-brands fa-youtube fa-2x"></i>
-    </div>
+      <div class="second">
+        <h2>Get Started Now</h2>
+        <button>
+          <a href="./Login.html">Sign Up</a>
+        </button>
+      </div>
+    </section>
 
+    <!--============================ Footer Part======================= -->
 
-    <p>© 2009–present Dayspring Partners | Terms | Privacy | Press Resources<br>
-      Android, Google Play, and the Google Play logo are trademarks of Google LLC. | Apple, Apple logo, iPad,
-      iPhone, iPod touch, iTunes, and Podcast Logo are trademarks of Apple Inc., registered in the U.S. and
-      other<br>
-      countries. App Store is a service mark of Apple Inc. | EEBA, the Easy Envelope Budget Aid, the EEBA mascot,
-      “You can keep a budget, EEBA can help,” Money Up, the Money Up mascot, the Money Up envelope,<br>and
-      “Budget well. Live life. Do good.” are trademarks of Dayspring Technologies, Inc. SPC, a San Francisco
-      custom web app development company.</p>
-      <!-- <div class="img" >
+    <footer>
+      <div class="footer-div">
+        <div class="txt-div">
+          <p class="footer-para">
+            A home budget app based on the envelope budget system. Available on
+            the Web, Android and iPhone. <br />
+            Replace your family budget planner,worksheet or spreadsheet with
+            software that syncs.
+          </p>
+        </div>
+        <div class="flexlist">
+          <div class="list">
+            <img src="../images/bblogo2-removebg-preview.png" alt="" />
+          </div>
+          <div class="list">
+            <h6>EXPLORE</h6>
+            <ul>
+              <li>Home</li>
+              <li>How it works</li>
+              <li>What you get</li>
+              <li>The Budget Buddy way</li>
+              <li>Reviews</li>
+            </ul>
+          </div>
+          <div class="list">
+            <h6>GET STARTED</h6>
+            <ul>
+              <li>Sign Up</li>
+              <li>Log In</li>
+              <li>Pricing</li>
+              <li>Envelope Budgeting</li>
+              <li>How To Make a Budget</li>
+            </ul>
+          </div>
+          <div class="list">
+            <h6>GET HELP</h6>
+            <ul>
+              <li>User Guide</li>
+              <li>Forums</li>
+              <li>Refunds</li>
+              <li>How To Videos</li>
+              <li>Contact Us</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div></div>
+      <div class="img">
         <i class="fa-brands fa-facebook fa-2x"></i>
         <i class="fa-brands fa-instagram fa-2x"></i>
         <i class="fa-brands fa-twitter fa-2x"></i>
         <i class="fa-brands fa-youtube fa-2x"></i>
-      </div> -->
+      </div>
 
+      <p>
+        © 2009–present Dayspring Partners | Terms | Privacy | Press Resources<br />
+        Android, Google Play, and the Google Play logo are trademarks of Google
+        LLC. | Apple, Apple logo, iPad, iPhone, iPod touch, iTunes, and Podcast
+        Logo are trademarks of Apple Inc., registered in the U.S. and other<br />
+        countries. App Store is a service mark of Apple Inc. | EEBA, the Easy
+        Envelope Budget Aid, the EEBA mascot, “You can keep a budget, EEBA can
+        help,” Money Up, the Money Up mascot, the Money Up envelope,<br />and
+        “Budget well. Live life. Do good.” are trademarks of Dayspring
+        Technologies, Inc. SPC, a San Francisco custom web app development
+        company.
+      </p>
+    </footer>
 
-  </footer>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
 
+    <script>
+      var swiper = new Swiper(".mySwiper", {
+        spaceBetween: 30,
+        centeredSlides: true,
+        autoplay: {
+          delay: 2500,
+          disableOnInteraction: false,
+        },
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+        },
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+      });
 
+      // return to home on the logo click
+      function returnTohome() {
+        window.scrollTo(0, 0);
+      }
 
+      function goTosevices() {
+        window.scrollTo(0, 1250);
+      }
 
+      // go to login page
+      function goToLoginPage() {
+        window.location.href = "./Login.html";
+      }
 
-  <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+      // go to login page
+      const loginFirstfunction = () => {
+        window.location.href = "./Login.html";
+      };
 
-  <script>
-    var swiper = new Swiper(".mySwiper", {
-      spaceBetween: 30,
-      centeredSlides: true,
-      autoplay: {
-        delay: 2500,
-        disableOnInteraction: false,
-      },
-      pagination: {
-        el: ".swiper-pagination",
-        clickable: true,
-      },
-      navigation: {
-        nextEl: ".swiper-button-next",
-        prevEl: ".swiper-button-prev",
-      },
-    });
-
-//     function myFunction() {
-//   var x = document.getElementById("myTopnav");
-//   if (x.className === "topnav") {
-//     x.className += " responsive";
-//   } else {
-//     x.className = "topnav";
-//   }
-// }
-
-  </script>
-
-
-
-
-</body>
-
+      // on load
+      window.onload = function () {
+        if (sessionStorage.getItem("token")) {
+          window.location.href = "./Dashboard.html";
+        }
+      };
+    </script>
+  </body>
 </html>

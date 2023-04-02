@@ -7,6 +7,8 @@ let exp_full = document.querySelector(".exp_full");
 let dashboard_full = document.querySelector(".dashboard_full");
 let history_full = document.querySelector(".history_full");
 let logout_full = document.querySelector(".logout_full");
+let loading_container = document.getElementById("loading-container");
+let token = sessionStorage.getItem("token");
 
 // ------------------------------------------------------------------
 // to retrive the user options background colors
@@ -46,37 +48,61 @@ const accountOption = async (event) => {
     event.target.children[1].style.fontWeight = "bold";
     event.target.children[1].style.transition = "all 0.5s ease";
   }
+
+  let user_display_name = document.getElementById("user-display-name");
+  let fixed_div_username = document.getElementById("fixed-div-username");
   let user_profile_photo = document.getElementById("user-profile-photo");
   let user_dispaly_dob = document.getElementById("user-dispaly-dob");
-  let user_display_address1 = document.getElementById("user-display-address1");
   let user_display_address2 = document.getElementById("user-display-address2");
-  let user_dispaly_firstname = document.getElementById("user-dispaly-firstname");
+  let user_dispaly_firstname = document.getElementById(
+    "user-dispaly-firstname"
+  );
   let user_dispaly_lastname = document.getElementById("user-dispaly-lastname");
   let user_dispaly_email = document.getElementById("user-dispaly-email");
   let user_dispaly_mobile = document.getElementById("user-dispaly-mobile");
 
+  loading_container.style.display = "block";
   let promise = await fetch(
     "https://periwinkle-catfish-cuff.cyclic.app/user/profile",
     {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-        authorization: `Bearer ${localStorage.getItem("token")}`,
+        authorization: `Bearer ${sessionStorage.getItem("token")}`,
       },
     }
   );
   let response = await promise.json();
+  loading_container.style.display = "none";
 
-  const { id, fname, lname, email, mobile, address, dob, avatar } = response;
+  const { id, fname, lname, email, mobile, address, dob } = response;
 
-  user_profile_photo.src = avatar;
-  user_dispaly_dob.innerHTML = dob;
-  user_display_address1.innerText = address;
-  user_display_address2.innerText = address;
-  user_dispaly_firstname.innerHTML = fname;
-  user_dispaly_lastname.innerHTML = lname;
   user_dispaly_email.innerHTML = email;
-  user_dispaly_mobile.innerHTML = mobile;
+
+  // avatar
+  //   ? (user_profile_photo.src = avatar)
+  //   : (user_profile_photo.src = "../images/user.png");
+  fname
+    ? (user_dispaly_firstname.innerHTML = fname)
+    : (user_dispaly_firstname.innerHTML = "First Name");
+
+  user_display_name.innerHTML = fname;
+  fixed_div_username.innerHTML = fname;
+  lname
+    ? (user_dispaly_lastname.innerHTML = lname)
+    : (user_dispaly_lastname.innerHTML = "Last Name");
+
+  // dob
+  //   ? (user_dispaly_dob.innerHTML = dob)
+  //   : (user_dispaly_dob.innerHTML = "Date Of Birth");
+  console.log(dob);
+  address
+    ? (user_display_address2.innerText = address)
+    : (user_display_address2.innerText = "Address");
+
+  mobile
+    ? (user_dispaly_mobile.innerHTML = mobile)
+    : (user_dispaly_mobile.innerHTML = "Edit Profile");
 };
 
 // edit profile button
@@ -92,17 +118,15 @@ const fileConvertor = (event) => {
 };
 const editProfilefun = async (event) => {
   event.preventDefault();
-  let loader = `<div class="loading-container"><div class="loader"></div></div>`;
-  various_display_div.innerHTML = loader;
 
   // Collecting Form Data
   let formData = new FormData(event.target);
   let data = Object.fromEntries(formData);
-  data.avatar = avatar;
+
+  data.avatar = `${avatar}`;
 
   try {
     let editProfile = await fetch(
-      // id se fetch karna hai to id ko session storage se le lena hai
       "https://periwinkle-catfish-cuff.cyclic.app/user/editprofile",
       {
         method: "PATCH",
@@ -114,15 +138,8 @@ const editProfilefun = async (event) => {
       }
     );
     let editProfileData = await editProfile.json();
-    if (editProfileData) {
-      alert(editProfileData.msg);
-      various_display_div.innerHTML = userAccountPage;
-    } else {
-      alert("error");
-      various_display_div.innerHTML = userAccountPage;
-    }
+    console.log(editProfileData);
   } catch (error) {
-    various_display_div.innerHTML = userAccountPage;
     console.log(error);
   }
 };
@@ -157,20 +174,20 @@ const incomeOption = (event) => {
 };
 
 async function income_main_func() {
-  // await fetch(`http://localhost:3000/income`, {
-  //   headers: {
-  //     "Content-type": "application/json",
-  //     authorization: `Bearer ${token}`,
-  //   },
-  // })
-  //   .then((res) => {
-  //     return res.json();
-  //   })
-  //   .then((data) => {
-  //     console.log(data);
-  let data = { name: "Hondurus" };
+  await fetch("https://periwinkle-catfish-cuff.cyclic.app/income", {
+    headers: {
+      "Content-type": "application/json",
+      authorization: `Bearer ${token}`,
+    },
+  })
+    .then((res) => {
+      return res.json();
+    })
+    .then((data) => {
+      console.log(data);
+  let data1 = { name: "Hondurus" };
   every_incomes_main_display(data);
-  // });
+  });
 }
 
 function every_incomes_main_display(data) {

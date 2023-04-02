@@ -1,3 +1,5 @@
+let loading_container = document.getElementById("loading-container");
+
 // ---------------------------------------------------------------------------
 // login switch
 const loginlink = () => {
@@ -211,6 +213,8 @@ onload();
 // login form submit
 const loginFormSubmit = async (event) => {
   event.preventDefault();
+  loading_container.style.display = "block";
+
   let form = document.getElementById("loginForm");
   let formData = new FormData(form);
   let data = Object.fromEntries(formData);
@@ -225,9 +229,34 @@ const loginFormSubmit = async (event) => {
     }
   );
   let result = await response.json();
-  console.log(result);
-  // alert(result.message);
-  // localStorage.setItem("token", result.token);
+  if (result.msg = "Login Successfull") {
+    loading_container.style.display = "none";
+    sessionStorage.setItem("token", result.token);
+    sessionStorage.setItem("username", result.user.fname);
+
+    Swal.fire({
+      title: "Logged In successfully!",
+      text: "You are logged in successfully.",
+      icon: "success",
+    }).then((res) => {
+      if (res.value) {
+        window.location.href = "./Dashboard.html";
+      } else {
+        Swal.fire({
+          title: "Wrong Credentials!",
+          text: "Try Again",
+          icon: "error",
+        });
+      }
+    });
+  } else {
+    loading_container.style.display = "none";
+    Swal.fire({
+      title: "Wrong Credentials!",
+      text: "Try Again",
+      icon: "error",
+    });
+  }
 };
 
 // ---------------------------------------------------------------------------
@@ -235,6 +264,8 @@ const loginFormSubmit = async (event) => {
 // register form submit
 const registerFormSubmit = async (event) => {
   event.preventDefault();
+  loading_container.style.display = "block";
+
   let form = document.getElementById("registerForm");
   let formData = new FormData(form);
   let data = Object.fromEntries(formData);
@@ -252,10 +283,39 @@ const registerFormSubmit = async (event) => {
       }
     );
     let result = await response.json();
-    console.log(result);
+
+    if (result.msg == "Signup Successfully") {
+      loading_container.style.display = "none";
+      Swal.fire({
+        title: "Registered Successfully!",
+        text: "You are registered successfully.",
+        icon: "success",
+      }).then((res) => {
+        if (res.value) {
+          window.location.reload();
+        } else {
+          Swal.fire({
+            title: "Wrong Credentials!",
+            text: "Try Again",
+            icon: "error",
+          });
+        }
+      });
+    } else {
+      loading_container.style.display = "none";
+      Swal.fire({
+        title: "User Already Registered!",
+        text: "Please Login",
+        icon: "error",
+      });
+    }
   } else {
-    alert("password not match");
-    return;
+    loading_container.style.display = "none";
+    Swal.fire({
+      title: "Password Mismatched",
+      text: "Please Try Again",
+      icon: "error",
+    });
   }
 };
 
