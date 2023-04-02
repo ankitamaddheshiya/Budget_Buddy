@@ -14,9 +14,12 @@
 <h1>API end points</h1>
 <p>
 POST /users/login - to login<br>
-GET /<br>
-GET / <br>
-GET / <br>
+POST /users/register - to register</br>
+GET /account  - to account<br>
+GET /income  - to income<br>
+GET /expenses - to expenses<br>
+GET /budget - to budget <br>
+GET /history - to history<br>
 
 </p>
 
