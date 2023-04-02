@@ -1,2 +1,2 @@
-# honorable-furniture-4728
-<h1>Click & Collect</h1>
+#Budget Buddy
+<p>Budget Buddy  is a software application that you may access from your computer, tablet or mobile device to track your finances, such as income, savings, debt payoff, or investing.</p>
