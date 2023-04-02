@@ -202,13 +202,14 @@ const onload = () => {
   left.append(img);
   right.innerHTML = loginLayout;
 
-  // loader
-  let loader = document.querySelector(".loader");
-  loader.style.display = "block";
+
+  let loading_container = document.getElementById("loading-container");
+  loading_container.style.display = "block";
+
 
   setTimeout(() => {
-    loader.style.display = "none";
-  }, 2000);
+    loading_container.style.display = "none";
+  }, 1500);
 };
 onload();
 
