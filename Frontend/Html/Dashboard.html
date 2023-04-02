@@ -15,11 +15,12 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@700&family=Poppins:ital,wght@0,300;0,400;0,500;1,400&display=swap"
     rel="stylesheet">
+  <!-- awesome -->
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 
-<body style="height:1500px">
-
-  <nav class="navbar">
+<body>
+  <nav class="navbar" id="nav">
     <div class="container-fluid">
       <div class="navbar-logo">
         <img src="../images/bblogo2-removebg-preview.png" alt="">
@@ -29,7 +30,7 @@
         <li><a href="#" style="color: white;font-size: 20px;margin: 10px">How its Work</a></li>
         <li><a href="#" style="color: white;font-size: 20px;margin: 10px">Services</a></li>
         <li><a href="#" style="color: white;font-size: 20px;margin: 10px">Contact us</a></li>
-
+        <li><a href="#" style="color: white;font-size: 20px; margin: 10px;"><i class="fa-regular fa-user"></i> Username </a></li>
       </ul>
     </div>
   </nav>
@@ -173,7 +174,8 @@
           <a style="font-size: 15px;color: brown;" href="">Read More</a>
         </div>
         <div>
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTXf7yGivgW6MuNJI0l-erU4xH2qomkRN0rtWMjTcebWm1pIfV68vR5naDWcqoVfwtOwqg&usqp=CAU"
+          <img
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTXf7yGivgW6MuNJI0l-erU4xH2qomkRN0rtWMjTcebWm1pIfV68vR5naDWcqoVfwtOwqg&usqp=CAU"
             alt="">
           <p>Budget Buddy got some updates <br>this year,most of which</p>
 
@@ -296,7 +298,7 @@
           <!-- <img
             src="https://sp-ao.shortpixel.ai/client/to_webp,q_glossy,ret_img,w_512/https://goodbudget.com/wp-content/uploads/2019/05/29193834/huffpost-logo-ConvertImage.png"
             alt=""> -->
-            <img
+          <img
             src="https://sp-ao.shortpixel.ai/client/to_webp,q_glossy,ret_img,w_800/https://goodbudget.com/wp-content/uploads/2019/05/06221623/logo-usatoday.png"
             alt="">
         </div>
@@ -346,7 +348,7 @@
           <!-- <img
             src="https://sp-ao.shortpixel.ai/client/to_webp,q_glossy,ret_img,w_512/https://goodbudget.com/wp-content/uploads/2019/05/29193834/huffpost-logo-ConvertImage.png"
             alt=""> -->
-            <img
+          <img
             src="https://sp-ao.shortpixel.ai/client/to_webp,q_glossy,ret_img,w_800/https://goodbudget.com/wp-content/uploads/2019/05/06221623/logo-usatoday.png"
             alt="">
         </div>
@@ -379,35 +381,16 @@
 
 
       <div class="txt-div">
-        <!-- <h2 style="color: black;">Budget Buddy</h2>
-          <p>Budget well. Live life. Do good.</p> -->
-        <div class="txt-div-1">
-          <div>
-            <img style="width: 30%;margin-bottom: 40px;margin-right: 40px;" src="../images/bblogo2-removebg-preview.png"
-              alt="">
-          </div>
-          <div class="img" style="width:50% ; margin-left: 350px;">
-            <img style="width: 3%; height: 15px;margin: 10px; "
-              src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAH8AAAB/CAMAAADxY+0hAAAAYFBMVEX///8AAADNzc3o6Oj29vbBwcEmJibs7Oz7+/vU1NRISEjf39/z8/MeHh6bm5s7Oztzc3NhYWGMjIwNDQ2CgoKsrKxYWFgvLy96enpnZ2dOTk64uLgWFhaSkpKioqI0NDTNyr3PAAAEiUlEQVRogcVb6YKCIBDGs8NKyuyy8v3fcmvbcgYHBBaa719ifsrcMAihR1W0+0NdNokvmrI+7NuiMnDoMOtk70+svEYvu5kT++J0DMT9xvG0sGZPt4HJX9imdt9eR2F/op6eg9kpGvsTpwk9KELLXcWxMNFvIrM/sdHTn79AnyRnDfvq8hX6JLmsSPrll+iTZEm9APX1x+2uK1J/FN1uS2n0xUb21/tiblJWS8wXm+vo2SMdGGm+pbeyw9ijKlZQqBKy99Z2WKjahfzATBHSLcTEY8xvimpBT4id7troo7xRrBHLaRhZoIHSJ1+wQVUinkHEKOKVpHcIghV6gfp9OUWTH+vrn6iQCN4WhowjjuzfQHa2fV1D0r+F5cvu+/NpA4wZWcHrOlT+ZVDDW8m/xx4+Qp1DP/BrAsj2g7qd2SDt60esUNl+fUA3lkgY5NCsrp8ZgNr2fCsJfof0+WIHRZ0s35fhBMjH7x68ZEj6TClfPt8GomH/MElw2z0kf4fpk9174D5caypkkUG1b6fwf3QL2nsh2uHHMajxSYX/Y9pzYHCt2BNvaIs8q6oqy+nBvcI/PB1YwF4cCAlNY75o5WBetWzHqZqa0gyeFUjmAGNfZ/vZqewTFb1M8URkONwD5QKaWQsQEu1Cz2qjS9SXGxS6sQKClBfMTCmA+Vl5n5tpVaKB4StHSR0I68ADNQLcYsHfJlNowUwNL9DAZ0MP6MRf2VRol+FLV28bkBl8jC9/Ma4jKFyBHlWt3J7vSkrlyW9fnBtKbH9+l4WRk/FJXvxuawO6Gt+bn/7667pc00phmgEPfkL2a9mlD+9fVWkn1+Nhgw6486u+/BE48M2pGm1M3tSZv1LneDOOebk6RVdtIePMr7idc0belSkqSixy+PErTlefpd3xja3mNld+/FSTlaT41jD8eOHAXJ5W6F5NMefGv0IBdypGoBlo6FLejR/p9XSGjnSAdgJO/DnMdoxu9Q/QCpZkburEjyaUNjyMbFJcTvwwjZ+Iq3+AApP/5c9hpqvJ9NW/gH/01F9c+GGxtLeix5UHVdK58LcT4xTg8ykf6MIPxL+2pBcChGNKAVz4a/OjaICXrolhF34wbFue4dL/f/y5eVgDSEAYgAM/cCb6fGIEmK8QLsuBH8Qzh4VZuMxK/MuPv7Rxvi9koKgOxs/y/dzy59Z/bvtn93/c/p87/nHHf+78hzv/Y89/ufN/7vqHvf7jrn/Z63/29Q/u9R/29S/u9T/29U/29V/29W/29X/2/Q+v/Z+g/M77X6H5Hff/rPjj7X/a8DcR93+1QPu/0fa/9UD73377//lo/9+WXCj7/9H6H/RA/Q/R+j+0wP0f0fpftMD9L9H6f7TA/T/R+p+0wP1P8fq/NFD7v6L1v2mg9r/F6/8jAbXv1QMcr/+RwLj/MWr/5whE/yd3/yt7/y93/zN7/zd3/zt7///4/ENoT5wazz+wn/+Iev7lbnH+hf38D/v5J+7zX4L7/JtgP//Hfv6R/fyn4D7/+gTv+d/fOWA9//xE4PPfhdv57xe+cf79BwQwR12GuPxKAAAAAElFTkSuQmCC"
-              alt="">
-            <img style="width: 3%; height: 15px;margin: 10px"
-              src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHsAAAB7CAMAAABjGQ9NAAAAY1BMVEUAAAD////v7+/u7u7z8/P6+vr29vY0NDTIyMilpaXExMStra2JiYnn5+ctLS0VFRV5eXmRkZGzs7PW1tZHR0c5OTkbGxsgICBRUVEoKCiXl5efn59zc3Ph4eEQEBDQ0NBiYmIB822XAAADvklEQVRoge2ba1PsIAyGCRC0tt3e9uKqq+f//8oD9Ebb3XMsFJixvl9kxjrPAElIIhBQ4lQK1ahJskNBtldxyNIGkTKugUwBycgGyKurB+yoy9sNxT22yDMfE56qKPM7bKzP3smaXs/ZnJdByEqlNCymRLgSiGMwNCFH2m46UZPn4hIQLW2ODmzOQ85a6Yg9W3wERss979iiDo4mRFk7QcjDONdURS649LEsAlp5GiOQ+49m91TcZGypoqAJyZCA3+PjsS5ImkhoIslpNHZK4li5UkYO0dgHEsfDlOKRvah4WugUBHx6e77BUgHg2Q2Qt3kBZ5QxbEcMnryTESSPsp5Ng7FfG0DUyR8qjSMh00G/7IoKOec291bqJs/ahffKTkDnnEPez4aSwzs7BYzFTgBQ2daCzbyzK8CHZqZH/tivd6dMg/hYwx9sdVvRc+qPXWniv9jUF/v8wMxGtr81r6V76VJWSpsZ7atqaWbdyBcb2ymjCmE8bFzLenb42PJ54zQW+wQ0GvtNMGO/w55jX4/MDIWUHoH86SNnuubQHiOT5X7JZqp8tHNeYcmGQN2yP0s2fwmDlrF8vt9UhCqy3nESTtXoFghNEtEfI4N/P4dk052y+7gWnA19cii6NBEDsmGWHgdz75FNfzj7OuknXNJFXOPPlzt9h88t2Ik6knMtTTTNrKtG2PDb4UPc5PxOp/nvaGazRJnC5MNt2QynWx0gZ4rP7tMww8wC5GupDmRrtRGbs7F1tZi8MWXK2NY9rpQb5eVi0/3WobHZ/VKa7Metlg3XHOe9lG40C24+entxfSx2bIka15ZmFqC3p+PaaGb4XzPbsLf3fR/bvrdnFVt+QEytsav92uLv3pq3I8GND7fpO5R1aqpp3cssRvN0qdpH3+FdTOLarmrBfbIX51joOtSsiX5mLfjLNtlx9nvZ24vRZ9pZbPnt7f329nbDjhfXJnVJ0NxhXo/tJrbsM19b9PHWsJ1uDTr5WOF2T9Mptpzc7qc6sTO3e7lOZ0nqdh85GdovFmdoQ9ClNnbxsSsQdNlwl9hSAaEu/7B2YJ9zIAwd7idM87VVZ0kJQLhweHBgf4Zec0D1lsn+fYm9j9Wie0dlverWseVDGYpmo+17Ilv2UaG792PU0skt1/wi+MgW1G7mLdvs7Ylv2NpRtNf6SPcfBjtPS2x6e2Xf7dRv13T7tbZwNYvYcq6xt46RDXm5mr6afS7z4U9MtsBbtvI510r2tcrBuLBtsDmjKJp0zbvY77OLQ5Y0kw8B/gJyeDSdx6GvhAAAAABJRU5ErkJggg=="
-              alt="">
-            <img style="width: 3%; height: 15px;margin: 10px"
-              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRLCmt1WtEu3lH74aZicJ5k0nUNPU-6yu68qA&usqp=CAU"
-              alt="">
-          </div>
-        </div>
-
-        <p class="footer-para">A home budget app based on the envelope budget system. Available on the Web,
+         <p class="footer-para">A home budget app based on the envelope budget system. Available on the Web,
           Android and
           iPhone. <br> Replace your family budget planner,worksheet or spreadsheet with software that syncs.
         </p>
-
-      </div>
-
-
-      <div class="flexlist">
+     </div>
+     <div class="flexlist">
+        <div class="list">
+          <img src="../images/bblogo2-removebg-preview.png"
+            alt="">
+        </div>
         <div class="list">
           <h6>EXPLORE</h6>
           <ul>
@@ -448,6 +431,12 @@
 
     </div>
     </div>
+    <div class="img" >
+      <i class="fa-brands fa-facebook fa-2x"></i>
+      <i class="fa-brands fa-instagram fa-2x"></i>
+      <i class="fa-brands fa-twitter fa-2x"></i>
+      <i class="fa-brands fa-youtube fa-2x"></i>
+    </div>
 
 
     <p>© 2009–present Dayspring Partners | Terms | Privacy | Press Resources<br>
@@ -458,9 +447,16 @@
       “You can keep a budget, EEBA can help,” Money Up, the Money Up mascot, the Money Up envelope,<br>and
       “Budget well. Live life. Do good.” are trademarks of Dayspring Technologies, Inc. SPC, a San Francisco
       custom web app development company.</p>
+      <!-- <div class="img" >
+        <i class="fa-brands fa-facebook fa-2x"></i>
+        <i class="fa-brands fa-instagram fa-2x"></i>
+        <i class="fa-brands fa-twitter fa-2x"></i>
+        <i class="fa-brands fa-youtube fa-2x"></i>
+      </div> -->
 
 
   </footer>
+
 
 
 
