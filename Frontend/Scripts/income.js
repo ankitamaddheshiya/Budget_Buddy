@@ -33,8 +33,8 @@ let edit_form_popup_div = document.getElementById("edit_form_popup_div")
 const editbtnFun = ()=>{
     edit_form_popup_div.classList.add("open-popup")
 }
-const dontedit = ()=>{
-    edit_form_popup_div.classList.remove("open-popup")
+const dontedit = (event)=>{
+    event.target.parentElement.classList.remove("open-popup")
 }
 
 let add_exp_form = document.querySelector("#add_exp_form")

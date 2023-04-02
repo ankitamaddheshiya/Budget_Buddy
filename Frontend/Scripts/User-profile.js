@@ -48,16 +48,35 @@ const accountOption = async (event) => {
   }
   let user_profile_photo = document.getElementById("user-profile-photo");
   let user_dispaly_dob = document.getElementById("user-dispaly-dob");
-  let user_display_address = document.getElementById("user-display-address");
-  let user_dispaly_firstname = document.getElementById(
-    "user-dispaly-firstname"
-  );
+  let user_display_address1 = document.getElementById("user-display-address1");
+  let user_display_address2 = document.getElementById("user-display-address2");
+  let user_dispaly_firstname = document.getElementById("user-dispaly-firstname");
   let user_dispaly_lastname = document.getElementById("user-dispaly-lastname");
   let user_dispaly_email = document.getElementById("user-dispaly-email");
   let user_dispaly_mobile = document.getElementById("user-dispaly-mobile");
-  let user_dispaly_address = document.getElementById("user-dispaly-address");
 
-  user_dispaly_firstname.innerText = "Aman";
+  let promise = await fetch(
+    "https://periwinkle-catfish-cuff.cyclic.app/user/profile",
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    }
+  );
+  let response = await promise.json();
+
+  const { id, fname, lname, email, mobile, address, dob, avatar } = response;
+
+  user_profile_photo.src = avatar;
+  user_dispaly_dob.innerHTML = dob;
+  user_display_address1.innerText = address;
+  user_display_address2.innerText = address;
+  user_dispaly_firstname.innerHTML = fname;
+  user_dispaly_lastname.innerHTML = lname;
+  user_dispaly_email.innerHTML = email;
+  user_dispaly_mobile.innerHTML = mobile;
 };
 
 // edit profile button
@@ -81,7 +100,6 @@ const editProfilefun = async (event) => {
   let data = Object.fromEntries(formData);
   data.avatar = avatar;
 
-  
   try {
     let editProfile = await fetch(
       // id se fetch karna hai to id ko session storage se le lena hai
