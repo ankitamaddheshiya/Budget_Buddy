@@ -58,14 +58,14 @@ incomeRouter.delete('/delete/:id',async(req,res)=>{
     try{
     const incomeID=req.params.id;
     await incomemodel.findByIdAndDelete({_id:incomeID})
-    res.send({"msg":`note with id:${incomeID} has been deleted`})
+    res.send({msg:`Data Deleted`})
     }
     catch(err){
         res.send({msg:err.message})
     }
 });
 
-incomeRouter.get("/filterdata",async(req,res)=>{
+incomeRouter.post("/filterdata",async(req,res)=>{
     const{Sdate,Edate,userid}=req.body;
     
     try {
