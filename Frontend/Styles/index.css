@@ -1,7 +1,7 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Source+Code+Pro:wght@300;400;500;600;700&display=swap');
 
-*{
+body{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -16,7 +16,7 @@
     display: flex;
 }
 .container span{
-    font-size: 7em;
+    font-size: 8em;
     color: black;
     font-weight: bold;
     opacity: 0;
@@ -26,7 +26,8 @@
 .container span:nth-child(1){
     animation-delay: 0.02s;
     color: rgb(78, 78, 78);
-    font-size: 9rem;
+    font-size: 12rem;
+    margin-top: -4rem;
 }
 .container span:nth-child(2){
     animation-delay: 0.2s;
@@ -51,7 +52,8 @@
 .container span:nth-child(7){
     animation-delay: 1.2s;
     color: rgb(78, 78, 78);
-    font-size: 9rem;
+    font-size: 12rem;
+    margin-top: -4rem;
 }
 .container span:nth-child(8){
     animation-delay: 1.4s;
