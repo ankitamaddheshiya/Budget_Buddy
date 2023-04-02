@@ -66,8 +66,9 @@ expenseRouter.delete('/delete/:id',async(req,res)=>{
     }
 });
 
+
 expenseRouter.post("/filterdata",async(req,res)=>{
-    const{Sdate,Edate,userid}=req.body;
+   const{Sdate,Edate,userid}=req.body;
     try {
         let sdate= new Date(Sdate).toISOString();
     let edate= new Date(Edate).toISOString();
