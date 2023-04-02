@@ -4,9 +4,13 @@
   Deploy Link:-
 </p>
 <h1>Teck stack</h1>
-<l1>Frontend: HTML | CSS | JavaScript | Bootstrap</li>
+
+<li>Frontend: HTML | CSS | JavaScript | Bootstrap </li>
 
 <li> Backend: Node.js | Express.js | MongoDB | Oath </li>
 
 <p>→ Node Modules: mongoose.js | bcrypt | cors | dotenv | jsonwebtoken | nodemon | express | uuid </p>
+
+<h1>Home Page </h1>
+<img src="C:\Users\DELL\OneDrive\Pictures\Screenshots\b1.png">
 
