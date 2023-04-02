@@ -5,7 +5,7 @@ const {client}= require("../redis/redis");
 
 
 const authenticate =  async (req, res, next) => {
-    if(!req.header.authorization){
+    if(!req.headers.authorization){
         return res.send({msg:"Please Login Again"})
     }
     

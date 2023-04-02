@@ -8,7 +8,7 @@ const userSchema = mongoose.Schema({
     mobile:{type:Number},
     avatar:{type:String},
     address:{type:String},
-    dob:{type:String},
+    dob:{type:Date},
     createdAt:{type: Date,default: Date.now}
 },{
     versionKey:false
