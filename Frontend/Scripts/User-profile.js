@@ -10,6 +10,7 @@ let logout_full = document.querySelector(".logout_full");
 let loading_container = document.getElementById("loading-container");
 let token = sessionStorage.getItem("token");
 let tbody = document.getElementById("tbody-append-history");
+let container_full = document.getElementById("container_full")
 
 // ------------------------------------------------------------------
 // to retrive the user options background colors
@@ -35,6 +36,7 @@ const accountOption = async (event) => {
   dashboard_full.style.display = "none";
   history_full.style.display = "none";
   logout_full.style.display = "none";
+  container_full.style.display = "none";
   Page_name_heading.innerHTML = "Account";
   userOptionsColor();
   if (event.target.children[1] == undefined) {
@@ -306,6 +308,8 @@ const budgetOption = (event) => {
   exp_full.style.display = "none";
   history_full.style.display = "none";
   logout_full.style.display = "none";
+  container_full.style.display = "none";
+
 
   Page_name_heading.innerHTML = "Budget";
   userOptionsColor();
@@ -326,7 +330,7 @@ const budgetOption = (event) => {
 
   loading_container.style.display = "block";
   // doughnut chart
-  var xValues = ["Italy", "France", "Spain", "USA", "Argentina"];
+  var xValues = ["Rent", "Agriculture", "Loan", "Trading", "Misc."];
   var yValues = [55, 49, 44, 24, 15];
   var barColors = ["#b91d47", "#00aba9", "#2b5797", "#e8c3b9", "#1e7145"];
 
@@ -344,7 +348,7 @@ const budgetOption = (event) => {
     options: {
       title: {
         display: true,
-        text: "World Wide Wine Production 2018",
+        text: "Your Budget",
       },
     },
   });
@@ -356,16 +360,15 @@ const budgetOption = (event) => {
 
   function drawChart() {
     const data = google.visualization.arrayToDataTable([
-      ["Contry", "Mhl"],
-      ["Italy", 54.8],
-      ["France", 48.6],
-      ["Spain", 44.4],
-      ["USA", 23.9],
-      ["Argentina", 14.5],
+      ["Rent", "Mhl"],
+      ["Agriculture", 54.8],
+      ["Loan", 48.6],
+      ["Trading", 44.4],
+      ["Misc", 23.9],
+      ["Saving", 14.5],
     ]);
-
     const options = {
-      title: "World Wide Wine Production",
+      title: "Your Budget",
       is3D: true,
     };
 
@@ -415,7 +418,7 @@ const budgetOption = (event) => {
 
   // ---------------------------------------------------------
   // bar chart
-  var xValues = ["Italy", "France", "Spain", "USA", "Argentina"];
+  var xValues = ["Rent", "Agriculture", "Loan", "Trading", "Misc."];
   var yValues = [55, 49, 44, 24, 15];
   var barColors = ["red", "green", "blue", "orange", "brown"];
 
@@ -452,6 +455,8 @@ const historyOption = (event) => {
   exp_full.style.display = "none";
   dashboard_full.style.display = "none";
   logout_full.style.display = "none";
+  container_full.style.display = "none";
+
 
   Page_name_heading.innerHTML = "History";
   userOptionsColor();
@@ -608,6 +613,8 @@ const logoutOption = (event) => {
   profile_full.style.display = "none";
   exp_full.style.display = "none";
   dashboard_full.style.display = "none";
+  container_full.style.display = "none";
+
 
   Page_name_heading.innerHTML = "Logout";
   userOptionsColor();
