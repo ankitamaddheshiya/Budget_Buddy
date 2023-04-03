@@ -325,7 +325,7 @@ const registerFormSubmit = async (event) => {
 const googleLogin = async () => {
   try {
     let response = await fetch(
-      "https://periwinkle-catfish-cuff.cyclic.app/user/auth/google"
+      "https://periwinkle-catfish-cuff.cyclic.app/user/auth/google", { mode: 'no-cors' }
     );
     let result = await response.json();
     console.log(result);
