@@ -410,7 +410,7 @@ const budgetOption = (event) => {
 
   //Define Layout
   const layout = {
-    title: "[y=" + exp1 + "]  [y=" + exp2 + "]  [y=" + exp3 + "]",
+    title: "Income and Expense Chart",
   };
 
   // Display using Plotly
@@ -437,7 +437,7 @@ const budgetOption = (event) => {
       legend: { display: false },
       title: {
         display: true,
-        text: "World Wine Production 2018",
+        text: "Budget Relation",
       },
     },
   });
