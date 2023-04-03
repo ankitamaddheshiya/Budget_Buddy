@@ -7,7 +7,7 @@
 
 <li>Frontend: HTML | CSS | JavaScript | Bootstrap </li>
 
-<li> Backend: Node.js | Express.js | MongoDB | Oath </li>
+<li> Backend: Node.js | Express.js | MongoDB | Oath | Redis</li>
 
 <p>→ Node Modules: mongoose.js | bcrypt | cors | dotenv | jsonwebtoken | nodemon | express | uuid | passport </p>
 <h1>Group project</h1>
