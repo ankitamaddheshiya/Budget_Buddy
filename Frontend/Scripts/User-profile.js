@@ -592,7 +592,7 @@ const logoutfun = async () => {
     }).then((res) => {
       if (res.value) {
         sessionStorage.clear();
-        window.location.assign("/Frontend/Html/Login.html");
+        window.location.assign("/Html/Login.html");
       } else {
         alert("Error");
       }
