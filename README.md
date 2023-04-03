@@ -10,7 +10,14 @@
 <li> Backend: Node.js | Express.js | MongoDB | Oath </li>
 
 <p>→ Node Modules: mongoose.js | bcrypt | cors | dotenv | jsonwebtoken | nodemon | express | uuid | passport </p>
-
+<h1>Group project</h1>
+<p>Teamlead :- Ankita Maddheshiya <br>
+Teammates:-
+ Akshay Chavan
+ Divyansh 
+ Akash shukla
+ Snehasish Goash
+</p>
 
 
 <h1>Home Page </h1>
