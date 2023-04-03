@@ -6,6 +6,8 @@ const incomeOption = (event) => {
     dashboard_full.style.display = "none";
     history_full.style.display = "none";
     logout_full.style.display = "none";
+    container_full.style.display = "none";
+
   
     userOptionsColor();
     if (event.target.children[1] == undefined) {
