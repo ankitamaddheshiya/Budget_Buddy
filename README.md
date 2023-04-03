@@ -13,10 +13,10 @@
 <h1>Group project</h1>
 <p>Teamlead :- Ankita Maddheshiya <br>
 Teammates:-
- Akshay Chavan
- Divyansh 
- Akash shukla
- Snehasish Goash
+ Akshay Chavan<br>
+ Divyansh Goal<br>
+ Akash shukla <br>
+ Snehasish <br>
 </p>
 
 
