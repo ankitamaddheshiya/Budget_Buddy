@@ -10,6 +10,8 @@ const {client}= require("../redis/redis");
 const { authenticate } = require("../Middlewares/authenticate");
 const app = express();
 app.use(express.json());
+app.use(cors())
+userRouter.use(cors())
 
 const {cookieparser} = require("./Income.routes")
 
@@ -93,7 +95,7 @@ userRouter.get(
     function (req, res) {
       console.log(req.user);
       // token bhejna hai and then redirect karn hai
-      res.redirect("/loginwelcome");
+      res.redirect("");
     }
   );
 
