@@ -13,8 +13,8 @@
 <h1>Group project</h1>
 <p>Teamlead :- Ankita Maddheshiya <br>
 Teammates:-
+           Divyansh Goel ,
            Akshay Chavan ,
-           Divyansh Goal ,
            Akash shukla  ,
            Snehasish 
 </p>
