@@ -79,10 +79,7 @@ const userOptionsColor = () => {
 let cache = {};
 
 const accountOption = async (event) => {
-  if (profile_full.style.display == "block") {
-    return;
-  }
-
+  
   profile_full.style.display = "block";
   income_full.style.display = "none";
   exp_full.style.display = "none";
@@ -233,6 +230,7 @@ const editProfilefun = async (event) => {
       text: "Your Profile updated successfully.",
       icon: "success",
     }).then((res) => {
+      cache = {};
       accountOption(event);
       event.target.parentElement.classList.remove("open-popup");
     });
@@ -544,6 +542,7 @@ const budgetOption = (event) => {
 
 let hisCache = [];
 const historyOption = (event) => {
+
   history_full.style.display = "block";
   income_full.style.display = "none";
   profile_full.style.display = "none";
@@ -594,7 +593,11 @@ const historyOption = (event) => {
         tbody.appendChild(tr);
       });
     };
-
+    
+    if(history_full.style.display == "none"){
+      hisCache = [];
+    }
+     
     if (hisCache.length !== 0) {
       appendHisfun(hisCache);
       loading_container.style.display = "none";

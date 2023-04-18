@@ -138,6 +138,7 @@ const expenseOption = (event) => {
               .then((data) => {
                 console.log(data);
                 exp_main_func()
+                hisCache = [];
                 // if (data.msg=="Data Deleted"){
                 //   Swal.fire({
                 //     title: "Data Deleted",
@@ -211,6 +212,7 @@ const expenseOption = (event) => {
     console.log(response);
     exp_main_func();
     alert("Expense Added successfully");
+    hisCache = [];
   });
   
   let exp_search_btn = document.getElementById("exp_search_btn")
