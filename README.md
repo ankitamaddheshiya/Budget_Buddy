@@ -1,7 +1,7 @@
 <h1 style="color:blue">Budget Buddy</h1>
 <p>Budget Buddy  is a software application that you may access from your computer, tablet or mobile device to track your finances, such as income, savings, debt payoff, or investing.
 <br>
-  Deploy Link:- http://budget-buddy-777.netlify.app
+  Deploy Link:- https://the-budget-buddy.netlify.app/
 </p>
 <h1>Teck stack</h1>
 
