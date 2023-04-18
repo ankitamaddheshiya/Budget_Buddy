@@ -10,8 +10,54 @@ let logout_full = document.querySelector(".logout_full");
 let loading_container = document.getElementById("loading-container");
 let token = sessionStorage.getItem("token");
 let tbody = document.getElementById("tbody-append-history");
-let container_full = document.getElementById("container_full")
+let container_full = document.getElementById("container_full");
+let fixed_div_username = document.getElementById("fixed-div-username");
+let fname = sessionStorage.getItem("username");
+let edit_form_popup_div = document.getElementById("edit_form_popup_div");
+let container = document.querySelector("#container_full .container");
+let cont2 = document.querySelector(".container");
 
+let arr = [
+  "https://media.istockphoto.com/id/1392986755/photo/stock-market-concept.jpg?b=1&s=612x612&w=0&k=20&c=b1uS7OgH56HTT1wzuf6pWF1N7mYJREzv2rKzpA8LwfU=",
+
+  "https://media.istockphoto.com/id/1353142542/photo/yellow-notification-bell-ringing-and-calendar-deadline-on-brown-background-3d-rendering.jpg?b=1&s=612x612&w=0&k=20&c=9Vz9TmeiC8Y6YmfIMRQ9XSO2KSrTOYTv_9BmbjPi5s8=",
+
+  "https://media.istockphoto.com/id/1349813097/photo/cartoon-hand-with-growing-chart.jpg?b=1&s=612x612&w=0&k=20&c=aiAiFFc5bRuYTZ37mwL9H0f3pGdPLcJDUmEXoM4Toyc=",
+
+  "https://media.istockphoto.com/id/1319619336/photo/3d-illustration-cartoon-character-hand-sticking-out-the-smart-phone-screen-throws-up-golden.jpg?b=1&s=612x612&w=0&k=20&c=I3f2r4vA-KUxN52BlAWIuFfiyB3Q8hOWgzEjlK-NR4E=",
+];
+
+let i = 0;
+container.style.backgroundImage = `url(${arr[i]})`;
+container.style.borderRadius = "10px";
+container.style.backgroundSize = "cover";
+container.style.backgroundRepeat = "no-repeat";
+container.style.backgroundPosition = "center";
+
+cont2.style.backgroundImage = `url(${arr[i]})`;
+cont2.style.backgroundSize = "cover";
+cont2.style.backgroundRepeat = "no-repeat";
+cont2.style.backgroundPosition = "center";
+setInterval(() => {
+  container.style.backgroundImage = `url(${arr[i]})`;
+  container.style.backgroundSize = "cover";
+  container.style.backgroundRepeat = "no-repeat";
+  container.style.backgroundPosition = "center";
+  container.style.transition = "all 1s ease-in-out";
+
+  cont2.style.backgroundImage = `url(${arr[i]})`;
+  cont2.style.backgroundSize = "cover";
+  cont2.style.backgroundRepeat = "no-repeat";
+  cont2.style.backgroundPosition = "center";
+  cont2.style.transition = "all 1s ease-in-out";
+
+  i++;
+  if (i == arr.length) {
+    i = 0;
+  }
+}, 3000);
+
+fixed_div_username.innerHTML = fname;
 // ------------------------------------------------------------------
 // to retrive the user options background colors
 const userOptionsColor = () => {
@@ -24,12 +70,19 @@ const userOptionsColor = () => {
 };
 // ------------------------------------------------------------------
 
+//
 // <<<<<<<<<<<<<<<<<<<<<<<<<<<< DASHBOARD OPTIONS TO USER >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 // ------------------------------------------------------------------
 
 // user account option
+let cache = {};
+
 const accountOption = async (event) => {
+  if (profile_full.style.display == "block") {
+    return;
+  }
+
   profile_full.style.display = "block";
   income_full.style.display = "none";
   exp_full.style.display = "none";
@@ -65,46 +118,80 @@ const accountOption = async (event) => {
   let user_dispaly_mobile = document.getElementById("user-dispaly-mobile");
 
   loading_container.style.display = "block";
-  let promise = await fetch(
-    "https://periwinkle-catfish-cuff.cyclic.app/user/profile",
-    {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        authorization: `Bearer ${sessionStorage.getItem("token")}`,
-      },
-    }
-  );
-  let response = await promise.json();
-  loading_container.style.display = "none";
 
-  const { id, fname, lname, email, mobile, address, dob } = response;
+  if (Object.keys(cache).length > 0) {
+    const { id, fname, lname, email, mobile, address, dob } = cache;
 
-  user_dispaly_email.innerHTML = email;
+    user_dispaly_email.innerHTML = email;
 
-  avatar
-    ? (user_profile_photo.src = avatar)
-    : (user_profile_photo.src = "../images/user.png");
-  fname
-    ? (user_dispaly_firstname.innerHTML = fname)
-    : (user_dispaly_firstname.innerHTML = "First Name");
+    avatar
+      ? (user_profile_photo.src = avatar)
+      : (user_profile_photo.src = "../images/user.png");
+    fname
+      ? (user_dispaly_firstname.innerHTML = fname)
+      : (user_dispaly_firstname.innerHTML = "First Name");
 
-  user_display_name.innerHTML = fname;
-  fixed_div_username.innerHTML = fname;
-  lname
-    ? (user_dispaly_lastname.innerHTML = lname)
-    : (user_dispaly_lastname.innerHTML = "Last Name");
+    user_display_name.innerHTML = fname;
+    fixed_div_username.innerHTML = fname;
+    lname
+      ? (user_dispaly_lastname.innerHTML = lname)
+      : (user_dispaly_lastname.innerHTML = "Last Name");
 
-  // dob
-  //   ? (user_dispaly_dob.innerHTML = dob)
-  //   : (user_dispaly_dob.innerHTML = "Date Of Birth");
-  address
-    ? (user_display_address2.innerText = address)
-    : (user_display_address2.innerText = "Address");
+    // dob
+    //   ? (user_dispaly_dob.innerHTML = dob)
+    //   : (user_dispaly_dob.innerHTML = "Date Of Birth");
+    address
+      ? (user_display_address2.innerText = address)
+      : (user_display_address2.innerText = "Address");
 
-  mobile
-    ? (user_dispaly_mobile.innerHTML = mobile)
-    : (user_dispaly_mobile.innerHTML = "Edit Profile");
+    mobile
+      ? (user_dispaly_mobile.innerHTML = mobile)
+      : (user_dispaly_mobile.innerHTML = "Edit Profile");
+
+    loading_container.style.display = "none";
+  } else {
+    let promise = await fetch(
+      "https://periwinkle-catfish-cuff.cyclic.app/user/profile",
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          authorization: `Bearer ${sessionStorage.getItem("token")}`,
+        },
+      }
+    );
+    let response = await promise.json();
+    cache = response;
+    loading_container.style.display = "none";
+
+    const { id, fname, lname, email, mobile, address, dob } = response;
+
+    user_dispaly_email.innerHTML = email;
+
+    avatar
+      ? (user_profile_photo.src = avatar)
+      : (user_profile_photo.src = "../images/user.png");
+    fname
+      ? (user_dispaly_firstname.innerHTML = fname)
+      : (user_dispaly_firstname.innerHTML = "First Name");
+
+    user_display_name.innerHTML = fname;
+    fixed_div_username.innerHTML = fname;
+    lname
+      ? (user_dispaly_lastname.innerHTML = lname)
+      : (user_dispaly_lastname.innerHTML = "Last Name");
+
+    // dob
+    //   ? (user_dispaly_dob.innerHTML = dob)
+    //   : (user_dispaly_dob.innerHTML = "Date Of Birth");
+    address
+      ? (user_display_address2.innerText = address)
+      : (user_display_address2.innerText = "Address");
+
+    mobile
+      ? (user_dispaly_mobile.innerHTML = mobile)
+      : (user_dispaly_mobile.innerHTML = "Edit Profile");
+  }
 };
 
 // edit profile button
@@ -141,13 +228,23 @@ const editProfilefun = async (event) => {
       }
     );
     let editProfileData = await editProfile.json();
-    console.log(editProfileData);
+    Swal.fire({
+      title: "Profile updated successfully!",
+      text: "Your Profile updated successfully.",
+      icon: "success",
+    }).then((res) => {
+      accountOption(event);
+      event.target.parentElement.classList.remove("open-popup");
+    });
   } catch (error) {
-    console.log(error);
+    Swal.fire({
+      title: "Something went wrong!",
+      text: "Try again later.",
+      icon: "error",
+    }).then((res) => {});
   }
 };
 
-let edit_form_popup_div = document.getElementById("edit_form_popup_div");
 const editbtnFun = () => {
   edit_form_popup_div.classList.add("open-popup");
 };
@@ -157,7 +254,6 @@ const dontedit = (event) => {
 
 // ----------------------------------------------------------------
 // // user income option
-
 
 // const incomeOption = (event) => {
 //   income_full.style.display = "block";
@@ -295,7 +391,6 @@ const dontedit = (event) => {
 //   });
 // }
 
-
 // ----------------------------------------------------------------
 // user expense page
 
@@ -309,7 +404,6 @@ const budgetOption = (event) => {
   history_full.style.display = "none";
   logout_full.style.display = "none";
   container_full.style.display = "none";
-
 
   Page_name_heading.innerHTML = "Budget";
   userOptionsColor();
@@ -448,6 +542,7 @@ const budgetOption = (event) => {
 // ------------------------------------------------------------------
 // user history page
 
+let hisCache = [];
 const historyOption = (event) => {
   history_full.style.display = "block";
   income_full.style.display = "none";
@@ -456,7 +551,6 @@ const historyOption = (event) => {
   dashboard_full.style.display = "none";
   logout_full.style.display = "none";
   container_full.style.display = "none";
-
 
   Page_name_heading.innerHTML = "History";
   userOptionsColor();
@@ -477,89 +571,93 @@ const historyOption = (event) => {
   const historyfun = async () => {
     loading_container.style.display = "block";
 
-    try {
-      let Incomehistory = await fetch(
-        "https://periwinkle-catfish-cuff.cyclic.app/income/",
-        {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-            authorization: `Bearer ${sessionStorage.getItem("token")}`,
-           
-          },
-        }
-      );
-      let IncomeHData = await Incomehistory.json();
+    const appendHisfun = async (HistoryOfUser) => {
+      tbody.innerHTML = null;
 
-      let Expensehistory = await fetch(
-        "https://periwinkle-catfish-cuff.cyclic.app/expense/",
-        {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-            authorization: `Bearer ${sessionStorage.getItem("token")}`,
-          },
-        }
-      );
-      let ExpenseHData = await Expensehistory.json();
-      let HistoryOfUser = [];
-      if (Array.isArray(ExpenseHData) && Array.isArray(IncomeHData)) {
-        HistoryOfUser = [...IncomeHData, ...ExpenseHData];
-      } else if (Array.isArray(ExpenseHData)) {
-        HistoryOfUser = ExpenseHData;
-      } else if (Array.isArray(IncomeHData)) {
-        HistoryOfUser = ExpenseHData;
-      } else {
-        alert("");
-        // alert(ExpenseHData.msg);
-        return;
-      }
-      loading_container.style.display = "none";
-      HistoryOfUser = HistoryOfUser.reverse();
-
-      const appendHisfun = async () => {
-        tbody.innerHTML = null;
-        HistoryOfUser.forEach((element) => {
-          let date = element.createdAt.split("T");
-          date = date[0];
-          let tr = document.createElement("tr");
-          if (element.type == "Cash") {
-            tr.style.color = "rgb(2, 82, 2)";
-            element.amount = "+ " + element.amount;
-          } else {
-            tr.style.color = "red";
-            element.amount = "- " + element.amount;
-          }
-          tr.style.fontWeight = "bold";
-          tr.innerHTML = `
-            <td>${element.title}</td>
-            <td>${element.type}</td>
-            <td>${date}</td>
-            <td>${element._id}</td>
-            <td>${element.amount}</td>
-            `;
-
-          tbody.appendChild(tr);
-        });
-      };
-
-      Swal.fire({
-        title: "History Fetch Successfully!",
-        text: "Your Income and Expenses.",
-        icon: "success",
-      }).then((res) => {
-        if (res.value) {
-          appendHisfun();
+      HistoryOfUser.forEach((element) => {
+        let date = element.createdAt.split("T");
+        date = date[0];
+        let tr = document.createElement("tr");
+        if (element.type == "Cash") {
+          tr.style.color = "rgb(2, 82, 2)";
         } else {
-          alert("Error");
+          tr.style.color = "red";
         }
+        tr.innerHTML = `
+          <td>${element.title}</td>
+          <td>${element.type}</td>
+          <td>${date}</td>
+          <td>${element._id}</td>
+          <td>${element.type == "Cash" ? element.amount = `${element.amount}` : `- ${element.amount}`}</td>
+          `;
+
+        tbody.appendChild(tr);
       });
-    } catch (error) {
-      Swal.fire({
-        title: "Something went wrong!",
-        text: "Operation Failed, Please Try Again.",
-        icon: "error",
-      });
+    };
+
+    if (hisCache.length !== 0) {
+      appendHisfun(hisCache);
+      loading_container.style.display = "none";
+    } else {
+      try {
+        let Incomehistory = await fetch(
+          "https://periwinkle-catfish-cuff.cyclic.app/income/",
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+              authorization: `Bearer ${sessionStorage.getItem("token")}`,
+            },
+          }
+        );
+        let IncomeHData = await Incomehistory.json();
+
+        let Expensehistory = await fetch(
+          "https://periwinkle-catfish-cuff.cyclic.app/expense/",
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+              authorization: `Bearer ${sessionStorage.getItem("token")}`,
+            },
+          }
+        );
+        let ExpenseHData = await Expensehistory.json();
+        let HistoryOfUser = [];
+        if (Array.isArray(ExpenseHData) && Array.isArray(IncomeHData)) {
+          HistoryOfUser = [...IncomeHData, ...ExpenseHData];
+        } else if (Array.isArray(ExpenseHData)) {
+          HistoryOfUser = ExpenseHData;
+        } else if (Array.isArray(IncomeHData)) {
+          HistoryOfUser = ExpenseHData;
+        } else {
+          alert("");
+          // alert(ExpenseHData.msg);
+          return;
+        }
+
+        hisCache = HistoryOfUser;
+        loading_container.style.display = "none";
+        HistoryOfUser = HistoryOfUser.reverse();
+
+        Swal.fire({
+          title: "History Fetch Successfully!",
+          text: "Your Income and Expenses.",
+          icon: "success",
+        }).then((res) => {
+          if (res.value) {
+            appendHisfun(HistoryOfUser);
+          } else {
+            alert("Error");
+          }
+        });
+      } catch (error) {
+        Swal.fire({
+          title: "Something went wrong!",
+          text: "Operation Failed, Please Try Again.",
+          icon: "error",
+        });
+      }
     }
   };
   historyfun();
@@ -590,19 +688,16 @@ const logoutfun = async () => {
       text: "You need to Login again.",
       icon: "success",
     }).then((res) => {
-      if (res.value) {
-        sessionStorage.clear();
-        window.location.assign("/Html/Login.html");
-      } else {
-        alert("Error");
-      }
+      sessionStorage.clear();
+      window.location.assign("Login.html");
     });
   } catch (error) {
+    loading_container.style.display = "none";
     Swal.fire({
       title: "Something Went Wrong!",
       text: "Operation Failed.",
       icon: "error",
-    });
+    }).then();
   }
 };
 
@@ -614,7 +709,6 @@ const logoutOption = (event) => {
   exp_full.style.display = "none";
   dashboard_full.style.display = "none";
   container_full.style.display = "none";
-
 
   Page_name_heading.innerHTML = "Logout";
   userOptionsColor();
@@ -632,13 +726,12 @@ const logoutOption = (event) => {
   }
 };
 
-
 //to avoid hitting without loggin in
-window.onload = function(){
- if(!token){
-  window.location.assign("/Frontend/Html/Login.html");
- }
-}
+window.onload = function () {
+  if (!token) {
+    window.location.assign("/Frontend/Html/Login.html");
+  }
+};
 // ------------------------------------------------------------------
 
 // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<< END >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>

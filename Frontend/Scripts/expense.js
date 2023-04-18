@@ -50,7 +50,6 @@ const expenseOption = (event) => {
     data = data.reverse();
     data.forEach((element) => {
       total += element.amount;
-      console.log(element._id)
       let exp_container = document.getElementById("exp_container");
       exp_container.style.width = "95%";
       exp_container.style.height = "100%";

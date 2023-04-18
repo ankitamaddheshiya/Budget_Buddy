@@ -229,7 +229,8 @@ const loginFormSubmit = async (event) => {
     }
   );
   let result = await response.json();
-  if (result.msg = "Login Successfull") {
+
+  if (result.msg === "Login Successfull") {
     loading_container.style.display = "none";
     sessionStorage.setItem("token", result.token);
     sessionStorage.setItem("username", result.user.fname);
@@ -238,24 +239,20 @@ const loginFormSubmit = async (event) => {
       title: "Logged In successfully!",
       text: "You are logged in successfully.",
       icon: "success",
-    }).then((res) => {
-      if (res.value) {
+    })
+      .then((res) => {
         window.location.href = "./Dashboard.html";
-      } else {
-        Swal.fire({
-          title: "Wrong Credentials!",
-          text: "Try Again",
-          icon: "error",
-        });
-      }
-    });
+      })
+      .catch((err) => {
+        alert("Something Went Wrong");
+      });
   } else {
     loading_container.style.display = "none";
     Swal.fire({
       title: "Wrong Credentials!",
       text: "Try Again",
       icon: "error",
-    });
+    }).then((res) => {});
   }
 };
 
@@ -315,7 +312,7 @@ const registerFormSubmit = async (event) => {
       title: "Password Mismatched",
       text: "Please Try Again",
       icon: "error",
-    });
+    }).then();
   }
 };
 
@@ -325,7 +322,8 @@ const registerFormSubmit = async (event) => {
 const googleLogin = async () => {
   try {
     let response = await fetch(
-      "https://periwinkle-catfish-cuff.cyclic.app/user/auth/google",{mode:'no-cors'}
+      "https://periwinkle-catfish-cuff.cyclic.app/user/auth/google",
+      { mode: "no-cors" }
     );
     let result = await response.json();
     console.log(result);

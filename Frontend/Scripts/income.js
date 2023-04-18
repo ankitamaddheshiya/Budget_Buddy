@@ -87,7 +87,6 @@ const incomeOption = (event) => {
     data = data.reverse();
     data.forEach((element) => {
       total += element.amount
-      console.log(element._id)
       let income_container = document.getElementById("income_container");
       income_container.style.width = "95%";
       income_container.style.height = "100%";
