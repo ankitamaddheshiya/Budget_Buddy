@@ -8,6 +8,8 @@
   /* width: 100%; */
 }
 
+
+/* ---------------------navbar--------------------------------------------- */
 nav{
   background-color: #1190bb;
   height: 80px;
@@ -61,63 +63,22 @@ display: none;
   display: none;
 }
 
-@media (max-width:952px){
-  label.logo{
-    font-size: 50px;
-    padding-left: 50px;
 
-  }
-
-  nav ul li a{
-    
-  }
+.topval.responsive{
+  display: none;
 }
 
+
+/* ---------------------------------------------------------------------------------------- */
 html {
   scroll-behavior: smooth;
 }
 
-/* html::-webkit-scrollbar{
-  width:1px;
-  height: 1px;
-} */
-/* #nav {
-  background-color: rgb(22, 153, 214);
-  position: sticky;
-  z-index: 999;
-  width: 100%;
-  top: 0;
-}
-#nav-list{
-  display: flex;
-  border: 1px solid green;
-} */
-/* .nava:hover {
-    background-color: yellow;
-  } */
+
 .fa-brands {
   width: 6%;
   height: 20px;
 }
-
-.container-fluid {
-  display: flex;
-  justify-content: space-evenly;
-  border: 1px solid red;
-  /* color: white; */
-}
-
-.navbar-logo {
-  margin-right: 500px;
-  margin-top: 5px;
-}
-
-.navbar-logo>img {
-  width: 110%;
-  height: 60px;
-
-}
-
 .main_heading {
   color: rgba(170, 68, 68, 0.612);
   background-color: rgba(0, 0, 0, 0);
@@ -201,7 +162,7 @@ body {
 
 .swiper {
   width: 100%;
-  height: 35%;
+  /* height: 35%; */
   margin: -19px;
 }
 
@@ -214,14 +175,14 @@ body {
   align-items: center;
 }
 
-.swiper-slide img {
-  display: block;
+.swiper-slide img{
+  /* display: block; */
   width: 100%;
-  height: 70%;
+  height: 100%;
   object-fit: cover;
 }
 
-.swiper-wrapper img {
+.swiper-wrapper img{
   width: 100%;
   height: 500px;
 }
@@ -640,7 +601,7 @@ footer>p {
   justify-content: space-evenly;
   position: relative;
   
-  left: 1000px
+  /* left: 1000px */
 }
 /* li>a:hover{
   background-color: rgb(42, 223, 223);
@@ -648,4 +609,76 @@ footer>p {
 
 #hover a:hover{
   background-color:rgb(218, 160, 160);
+}
+
+
+
+@media (max-width:952px){
+  label.logo{
+    font-size: 50px;
+    padding-left: 40px;
+
+  }
+
+  nav ul li a{
+    font-size: 15px;
+  }
+}
+
+@media (max-width:800px){
+
+  .checkbtn{
+    display: block;
+    margin-right: 50px;
+  }
+  ul{
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    background:#333;
+    top: 80px;
+    left: -100%;
+    text-align: center;
+    transition: all .5s;
+  }
+  nav ul li{
+    display: block;
+    margin: 50px 0;
+    line-height: 30px;
+  }
+  nav ul li a{
+    font-size: 20px;
+
+  }
+  a:hover,a.active{
+    background: none;
+    color: #1bb9bc;
+
+  }
+
+  #check:checked ~ ul{
+    left: 0;
+
+  }
+
+
+  .swiper-wrapper img{
+    width: 100%;
+    height: auto;
+  }
+
+  .button_part>button {
+    background-color: rgb(22, 153, 214);
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    color: white;
+    width: 40%;
+    font-size: 12px;
+    height: 35px;
+    border-radius: 15px;
+  }
+
+  .main_heading{
+    font-size: 28px;
+    margin-bottom: 0px;
+  }
 }
