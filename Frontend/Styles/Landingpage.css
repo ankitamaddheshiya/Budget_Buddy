@@ -3,6 +3,74 @@
   padding: 0;
   box-sizing: border-box;
   font-family: "Poppins";
+  text-decoration: none;
+  list-style: none;
+  /* width: 100%; */
+}
+
+nav{
+  background-color: #1190bb;
+  height: 80px;
+  width: 100%;
+}
+.logo{
+  color: white;
+  font-size: 55px;
+  line-height: 80px;
+  padding: 0 100px;
+  font-weight: bold;
+  
+}
+
+nav ul{
+  float: right;
+  margin-right: 20px;
+
+}
+
+nav ul li{
+  display: inline-block;
+  line-height: 80px;
+  margin: 0 5px;
+}
+
+nav ul li a{
+  color: white;
+  font-size: 17px;
+  padding: 7px 13px;
+  border-radius: 3px;
+  text-transform: uppercase;
+
+}
+a.active,a:hover{
+  background-color: #ace1ef;
+  transition: .5s;
+}
+
+.checkbtn{
+  font-size: 30px;
+  color: white;
+  float: right;
+  line-height: 80px;
+  margin-right: 40px;
+  cursor: pointer;
+display: none;
+}
+
+#check{
+  display: none;
+}
+
+@media (max-width:952px){
+  label.logo{
+    font-size: 50px;
+    padding-left: 50px;
+
+  }
+
+  nav ul li a{
+    
+  }
 }
 
 html {
@@ -13,14 +81,17 @@ html {
   width:1px;
   height: 1px;
 } */
-#nav {
+/* #nav {
   background-color: rgb(22, 153, 214);
   position: sticky;
   z-index: 999;
   width: 100%;
   top: 0;
 }
-
+#nav-list{
+  display: flex;
+  border: 1px solid green;
+} */
 /* .nava:hover {
     background-color: yellow;
   } */
@@ -32,6 +103,7 @@ html {
 .container-fluid {
   display: flex;
   justify-content: space-evenly;
+  border: 1px solid red;
   /* color: white; */
 }
 
