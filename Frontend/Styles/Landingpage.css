@@ -546,18 +546,18 @@ footer {
 
 
 .footer-div>.flexlist {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 2%;
-  margin: 52px;
-  
-
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  grid-template-rows: auto;
+  margin-top: 10px;
+  gap: 20px;
+  /* margin: 52px; */
 }
-.flexlist>.list{
+/* .flexlist>.list{
   width: 22%;
-}
+} */
 .flexlist img{
-  width: 60%;
+  width: 150px;
 }
 
 
@@ -639,7 +639,7 @@ footer>p {
     display: block;
     margin-right: 50px;
   }
-  ul{
+  nav ul{
     position: fixed;
     width: 100%;
     height: 100vh;
@@ -845,6 +845,74 @@ h2{
   width: 100%;
   /*   padding: 0 20px; */
 }
+
+.footer-div>div>h2 {
+  font-size: 22px;
+  margin-bottom: 1%;
+}
+
+.footer-div>div>p {
+  color: black;
+  text-align: center;
+  margin-bottom: 0;
+  font-size: 17px;
+}
+
+.footer-div>.flexlist {
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  grid-template-rows: auto;
+  margin-top: 10px;
+  gap: 20px;
+  /* margin: 52px; */
+}
+/* .flexlist>.list{
+  width: 22%;
+} */
+.flexlist img{
+  width: 200px;
+}
+
+
+footer>.footer-div>.list>ul {
+  list-style: none;
+  line-height: 2;
+  font-size: 10px;
+  /* text-align: left; */
+}
+
+.footer-para {
+  font-size: 10px;
+  text-align: start;
+}
+
+.list>ul>li {
+  list-style: none;
+  line-height: 1.5;
+}
+
+
+.list>h6 {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+footer>p {
+  font-size: 10px;
+  text-align: left;
+  margin-left: 8%;
+  color: black;
+  font-weight: 400;
+}
+
+.img {
+  width: 45%;
+  display: flex;
+  justify-content: space-between;
+  margin: 15px 25%;
+  
+  /* left: 1000px */
+}
 }
 
 
@@ -951,5 +1019,64 @@ h2{
     display: block;
     width: 80px;
     /*   padding: 0 20px; */
+  }
+
+  .footer-div>div>h2 {
+    font-size: 18px;
+    margin-bottom: 1%;
+  }
+
+  .footer-div>.flexlist {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    grid-template-rows: auto;
+    margin-top: 10px;
+    gap: 20px;
+    /* margin: 52px; */
+  }
+  /* .flexlist>.list{
+    width: 22%;
+  } */
+  .flexlist img{
+    width: 200px;
+  }
+
+  footer>.footer-div>.list>ul {
+    list-style: none;
+    line-height: 2;
+    font-size: 10px;
+    /* text-align: left; */
+  }
+  
+  .footer-para {
+    font-size: 10px;
+    text-align: start;
+  }
+  
+  .list>ul>li {
+    list-style: none;
+    line-height: 1.5;
+  }
+  
+  
+  .list>h6 {
+    font-size: 14px;
+    font-weight: 700;
+  }
+  
+  footer>p {
+    font-size: 10px;
+    text-align: left;
+    margin-left: 8%;
+    color: black;
+    font-weight: 400;
+  }
+  .img {
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+    margin: 15px 25%;
+    
+    /* left: 1000px */
   }
 }
