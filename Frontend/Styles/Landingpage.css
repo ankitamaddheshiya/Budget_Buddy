@@ -846,6 +846,7 @@ h2{
   /*   padding: 0 20px; */
 }
 
+
 .footer-div>div>h2 {
   font-size: 22px;
   margin-bottom: 1%;
@@ -913,6 +914,7 @@ footer>p {
   
   /* left: 1000px */
 }
+
 }
 
 
@@ -1021,6 +1023,7 @@ footer>p {
     /*   padding: 0 20px; */
   }
 
+
   .footer-div>div>h2 {
     font-size: 18px;
     margin-bottom: 1%;
@@ -1079,4 +1082,5 @@ footer>p {
     
     /* left: 1000px */
   }
+
 }
