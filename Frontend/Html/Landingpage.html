@@ -33,7 +33,7 @@
   </head>
 
   <body>
-    <!-- <nav class="navbar" id="nav">
+   
       <div class="container-fluid">
         <div class="navbar-logo">
           <img
@@ -88,73 +88,78 @@
     <nav>
       <input type="checkbox" id="check">
       <label for="check" class="checkbtn">
-        <i class="fas fa-bars"></i>
+        <i class="fas fa-bars" onclick="showfun()"></i>
       </label>
       <label class="logo">BB</label>
       <ul>
         <li><a class="active" href="#">Home</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Services</a></li>
-        <li><a href="#">Contact</a></li>
-        <li><a href="#">Feedback</a></li>
+        <li><a href="#top">About</a></li>
+        <li><a href="#about">How it Works</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#"  onclick="goToLoginPage()">Login</a></li>
       </ul>
     </nav>
-    
-    <marquee behavior="scroll" scrollamount="20px" direction="right">
-      <p
-        style="
-          margin-bottom: 30px;
-          text-align: center;
-          font-size: 15px;
-          font-weight: bold;
-        "
-      >
-        Get 20% discount on Budget Buddy || Get App || Store Or Event || Gift
-        Card || Help
-      </p>
-    </marquee>
-    <!-- Banner part   -->
-    <div class="swiper mySwiper">
-      <div class="swiper-wrapper">
-        <div class="swiper-slide">
-          <img
-            src="https://www.ontarioconstructionnews.com/wp-content/uploads/2021/02/databid-budget-stock-image.png"
-            alt=""
-          />
-        </div>
-        <div class="swiper-slide">
-          <img
-            src="https://cfoshare.org/wp-content/uploads/2021/01/AdobeStock_227546975-scaled.jpeg"
-            alt=""
-          />
-        </div>
-        <div class="swiper-slide">
-          <img src="../images/page-back-img-main.jpg" alt="" />
-        </div>
-        <div class="swiper-slide">
-          <img
-            src="https://financialtribune.com/sites/default/files/field/image/december/12_budget.jpg"
-            alt=""
-          />
-        </div>
 
-        <div class="swiper-slide">
-          <img
-            src="http://www.salisburysd.us/wp-content/uploads/2015/03/Budget-11456087.jpg"
-            alt=""
-          />
+
+    <section id="top" class="topval">
+      <marquee behavior="scroll" scrollamount="20px" direction="right">
+        <p
+          style="
+            margin-bottom: 30px;
+            text-align: center;
+            font-size: 15px;
+            font-weight: bold;
+          "
+        >
+          Get 20% discount on Budget Buddy || Get App || Store Or Event || Gift
+          Card || Help
+        </p>
+      </marquee>
+      <!-- Banner part   -->
+      <div class="swiper mySwiper">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <img
+              src="https://www.ontarioconstructionnews.com/wp-content/uploads/2021/02/databid-budget-stock-image.png"
+              alt=""
+            />
+          </div>
+          <div class="swiper-slide">
+            <img
+              src="https://cfoshare.org/wp-content/uploads/2021/01/AdobeStock_227546975-scaled.jpeg"
+              alt=""
+            />
+          </div>
+          <div class="swiper-slide">
+            <img src="../images/page-back-img-main.jpg" alt="" />
+          </div>
+          <div class="swiper-slide">
+            <img
+              src="https://financialtribune.com/sites/default/files/field/image/december/12_budget.jpg"
+              alt=""
+            />
+          </div>
+  
+          <div class="swiper-slide">
+            <img
+              src="http://www.salisburysd.us/wp-content/uploads/2015/03/Budget-11456087.jpg"
+              alt=""
+            />
+          </div>
+          <div class="swiper-slide">
+            <img
+              src="https://picjumbo.com/wp-content/uploads/budget-2210x1473.jpg"
+              alt=""
+            />
+          </div>
         </div>
-        <div class="swiper-slide">
-          <img
-            src="https://picjumbo.com/wp-content/uploads/budget-2210x1473.jpg"
-            alt=""
-          />
-        </div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-pagination"></div>
       </div>
-      <div class="swiper-button-next"></div>
-      <div class="swiper-button-prev"></div>
-      <div class="swiper-pagination"></div>
-    </div>
+    </section>
+   
+
     <section class="sec-1">
       <div class="top-part">
         <h1 class="main_heading">Budget it now !</h1>
@@ -175,7 +180,7 @@
 
     <!-- How its work sections -->
 
-    <div class="about">
+    <div class="about" id="about">
       <h1>How its Works</h1>
       <br />
 
@@ -199,7 +204,7 @@
     >
       Great Budget Software
     </h1>
-    <div class="services">
+    <div class="services" id="services">
       <div>
         <img
           src="https://cdn-icons-png.flaticon.com/128/5097/5097062.png"
@@ -626,7 +631,8 @@
       function goTosevices() {
         window.scrollTo(0, 1250);
       }
-
+       
+      
       // go to login page
       function goToLoginPage() {
         window.location.href = "./Login.html";
@@ -643,6 +649,16 @@
           window.location.href = "./Dashboard.html";
         }
       };
+
+
+      function showfun() {
+  var x = document.getElementById("top");
+  if (x.className === "topval") {
+    x.className += " responsive";
+  } else {
+    x.className = "topval";
+  }
+}
     </script>
   </body>
 </html>
