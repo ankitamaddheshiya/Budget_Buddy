@@ -33,7 +33,7 @@
   </head>
 
   <body>
-    <nav class="navbar" id="nav">
+    <!-- <nav class="navbar" id="nav">
       <div class="container-fluid">
         <div class="navbar-logo">
           <img
@@ -42,6 +42,7 @@
             onclick="returnTohome()"
           />
         </div>
+        <div id="nav-list">
         <ul class="nav navbar-nav topnav" id="hover">
           <li class="active">
             <a
@@ -77,12 +78,28 @@
               >Login/SignUp</a
             >
           </li>
-          <!-- <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+          <a href="javascript:void(0);" class="icon" onclick="myFunction()">
           <i class="fa fa-bars"></i>
-        </a> -->
+        </a>
         </ul>
       </div>
+      </div>
+    </nav> -->
+    <nav>
+      <input type="checkbox" id="check">
+      <label for="check" class="checkbtn">
+        <i class="fas fa-bars"></i>
+      </label>
+      <label class="logo">BB</label>
+      <ul>
+        <li><a class="active" href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Services</a></li>
+        <li><a href="#">Contact</a></li>
+        <li><a href="#">Feedback</a></li>
+      </ul>
     </nav>
+    
     <marquee behavior="scroll" scrollamount="20px" direction="right">
       <p
         style="
