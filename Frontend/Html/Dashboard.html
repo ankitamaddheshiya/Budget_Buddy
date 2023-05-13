@@ -40,7 +40,7 @@
         <li><a href="#about" >About</a></li>
         <li><a href="#footer" >Contact</a></li>
         <li><a href="#services">Services</a></li>
-        <li><a href="#"  onclick="goToLoginPage()">Login</a></li>
+        <li><a href="#"  onclick="goToLoginPage()" id="username">Login</a></li>
       </ul>
     </nav>
     <section id="top" class="topval">
@@ -510,8 +510,9 @@
 
       window.onload = function () {
         let istoken = sessionStorage.getItem("token");
+        console.log(istoken)
         if (istoken == null) {
-          // window.location.assign("./Login.html");
+          window.location.assign("./Login.html");
         }
       };
 

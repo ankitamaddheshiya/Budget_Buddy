@@ -87,10 +87,8 @@ userRouter.get(
     passport.authenticate("google", { scope: ["profile", "email"] })
   );
   
-//   app.get(
-//     "/auth/google",
-//     passport.authenticate("google", { scope: ["profile", "email"] })
-//   );
+
+
   // callback url after login with google
 userRouter.get(
     "/auth/google/callback",
@@ -101,13 +99,12 @@ userRouter.get(
     function (req, res) {
       console.log(req.user);
       // token bhejna hai and then redirect karn hai
-      res.redirect(`http://127.0.0.1:5500/Frontend/index.html?&email=${user.email}&id=${token}&first_name=${user.first_name}&last_name=${user.last_name}`);
+    //   res.redirect(`http://127.0.0.1:5501/Frontend/Html/Dashboard.html?&email=${user.email}&id=${token}&first_name=${user.first_name}&last_name=${user.last_name}`);
+      res.send("hiii")
     }
   );
 
-//   userRouter.get("/loginwelcome",(req,res)=>{
-//         res.sendFile(path.join(__dirname,"../Frontend/Html/Landingpage.html"));
-//   })
+
 
   //Logout
 userRouter.post("/logout",authenticate,async (req, res) => {
@@ -120,6 +117,7 @@ userRouter.post("/logout",authenticate,async (req, res) => {
 userRouter.get("/profile",authenticate,async (req,res)=>{
     try{
         const {userid} = req.body;
+        console.log(userid)
     const userdata = await usermodel.findById({_id:userid});
     const {fname,lname,email,mobile,avatar,dob,address}  = userdata
         res.send({fname,lname,email,mobile,avatar,dob,address})

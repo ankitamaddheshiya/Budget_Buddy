@@ -31,7 +31,8 @@ incomeRouter.post("/addincome",async (req,res)=>{
             title,
             type,
             amount,
-            userID:userid
+            userID:userid,
+            method:"income"
          });
          await income.save();
          res.send({msg:"Income has been added"});

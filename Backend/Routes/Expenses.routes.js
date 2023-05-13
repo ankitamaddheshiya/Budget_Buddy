@@ -29,7 +29,8 @@ expenseRouter.post("/addexpense",async (req,res)=>{
             title,
             type,
             amount,
-            userID:userid
+            userID:userid,
+            method:"expense"
          });
          await expense.save();
          res.send({msg:"expense has added"});

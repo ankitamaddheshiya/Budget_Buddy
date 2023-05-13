@@ -5,6 +5,7 @@ const incomeSchema = mongoose.Schema({
     type:{type:String,required:true},
     amount:{type:Number,require:true},
     userID:{type:String},
+    method:{type:String},
     createdAt:{type: Date,default: Date.now}
 });
 

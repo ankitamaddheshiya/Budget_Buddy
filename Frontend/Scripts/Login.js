@@ -175,10 +175,7 @@ const onload = () => {
             <img src="../images/search.png" alt=""  onclick="googleLogin()"/>
         </div>
         <div>
-            <img src="../images/github.png" alt="" />
-        </div>
-        <div>
-            <img src="../images/facebook.png" alt="" />
+         <a href="https://nice-tan-train.cyclic.app/user/auth/google">Continue with Google</a>
         </div>
         </div>
         </section>
@@ -320,15 +317,17 @@ const registerFormSubmit = async (event) => {
 
 // login via google
 const googleLogin = async () => {
-  try {
-    let response = await fetch(
-      "https://periwinkle-catfish-cuff.cyclic.app/user/auth/google",
-      { mode: "no-cors" }
-    );
-    let result = await response.json();
-    console.log(result);
-  } catch (error) {
-    console.log(error);
-  }
+  // try {
+  //   let response = await fetch(
+  //     "http://localhost:4500/user/auth/google",
+  //     { mode: "no-cors" }
+  //   );
+  //   let result = await response.json();
+  //   console.log(result);
+  // } catch (error) {
+  //   console.log(error);
+  // }
+
+  window.location.assign("https://nice-tan-train.cyclic.app/user/auth/google");
 };
 // ---------------------------------------------------------------------------
