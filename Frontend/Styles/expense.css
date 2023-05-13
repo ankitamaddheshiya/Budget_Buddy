@@ -129,7 +129,7 @@
     font-size: 17px;
 }
 .every_exp_card_inner .exp_amount{
-    color: rgb(29, 160, 29);
+    color: red;
 }
 .exp_card_buttons{
     padding: 0px 20px;

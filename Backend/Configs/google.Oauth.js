@@ -10,24 +10,28 @@ passport.use(
     {
       clientID: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-      callbackURL: "https://periwinkle-catfish-cuff.cyclic.app/user/auth/google/callback",
-      scope: ["email", "profile"],
+      callbackURL: "http://localhost:4500/user/auth/google/callback",
+      
     },
+    
     async function (accessToken, refreshToken, profile, cb) {
-      const User = new usermodel({
-        googleId: profile.id,
-        fname: profile.displayName,
-        email: profile.emails[0].value,
-        password: uuid(),
-        avatar: profile.photos[0].value,
-      });
-      console.log(profile)
-
-      const isPresent = await usermodel.findOne({email:profile.emails[0].value}) 
-      if(!isPresent) {
+      if(profile._json.email_verified){
+        const user = await usermodel.findOne({email:profile.emails[0].value})
+        if(user) {
+          return cb(null, user); 
+        }
+        const newuser = new usermodel({
+          googleId: profile.id,
+          fname: profile.displayName,
+          email: profile.emails[0].value,
+          password: uuid(),
+          avatar: profile.photos[0].value,
+        });
         await User.save();
+        console.log(profile)
+        return cb(null, newuser);  
       }
-      return cb(null, User);
+      
     }
   )
 );

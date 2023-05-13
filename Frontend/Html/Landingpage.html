@@ -542,6 +542,13 @@
 
       // on load
       window.onload = function () {
+        const urlParams= new URLSearchParams(window.location.search);
+        const tkn= urlParams.get('id');
+        const name= urlParams.get('first_name');
+        if(tkn){
+          sessionStorage.setItem("token", tkn);
+          sessionStorage.setItem("username", name);
+        }
         if (sessionStorage.getItem("token")) {
           window.location.href = "./Dashboard.html";
         }

@@ -73,7 +73,7 @@ const expenseOption = (event) => {
   
       let exp_amount = document.createElement("h4");
       exp_amount.setAttribute("class", "exp_amount");
-      exp_amount.innerHTML = `${element.amount}`;
+      exp_amount.innerHTML = `- ${element.amount}`;
   
       every_exp_card_inner.append(exp_type, date, exp_amount);
   

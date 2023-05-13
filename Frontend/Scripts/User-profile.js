@@ -577,7 +577,7 @@ const historyOption = (event) => {
         let date = element.createdAt.split("T");
         date = date[0];
         let tr = document.createElement("tr");
-        if (element.type == "Cash") {
+        if (element.method == "income") {
           tr.style.color = "rgb(2, 82, 2)";
         } else {
           tr.style.color = "red";
@@ -587,7 +587,7 @@ const historyOption = (event) => {
           <td>${element.type}</td>
           <td>${date}</td>
           <td>${element._id}</td>
-          <td>${element.type == "Cash" ? element.amount = `${element.amount}` : `- ${element.amount}`}</td>
+          <td>${element.method == "income" ? element.amount = `+ ${element.amount}` : `- ${element.amount}`}</td>
           `;
 
         tbody.appendChild(tr);
