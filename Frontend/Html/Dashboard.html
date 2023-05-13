@@ -4,7 +4,7 @@
     <title>Budget Budget</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="../Styles/Landingpage.css" />
+    <link rel="stylesheet" href="../Styles/Dashboard.css" />
     <link
       rel="stylesheet"
       href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
@@ -28,111 +28,72 @@
     />
   </head>
 
-  <body>
-    <nav class="navbar" id="nav">
-      <div class="container-fluid">
-        <div class="navbar-logo">
-          <img src="../images/bblogo2-removebg-preview.png" alt="" />
-        </div>
-        <ul class="nav navbar-nav" id="hover">
-          <li>
-            <a href="#" style="color: white; font-size: 20px; margin: 10px"
-              >Home</a
-            >
-          </li>
-          <li>
-            <a href="#" style="color: white; font-size: 20px; margin: 10px"
-              >How its Work</a
-            >
-          </li>
-          <li>
-            <a href="#" style="color: white; font-size: 20px; margin: 10px"
-              >Services</a
-            >
-          </li>
-          <li>
-            <a href="#" style="color: white; font-size: 20px; margin: 10px"
-              >Contact us</a
-            >
-          </li>
-          <li>
-            <a
-              href="./User-profile.html"
-              style="color: white; font-size: 20px; margin: 10px"
-              ><i class="fa-regular fa-user"></i>
-              <span id="username">Username</span>
-            </a>
-          </li>
-          <li>
-            <a
-              href="./Login.html"
-              style="
-                background-color: rgb(239, 93, 93);
-                font-size: 20px;
-                margin: 10px;
-                color: white;
-              "
-              ><span id="logout" onclick="logoutClearSS()">Logout</span>
-            </a>
-          </li>
-        </ul>
-      </div>
+  <body>  
+    <nav>
+      <input type="checkbox" id="check">
+      <label for="check" class="checkbtn">
+        <i class="fas fa-bars" onclick="showfun()"></i>
+      </label>
+      <label class="logo">BB</label>
+      <ul>
+        <li><a class="active" href="#">Home</a></li>
+        <li><a href="#about" >About</a></li>
+        <li><a href="#footer" >Contact</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#"  onclick="goToLoginPage()">Login</a></li>
+      </ul>
     </nav>
-    <marquee behavior="scroll" scrollamount="20px" direction="right">
-      <p
-        style="
-          margin-bottom: 30px;
-          text-align: center;
-          font-size: 15px;
-          font-weight: bold;
-        "
-      >
-        Get 20% discount on Budget Buddy || Get App || Store Or Event || Gift
-        Card || Help
-      </p>
-    </marquee>
-    <!-- Banner part   -->
-    <div class="swiper mySwiper">
-      <div class="swiper-wrapper">
-        <div class="swiper-slide">
-          <img
-            src="https://www.ontarioconstructionnews.com/wp-content/uploads/2021/02/databid-budget-stock-image.png"
-            alt=""
-          />
+    <section id="top" class="topval">
+      <marquee behavior="scroll" scrollamount="20px" direction="right">
+        <p
+        >
+          Get 20% discount on Budget Buddy || Get App || Store Or Event || Gift
+          Card || Help
+        </p>
+      </marquee>
+      <!-- Banner part   -->
+      <div class="swiper mySwiper">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <img
+              src="https://www.ontarioconstructionnews.com/wp-content/uploads/2021/02/databid-budget-stock-image.png"
+              alt=""
+            />
+          </div>
+          <div class="swiper-slide">
+            <img
+              src="https://cfoshare.org/wp-content/uploads/2021/01/AdobeStock_227546975-scaled.jpeg"
+              alt=""
+            />
+          </div>
+          <div class="swiper-slide">
+            <img src="../images/page-back-img-main.jpg" alt="" />
+          </div>
+          <div class="swiper-slide">
+            <img
+              src="https://financialtribune.com/sites/default/files/field/image/december/12_budget.jpg"
+              alt=""
+            />
+          </div>
+  
+          <div class="swiper-slide">
+            <img
+              src="http://www.salisburysd.us/wp-content/uploads/2015/03/Budget-11456087.jpg"
+              alt=""
+            />
+          </div>
+          <div class="swiper-slide">
+            <img
+              src="https://picjumbo.com/wp-content/uploads/budget-2210x1473.jpg"
+              alt=""
+            />
+          </div>
         </div>
-        <div class="swiper-slide">
-          <img
-            src="https://cfoshare.org/wp-content/uploads/2021/01/AdobeStock_227546975-scaled.jpeg"
-            alt=""
-          />
-        </div>
-        <div class="swiper-slide">
-          <img src="../images/page-back-img-main.jpg" alt="" />
-        </div>
-        <div class="swiper-slide">
-          <img
-            src="https://financialtribune.com/sites/default/files/field/image/december/12_budget.jpg"
-            alt=""
-          />
-        </div>
-
-        <div class="swiper-slide">
-          <img
-            src="http://www.salisburysd.us/wp-content/uploads/2015/03/Budget-11456087.jpg"
-            alt=""
-          />
-        </div>
-        <div class="swiper-slide">
-          <img
-            src="https://picjumbo.com/wp-content/uploads/budget-2210x1473.jpg"
-            alt=""
-          />
-        </div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-pagination"></div>
       </div>
-      <div class="swiper-button-next"></div>
-      <div class="swiper-button-prev"></div>
-      <div class="swiper-pagination"></div>
-    </div>
+    </section>
     <section class="sec-1">
       <div class="top-part">
         <h1 class="main_heading">Budget it now !</h1>
@@ -166,12 +127,6 @@
 
     <!-- Our Services -->
     <h1
-      style="
-        text-align: center;
-        font-size: 40px;
-        font-weight: bold;
-        margin-top: 40px;
-      "
     >
       Great Budget Software
     </h1>
@@ -249,14 +204,14 @@
 
         <div class="sec-right">
           <img
-            style="width: 40%; height: 200px; margin-top: 150px"
+            class="serImg-1"
             src="https://sp-ao.shortpixel.ai/client/to_webp,q_glossy,ret_img,w_365/https://goodbudget.com/wp-content/uploads/2019/05/14224232/laptop3.png"
             alt=""
           />
           <!-- <img src="https://sp-ao.shortpixel.ai/client/to_webp,q_glossy,ret_img,w_159,h_277/https://goodbudget.com/wp-content/uploads/2019/04/01223539/iphone.png"
                 alt=""> -->
           <img
-            style="width: 35%; height: 430px; margin-top: 10px"
+            class="serImg-2"
             src="https://sp-ao.shortpixel.ai/client/to_webp,q_glossy,ret_img,w_132,h_254/https://goodbudget.com/wp-content/uploads/2019/06/10155220/android-v2.png"
             alt=""
           />
@@ -281,7 +236,7 @@
               back on this year,..
             </p>
 
-            <a style="font-size: 15px; color: brown" href="">Read More</a>
+            <a  href="">Read More</a>
           </div>
           <div>
             <img
@@ -290,7 +245,7 @@
             />
             <p>Budget Buddy got some updates <br />this year,most of which</p>
 
-            <a style="font-size: 15px; color: brown" href="">Read More</a>
+            <a  href="">Read More</a>
           </div>
           <div>
             <img
@@ -298,7 +253,7 @@
               alt=""
             />
             <p>Budgeting is essential these days, <br />and many folks turn</p>
-            <a style="font-size: 15px; color: brown; margin: top 15px" href=""
+            <a  href=""
               >Read More</a
             >
           </div>
@@ -308,7 +263,7 @@
               alt=""
             />
             <p>Finding a budget app that <br />meets all of your</p>
-            <a style="font-size: 15px; color: brown" href="">Read More</a>
+            <a  href="">Read More</a>
           </div>
         </div>
       </section>
@@ -556,7 +511,7 @@
       window.onload = function () {
         let istoken = sessionStorage.getItem("token");
         if (istoken == null) {
-          window.location.assign("./Login.html");
+          // window.location.assign("./Login.html");
         }
       };
 

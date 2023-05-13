@@ -3,6 +3,7 @@ require("dotenv").config();
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken")
 const userRouter = express.Router();
+const cors= require("cors");
 const {usermodel} = require("../Models/User.model");
 const {passport} = require("../Configs/google.Oauth")
 const fs = require("fs")
@@ -13,7 +14,8 @@ app.use(express.json());
 app.use(cors())
 userRouter.use(cors())
 
-const {cookieparser} = require("./Income.routes")
+const {cookieparser} = require("./Income.routes");
+const { request } = require("http");
 
 
 
@@ -82,9 +84,13 @@ userRouter.post("/login",async (req,res)=>{
 
 userRouter.get(
     "/auth/google",
-    passport.authenticate("google", { scope: ["email", "profile"] })
+    passport.authenticate("google", { scope: ["profile", "email"] })
   );
   
+//   app.get(
+//     "/auth/google",
+//     passport.authenticate("google", { scope: ["profile", "email"] })
+//   );
   // callback url after login with google
 userRouter.get(
     "/auth/google/callback",
@@ -95,7 +101,7 @@ userRouter.get(
     function (req, res) {
       console.log(req.user);
       // token bhejna hai and then redirect karn hai
-      res.redirect("");
+      res.redirect(`http://127.0.0.1:5500/Frontend/index.html?&email=${user.email}&id=${token}&first_name=${user.first_name}&last_name=${user.last_name}`);
     }
   );
 
@@ -140,3 +146,7 @@ userRouter.patch("/editprofile",authenticate,async(req,res)=>{
 module.exports={
     userRouter
 }
+
+
+
+// file:///C:/Users/aamma/Desktop/akash%20important/Budget%20management/Frontend/Html/Login.html
