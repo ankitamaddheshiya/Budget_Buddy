@@ -21,6 +21,9 @@ nav{
   background-color: #1190bb;
   height: 80px;
   width: 100%;
+  position: sticky;
+  top: 0;
+  z-index: 999;
 }
 .logo{
   color: white;
@@ -71,9 +74,9 @@ display: none;
 }
 
 
-.topval.responsive{
+/* .topval.responsive{
   display: none;
-}
+} */
 
 
 /* ---------------------------------------------------------------------------------------- */
@@ -315,6 +318,7 @@ body {
   grid-template-columns: repeat(4,1fr);
   grid-template-rows: auto;
   gap: 20px;
+  margin: 10px 15px;
 }
 
 .grid>div {
@@ -604,12 +608,11 @@ footer>p {
 }
 
 .img {
-  width: 25%;
+  width: 35%;
   display: flex;
   justify-content: space-evenly;
-  position: relative;
-  
-  /* left: 1000px */
+  margin: 15px 30%;
+
 }
 /* li>a:hover{
   background-color: rgb(42, 223, 223);
@@ -644,6 +647,7 @@ footer>p {
     width: 100%;
     height: 100vh;
     background:#333;
+    opacity: 0.8;
     top: 80px;
     left: -100%;
     text-align: center;
