@@ -623,6 +623,8 @@
   }
   
   
+
+/* medium display size */
   
   @media (max-width:952px){
     label.logo{
@@ -915,12 +917,11 @@
     justify-content: space-between;
     margin: 15px 25%;
     
-    /* left: 1000px */
   }
   }
   
   
-  
+  /* Small Screen size */
   
   
   @media (max-width:400px){

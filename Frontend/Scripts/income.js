@@ -25,6 +25,9 @@ const incomeOption = (event) => {
   income_main_func();
 };
 
+
+// function to get all the income
+
 async function income_main_func() {
   await fetch("https://periwinkle-catfish-cuff.cyclic.app/income", {
     headers: {
@@ -36,7 +39,6 @@ async function income_main_func() {
       return res.json();
     })
     .then((data) => {
-      console.log(data);
       every_incomes_main_display(data);
     });
 }
@@ -45,6 +47,9 @@ add_income_btn.addEventListener("click", () => {
   add_income_form.classList.add("open-popup");
   // add_income_form.style.visibility = "visible"
 });
+
+// function to add income
+
 let income_form = document.getElementById("income_form");
 income_form.addEventListener("submit", async (e) => {
   e.preventDefault();
@@ -72,11 +77,12 @@ income_form.addEventListener("submit", async (e) => {
   );
 
   let response = await promise.json();
-  console.log(response);
   income_main_func();
   alert("Income Adding Successful");
   hisCache = [];
 });
+
+// function to display all income
 
 function every_incomes_main_display(data) {
   let income_bottom = document.getElementById("income_bottom");
@@ -129,6 +135,8 @@ function every_incomes_main_display(data) {
       let income_card_buttons = document.createElement("div");
       income_card_buttons.setAttribute("class", "income_card_buttons");
 
+// function to edit income
+
       let income_edit = document.createElement("button");
       income_edit.innerHTML = "Edit";
       income_edit.setAttribute("class", "income_edit");
@@ -149,10 +157,11 @@ function every_incomes_main_display(data) {
             return res.json();
           })
           .then((data) => {
-            console.log(data);
             income_main_func();
           });
       });
+
+//  function to delete income
 
       let income_delete = document.createElement("button");
       income_delete.innerHTML = "Delete";
@@ -172,7 +181,6 @@ function every_incomes_main_display(data) {
             return res.json();
           })
           .then((data) => {
-            console.log(data);
             if (data.msg == "Data Deleted") {
               Swal.fire({
                 title: "Data Deleted",
@@ -207,6 +215,10 @@ function every_incomes_main_display(data) {
   total_amount.innerHTML = total;
 }
 
+
+
+// function to filter data according to date
+
 let income_search_btn = document.getElementById("income_search_btn");
 income_search_btn.addEventListener("click", async () => {
   let Sdate = document.getElementById("form_date").value;
@@ -229,7 +241,6 @@ income_search_btn.addEventListener("click", async () => {
   })
     .then((res) => res.json())
     .then((data) => {
-      console.log(data);
       every_incomes_main_display(data);
     });
 });

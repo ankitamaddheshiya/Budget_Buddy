@@ -11,7 +11,7 @@ const authenticate =  async (req, res, next) => {
     
     const token = req.headers.authorization.split(" ")[1];
     const tokenredis = await client.GET(`${token}`);
-    console.log(token,tokenredis);
+    
     
     if(!tokenredis || !token || token!==tokenredis){
        return res.send({msg:"Please Login Again"})

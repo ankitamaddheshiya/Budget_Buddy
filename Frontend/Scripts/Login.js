@@ -93,12 +93,14 @@ const registerlink = () => {
                 placeholder="Email"
                 autocomplete="off"
                 required
+                minlength="11"
             /><input
                 type="number"
                 name="mobile"
                 placeholder="Phone Number"
                 autocomplete="off"
                 required
+                minlength="10"
             />
             <input
                 type="password"
