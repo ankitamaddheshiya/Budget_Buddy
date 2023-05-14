@@ -128,7 +128,7 @@ POST /income/addincome
  
    #### Expense Operation 
 ```javascript
-POST /expense/addincome
+POST /expense/addexpense
 ```
 
  ```javascript
@@ -136,7 +136,7 @@ POST /expense/addincome
  ```
  
  ```javascript
- PATCH  /expense/editincome/:id
+ PATCH  /expense/editexpense/:id
  ```
  
  ```javascript
