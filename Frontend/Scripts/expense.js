@@ -26,6 +26,8 @@ const expenseOption = (event) => {
     exp_main_func();
   };
   
+ // function to get all expense
+
   async function exp_main_func() {
     await fetch("https://periwinkle-catfish-cuff.cyclic.app/expense", {
       headers: {
@@ -37,10 +39,11 @@ const expenseOption = (event) => {
         return res.json();
       })
       .then((data) => {
-        console.log(data);
         every_exp_main_display(data);
       });
   }
+
+  // function to display all expense
   
   function every_exp_main_display(data) {
     let exp_bottom = document.getElementById("exp_bottom");
@@ -94,6 +97,8 @@ const expenseOption = (event) => {
         let exp_card_buttons = document.createElement("div");
         exp_card_buttons.setAttribute("class", "exp_card_buttons");
   
+// function to edit expense
+
         let exp_edit = document.createElement("button");
         exp_edit.innerHTML = "Edit";
         exp_edit.setAttribute("class", "exp_edit");
@@ -113,12 +118,14 @@ const expenseOption = (event) => {
                 return res.json();
               })
               .then((data) => {
-                console.log(data);
                 exp_main_func()
               });
           }
         );
   
+//  function to delete expense
+
+
         let exp_delete = document.createElement("button");
         exp_delete.innerHTML = "Delete";
         exp_delete.setAttribute("class", "exp_delete");
@@ -176,6 +183,10 @@ const expenseOption = (event) => {
     exp_total_amount.innerHTML = total
   }
   
+
+
+// function to add expense
+
   let add_exp_form = document.querySelector("#add_exp_form");
   let add_exp_btn = document.getElementById("add_exp_btn");
   add_exp_btn.addEventListener("click", () => {
@@ -209,12 +220,13 @@ const expenseOption = (event) => {
     );
   
     let response = await promise.json();
-    console.log(response);
     exp_main_func();
     alert("Expense Added successfully");
     hisCache = [];
   });
   
+// function to filter expense
+
   let exp_search_btn = document.getElementById("exp_search_btn")
   exp_search_btn.addEventListener("click", async()=>{
     let Sdate = document.getElementById("exp_form_date").value
@@ -232,6 +244,6 @@ const expenseOption = (event) => {
     })
     .then(res => res.json())
     .then((data)=>{
-      console.log(data)
+      every_exp_main_display(data)
     })
   })
