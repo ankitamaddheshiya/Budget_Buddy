@@ -151,7 +151,8 @@ POST /expense/addincome
  ### 
 `USERS DATA...`
 
-   { fname:{type:String},
+   { 
+   fname:{type:String},
     lname:{type:String},
     email:{type:String,require:true},
     password:{type:String,required:true},
@@ -159,7 +160,8 @@ POST /expense/addincome
     avatar:{type:String},
     address:{type:String},
     dob:{type:Date},
-    createdAt:{type: Date,default: Date.now} }
+    createdAt:{type: Date,default: Date.now} 
+    }
 
 
  ### 
