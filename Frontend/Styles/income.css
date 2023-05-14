@@ -1,0 +1,313 @@
+button{
+    cursor: pointer;
+    background-color: #008CBA;
+    font-weight: 600;
+    color: #ffffff;
+    padding: 8px 10px;
+    font-size: 19px;
+    border-radius: 6px;
+    border-color: #008CBA;
+    transition: .2s;
+}
+button:hover{
+    transition: .2s;
+    background-color: #005C7A;
+    border-color: #005C7A;
+    
+}
+.income_full{
+    position: relative;
+    display: none;
+    width: 100%;
+    height: 100%;
+    margin: auto;
+}
+#income_container{
+    /* position: relative; */
+    padding: 2px;
+    width: 95%;
+    margin: auto;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+.income_top{
+    width: 100%;
+    height: 13%;
+    display: flex;
+    justify-content: space-between;
+}
+.inside_top_1{
+    width: 8%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(48, 109, 179);
+    border-radius: 50%;
+}
+.income_top img{
+    width: 45px;
+    height: 45px;
+    background-color: rgb(48, 109, 179);
+}
+.inside_top_2{
+    min-width: 91%;
+    padding: 0px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: gold;
+    border-radius: 10px;
+    color: rgb(48, 109, 179);
+}
+.inside_top_2{
+    font-size: 1.2rem;
+}
+
+
+
+.income_mid{
+    height: 12%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+#add_income_btn{
+    cursor: pointer;
+    background-color: green;
+    /* background-color: #008CBA; */
+    font-weight: 600;
+    color: #fff;
+    padding: 8px 10px;
+    font-size: 19px;
+    border-radius: 6px;
+    border-color: green;
+    transition: .1s;
+}
+#add_income_btn:hover{
+    transition: .1s;
+    background-color: rgb(2, 101, 2);
+    /* background-color: #005C7A; */
+    border-color: rgb(2, 101, 2);
+}
+.filtering{
+    display: flex;
+    width: 52%;
+    justify-content: space-between;
+    padding-right: 1px;
+}
+.filtering label{
+    font-size: 18px;
+    font-weight: 600;
+    color: rgb(52, 52, 52);
+
+}
+.filtering input{
+    border-radius: 5px;
+    font-size: 17px;
+    padding: 7px 3px;
+    background-color: #98c1d988;
+    /* border-color: rgb(52, 52, 52); */
+    outline: 0px;
+}
+
+/* input[type="date"]::-webkit-datetime-edit, input[type="date"]::-webkit-inner-spin-button, 
+input[type="date"]::-webkit-clear-button{
+    color: white;
+    position: relative;
+}
+input[type="date"]::-webkit-datetime-edit-month-field{
+    position: absolute !important;
+    border-left: 1px solid;
+    color: rgb(52, 52, 52);
+    left: 26px;
+}
+input[type="date"]::-webkit-datetime-edit-year-field{
+    position: absolute !important;
+    border-left: 1px solid;
+    left: 56px;
+    color: rgb(52, 52, 52);
+}
+input[type="date"]::-webkit-datetime-edit-day-field{
+    position: absolute;
+    color: rgb(52, 52, 52);
+} */
+
+#income_search_btn{
+    cursor: pointer;
+    padding: 8px 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    font-weight: 600;
+    color: #fff;
+    /* color: rgb(52, 52, 52); */
+    border-color: rgb(52, 52, 52);
+    background-color: #008CBA;
+    border-color: #008CBA;
+}
+#income_search_btn:hover{
+    background-color: #005C7A;
+    border-color: #008CBA;
+}
+
+
+#income_bottom{
+    min-width: 100%;
+    height: 70%;
+    overflow: scroll;
+    scroll-behavior: smooth;
+}
+#income_bottom::-webkit-scrollbar{
+    width: 0px;
+    height: 0px;
+}
+#income_bottom .every_incomes_main{
+    background-color: #98c1d988;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    transition: .5s ease;
+    transition-delay: .2s;
+}
+.every_incomes_card{
+    /* background-color: #98c1d988; */
+    height: 70px;
+    /* cursor: pointer; */
+    display: flex;
+    justify-content: space-between;
+    /* align-items: center; */
+    padding: 0px 20px;
+}
+/* .every_incomes_card:hover{
+    height: 120px;
+    transition: .7s;
+    transition-delay: .5s;
+} */
+.every_income_card_inner{
+    width: 92%;
+    height: 65px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: rgb(52, 52, 52);
+}
+.every_income_card_inner h4{
+    font-size: 19px;
+}
+.every_income_card_inner p{
+    color: gray;
+    font-size: 17px;
+}
+.every_income_card_inner .income_amount{
+    color: rgb(29, 160, 29);
+}
+.down_arrow{
+    width: 4%;
+    height: 70px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+.down_arrow i{
+    font-size: 18px;
+    color: rgb(52, 52, 52);
+}
+.down_arrow p{
+    font-size: 10px;
+    color: rgb(52, 52, 52);
+}
+.income_card_buttons{
+    padding: 0px 20px;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.click_show{
+    transition: .3s ease-in-out;
+    /* display: none; */
+}
+.income_card_buttons button{
+    margin-top: -10px;
+    padding: 3px 15px;
+    font-size: 16px;
+}
+.income_delete{
+    background-color: rgba(190, 1, 1, 0.77);
+    border-color: rgba(190, 1, 1, 0.77);
+}
+.income_delete:hover{
+    background-color: rgb(124, 0, 0);
+    border-color: rgb(124, 0, 0);
+}
+
+
+
+.popup{
+    position: relative;
+    /* width: 0%; */
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    /* justify-content: center; */
+    background-color: rgba(0, 0, 0, 0.641);
+    /* z-index: 100; */
+    top: -100%;
+    transform: scale(0.02);
+    visibility: hidden;
+    transition: .5s ease-in-out;
+    transition-delay: .1s;
+}
+.open-popup{
+    transition: .6s ease-in-out;
+    transition-delay: .2s;
+    /* width: 100%; */
+    visibility: visible;
+    z-index: 100;
+    transform: scale(1);
+    top: -100%;
+}
+#income_form{
+    background-color: #ffffffb7;
+    width: 30%;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 10px;
+}
+.popup label{
+    font-size: 18px;
+    font-weight: 600;
+    color: rgb(52, 52, 52);
+}
+.popup label:nth-child(1){
+    margin-top: 20px;
+}
+.popup input{
+    margin-bottom: 25px;
+    outline: 0;
+    font-size: 18px;
+    padding: 4px 5px;
+    border-radius: 5px;
+    text-align: center;
+    background-color: #e8f0fe;
+}
+.popup input[type="submit"]{
+    padding: 8px 30px;
+    background-color: green;
+    cursor: pointer;
+    font-weight: 600;
+    color: #fff;
+    border-color: green;
+}
+.popup input[type="submit"]:hover{
+    background-color: rgb(2, 101, 2);
+    border-color: rgb(2, 101, 2);
+}
