@@ -105,12 +105,14 @@ const registerlink = () => {
                 name="password"
                 placeholder="Password"
                 autocomplete="off"
+                minlength="6"
                 required
             /><input
                 type="password"
                 name="confirm_password"
                 placeholder="Confirm Password"
                 autocomplete="off"
+                minlength="6"
                 required
             />
             <button type="submit">Register</button>
@@ -264,7 +266,7 @@ const registerFormSubmit = async (event) => {
   let formData = new FormData(form);
   let data = Object.fromEntries(formData);
 
-  if (data.confirm_password == data.password) {
+  if (data.confirm_password === data.password) {
     delete data.confirm_password;
     let response = await fetch(
       "https://periwinkle-catfish-cuff.cyclic.app/user/signup",
