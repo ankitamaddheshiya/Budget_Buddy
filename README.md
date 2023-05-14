@@ -140,7 +140,7 @@ POST /expense/addincome
  ```
  
  ```javascript
- DELET /expense/delete/:id
+ DELETE /expense/delete/:id
  ```
  
  ```javascript
