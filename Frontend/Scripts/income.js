@@ -230,6 +230,6 @@ income_search_btn.addEventListener("click", async () => {
     .then((res) => res.json())
     .then((data) => {
       console.log(data);
-      income_main_func();
+      every_incomes_main_display(data);
     });
 });
