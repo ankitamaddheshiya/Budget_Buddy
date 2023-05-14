@@ -119,7 +119,7 @@ POST /income/addincome
  ```
  
  ```javascript
- DELET /income/delete/:id
+ DELETE /income/delete/:id
  ```
  
  ```javascript
