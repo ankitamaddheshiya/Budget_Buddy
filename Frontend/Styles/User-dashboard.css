@@ -1,0 +1,91 @@
+.dashboard_full {
+    width: 100%;
+    height: 100%;
+    display: none;
+}
+
+.dashboard {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.dashboard-uper-div {
+    width: 100%;
+    height: 50%;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.line-graph {
+    width: 60%;
+    height: 100%;
+    background-color: #fff;
+    border-radius: 7px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.doughnut-graph {
+    width: 38%;
+    height: 100%;
+    background-color: #fff;
+    border-radius: 7px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.5rem;
+}
+
+#doughnut-chart {
+    width: 95%;
+    height: 95%;
+    margin: auto;
+}
+
+
+.dashboard-lower-div {
+    width: 100%;
+    padding: 1rem;
+    height: 50%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.pie-graph {
+    width: 38%;
+    height: 100%;
+    background-color: #fff;
+    border-radius: 7px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+#pie-chart {
+    width: 95%;
+    height: 95%;
+    margin: auto;
+}
+
+.bar-graph {
+    width: 60%;
+    height: 100%;
+    background-color: #fff;
+    border-radius: 7px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#bar-chart {
+    margin: auto;
+}
