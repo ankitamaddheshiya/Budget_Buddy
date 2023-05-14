@@ -1,3 +1,4 @@
+
 <div align="center"  width="65" height="75">
   <img src="https://github.com/ankitamaddheshiya/honorable-furniture-4728/blob/main/Frontend/images/BBlogo1.PNG" alt="html" width="120" height="120"/>
 </div>
@@ -118,7 +119,7 @@ POST /income/addincome
  ```
  
  ```javascript
- DELET /income/delete/:id
+ DELETE /income/delete/:id
  ```
  
  ```javascript
@@ -127,7 +128,7 @@ POST /income/addincome
  
    #### Expense Operation 
 ```javascript
-POST /expense/addincome
+POST /expense/addexpense
 ```
 
  ```javascript
@@ -135,11 +136,11 @@ POST /expense/addincome
  ```
  
  ```javascript
- PATCH  /expense/editincome/:id
+ PATCH  /expense/editexpense/:id
  ```
  
  ```javascript
- DELET /expense/delete/:id
+ DELETE /expense/delete/:id
  ```
  
  ```javascript
@@ -150,7 +151,8 @@ POST /expense/addincome
  ### 
 `USERS DATA...`
 
-   { fname:{type:String},
+   { 
+   fname:{type:String},
     lname:{type:String},
     email:{type:String,require:true},
     password:{type:String,required:true},
@@ -158,7 +160,8 @@ POST /expense/addincome
     avatar:{type:String},
     address:{type:String},
     dob:{type:Date},
-    createdAt:{type: Date,default: Date.now} }
+    createdAt:{type: Date,default: Date.now} 
+    }
 
 
  ### 
