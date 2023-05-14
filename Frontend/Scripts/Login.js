@@ -77,6 +77,8 @@ const registerlink = () => {
                 name="fname"
                 placeholder="First Name"
                 autocomplete="off"
+                minlength="2"
+                maxlength="10"
                 required
                 />
                 <input
@@ -84,6 +86,8 @@ const registerlink = () => {
                 name="lname"
                 placeholder="Last Name"
                 autocomplete="off"
+                minlength="2"
+                maxlength="10"
                 required
                 />
             </div>
